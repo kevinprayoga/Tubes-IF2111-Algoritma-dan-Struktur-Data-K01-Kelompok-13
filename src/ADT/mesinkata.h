@@ -4,8 +4,11 @@
 #ifndef __MESINKATA_H__
 #define __MESINKATA_H__
 
-#include "boolean.h"
 #include "mesinkarakter.h"
+
+#define boolean unsigned char
+#define true 1
+#define false 0
 
 #define NMax 50
 #define BLANK ' '

@@ -6,11 +6,12 @@
 #define true 1
 #define false 0
 
-#define InitialSize 10
+#define InitialSize 100
 
 typedef int IdxType;
-typedef int ElType;
-typedef struct {
+typedef char ElType;
+typedef struct
+{
     ElType *A;
     int Capacity;
     int Neff;

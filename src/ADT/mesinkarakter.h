@@ -4,7 +4,9 @@
 #ifndef __MESIN_KAR_H_
 #define __MESIN_KAR_H_
 
-#include "boolean.h"
+#define boolean unsigned char
+#define true 1
+#define false 0
 
 #define MARK '\n'
 /* State Mesin */
