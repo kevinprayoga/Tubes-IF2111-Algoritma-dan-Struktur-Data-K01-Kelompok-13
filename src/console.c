@@ -147,15 +147,16 @@ void playGame(Queue *q, ArrayDin arrReady)
           i++;
         }
       }
+      ElType val;
       if (found)
       {
-        ElType val;
         printf("Loading %s ...", HEAD(*q));
         dequeue(q, &val);
       }
       else
       {
         printf("Game %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.", HEAD(*q));
+        dequeue(q, &val);
       }
     }
   }
