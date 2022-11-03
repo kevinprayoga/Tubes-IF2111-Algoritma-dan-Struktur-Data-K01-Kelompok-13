@@ -6,19 +6,50 @@
 
 void start(ArrayDin *arr)
 {
-  int num;
   FILE* file;
-  *readQ();
-  file = fopen("config.txt", "r");
-  MakeArrayDin();
-  STARTWORD();
-  num = atoi(currentWord.TabWord);
-  for (int i = 0; i < num; i++)
+  char command = *readQ();
+  if (command == "START")
+  {
+    file = fopen("config.txt", "r");
+    MakeArrayDin();
+    STARTWORD();
+    int num = atoi(currentWord.TabWord);
+    for (int i = 0; i < num; i++)
+    {
+      ADVWORD();
+      InsertAt(arr, currentWord.TabWord, i);
+    }
+    printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.");
+  }
+}
+
+void load(ArrayDin *arr, char filename)
+{
+  FILE* file;
+  int i;
+  char command = *readQ();
+  if (command == "LOAD")
   {
     ADVWORD();
-    InsertAt(arr, currentWord.TabWord, i);
+    if (currentWord.TabWord[currentWord.Length - 1] != 't' && currentWord.TabWord[currentWord.Length - 2] != 'x' && currentWord.TabWord[currentWord.Length - 3] != 't' && currentWord.TabWord[currentWord.Length - 4] != '.')
+    {
+      printf("File konfigurasi sistem tidak ditemukan.");
+    }
+    else
+    {
+      filename = wordToString(currentWord);
+      file = fopen(filename, "r");
+      MakeArrayDin();
+      STARTWORD();
+      int num = atoi(currentWord.TabWord);
+      for (i = 0; i < num; i++)
+      {
+        ADVWORD();
+        InsertAt(arr, currentWord.TabWord, i);
+      }
+      printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.");
+    }
   }
-  printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.");
 }
 
 char *readQ()
@@ -47,36 +78,65 @@ int wordToInt(Word word)
   return num;
 }
 
-void deleteGame(ArrayDin *arr, ArrayDin arrFirst)
+
+
+void deleteGame(ArrayDin *arr, Queue q)
 {
   int num;
-  boolean found;
-  found = false;
-  scanf("Masukkan nomor game yang akan dihapus: %d\n", &num);
-  if (num > 0 && num <= Length(*arr))
+  ElType val;
+  char command, command2;
+  command = *readQ();
+  if (command == "DELETE")
   {
-    int i = 0;
-    while (i < Length(arrFirst) && (!found))
+    ADVWORD();
+    command2 = wordToString(currentWord);
+    if (command2 == "GAME")
     {
-      if (Get(arrFirst, i) == Get(*arr, num - 1))
+      printf("Berikut adalah daftar game yang tersedia\n");
+      for (int i = 0; i < arr->Neff; i++)
       {
-        found = true;
+        printf("%d. %s\n", i + 1, arr->A[i]);
+      }
+      scanf("Masukkan nomor game yang akan dihapus: %d\n", &num);
+      val = arr->A[num - 1];
+      if (num - 1 > 4 && num - 1 < Length(*arr) && (!isMemberQ(q, val)))
+      {
+        DeleteAt(arr, num - 1);
+        printf("\nGame berhasil dihapus");
       }
       else
       {
-        i++;
+        printf("\nGame gagal dihapus");
       }
     }
   }
-
-  if (found == true)
-  {
-    
-  }
-  DeleteAt(arr, num);
 }
 
-void playGame(Queue *q)
+boolean isMemberQ(Queue q, ElType val)
 {
-  //nge peprint daftar game yg di queue
+  int i = 0;
+  boolean found = false;
+  while (i < length(q) && (!found))
+  {
+    if (q.buffer[i] == val)
+    {
+      found = true;
+    }
+  }
+  return found;
+}
+
+void playGame(Queue *q, ArrayDin arrReady)
+{
+  char command, command2;
+  command = *readQ();
+  if (command == "PLAY")
+  {
+    ADVWORD();
+    command2 = wordToString(currentWord);
+    if (command2 == "GAME")
+    {
+      
+    }
+  }
 }

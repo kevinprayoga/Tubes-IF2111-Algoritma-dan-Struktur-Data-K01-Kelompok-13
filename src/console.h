@@ -11,6 +11,11 @@ void start(ArrayDin *arr);
    F.S. : Menampilkan pesan selamat datang dan menampilkan command yang tersedia
    Proses : Menampilkan pesan selamat datang dan menampilkan command yang tersedia */
 
+void load(ArrayDin *arr, char filename);
+/* I.S. : Sembarang
+   F.S. : Menampilkan pesan load berhasil dan memasukkan data dari file ke array
+   Proses : Menampilkan pesan load berhasil dan memasukkan data dari file ke array */
+
 char *readQ();
 /* I.S. : Sembarang
    F.S. : Mengembalikan string yang sudah diinputkan
@@ -26,11 +31,18 @@ int wordToInt(Word word);
    F.S. : Mengembalikan integer dari word
    Proses : Mengembalikan integer dari word */
 
-void deleteGame(ArrayDin *arr, ArrayDin arrFirst);
+void deleteGame(ArrayDin *arr, Queue q);
 /* I.S. : Sembarang
    F.S. : Menghapus game dari array
    Proses : Menghapus game dari array */
 
-void playGame(Queue *q);
+boolean isMemberQ(Queue q, ElType val);
+/* I.S. : Sembarang
+   F.S. : Mengembalikan true jika val ada di dalam queue
+   Proses : Mengembalikan true jika val ada di dalam queue */
+
+void playGame(Queue *q, ArrayDin arrReady);
+
+ArrayDin arrReady(ArrayDin arr, ElType val);
 
 #endif
