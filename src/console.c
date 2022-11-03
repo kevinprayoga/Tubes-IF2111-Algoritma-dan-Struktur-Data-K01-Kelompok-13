@@ -6,7 +6,7 @@
 
 void start(ArrayDin *arr)
 {
-  FILE* file;
+  FILE *file;
   char command = *readQ();
   if (command == "START")
   {
@@ -25,7 +25,7 @@ void start(ArrayDin *arr)
 
 void load(ArrayDin *arr, char filename)
 {
-  FILE* file;
+  FILE *file;
   int i;
   char command = *readQ();
   if (command == "LOAD")
@@ -77,8 +77,6 @@ int wordToInt(Word word)
   }
   return num;
 }
-
-
 
 void deleteGame(ArrayDin *arr, Queue q)
 {
@@ -136,7 +134,29 @@ void playGame(Queue *q, ArrayDin arrReady)
     command2 = wordToString(currentWord);
     if (command2 == "GAME")
     {
-      
+      int i = 0;
+      boolean found = false;
+      while (i < Length(arrReady) && (!found))
+      {
+        if (arrReady.A[i] == HEAD(*q))
+        {
+          found = true;
+        }
+        else
+        {
+          i++;
+        }
+      }
+      if (found)
+      {
+        ElType val;
+        printf("Loading %s ...", HEAD(*q));
+        dequeue(q, &val);
+      }
+      else
+      {
+        printf("Game %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.", HEAD(*q));
+      }
     }
   }
 }

@@ -42,7 +42,8 @@ boolean isMemberQ(Queue q, ElType val);
    Proses : Mengembalikan true jika val ada di dalam queue */
 
 void playGame(Queue *q, ArrayDin arrReady);
-
-ArrayDin arrReady(ArrayDin arr, ElType val);
+/* I.S. : Sembarang
+   F.S. : Memainkan game yang sudah diambil dari queue
+   Proses : Memainkan game yang sudah diambil dari queue */
 
 #endif
