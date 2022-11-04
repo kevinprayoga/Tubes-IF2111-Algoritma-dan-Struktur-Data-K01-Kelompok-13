@@ -15,6 +15,8 @@ void createGame(ArrayDin* List);
 
 char *WordToStr(Word kata);
 
+int stringLength(char *str);
+
 boolean strcompare(char *str1, char *str2);
 
 #endif
