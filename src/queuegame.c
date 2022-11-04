@@ -16,9 +16,15 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
 
     //menampilkan daftar antrian game yang akan dimainkan
     printf("Berikut adalah daftar antrian game-mu\n");
-    for (int i = 0; i<= (Game->idxTail); i++)
+    if (isEmpty(*Game)){
+        printf("Antrian Kosong.");
+    }
+    else
     {
-        printf(">>%d. %s",i+1, Game->buffer[i]);
+        for (int i = 0; i<= (Game->idxTail); i++)
+        {
+            printf(">>%d. %s",i+1, Game->buffer[i]);
+        }
     }
 
     //menampilkan game yang tersedia apabila user ingin menambahkan game baru ke dalam antrian
