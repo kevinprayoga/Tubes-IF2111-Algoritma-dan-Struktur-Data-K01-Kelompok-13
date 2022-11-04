@@ -77,7 +77,7 @@ void InsertLast(ArrayDin *array, ElType el)
 		(*array).Capacity *= 2;
 		(*array).A = (ElType *)malloc(sizeof(ElType) * GetCapacity(*array));
 		for (i = 0; i < Length(*array); i++)
-		{
+		{	
 			(*array).A[i] = temp[i];
 		}
 		free(temp);
@@ -146,8 +146,10 @@ void PrintArrayDin(ArrayDin array)
 	{
 		for (i = 0; i < Length(array); i++)
 		{
-			printf("%d", array.A[i]);
-			if (i < Length(array) - 1) printf(", ");
+			printf("%s", array.A[i]);
+			if (i < Length(array) - 1){
+				printf(", ");
+			} 
 		}
 	}
 	printf("]\n");
