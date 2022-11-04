@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include "queue.h"
-#include "arraydin.h"
-#include "listgame.h"
+#include "queuegame.h"
 
 /*
 typedef char *ElType;
