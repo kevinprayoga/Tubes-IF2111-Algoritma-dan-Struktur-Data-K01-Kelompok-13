@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-#include ".\ADT\mesinkata.h"
+#include ".\ADT\mesinkata_creategame.h"
 #include ".\ADT\mesinkarakter.h"
 #include ".\ADT\arraydin.h"
 
