@@ -29,6 +29,10 @@ void ADV()
           Jika  currentChar = MARK maka EOP akan menyala (true) */
 {
   retval = fscanf(pita, "%c", &currentChar);
+  if (IsEOP())
+  {
+    fclose(pita);
+  }
 }
 
 char GetCC()
@@ -41,9 +45,4 @@ boolean IsEOP()
 /* Mengirimkan true jika currentChar = MARK */
 {
   return (currentChar == MARK);
-}
-
-void CLOSE()
-/* Menutup file pita */{
-  fclose(pita);
 }

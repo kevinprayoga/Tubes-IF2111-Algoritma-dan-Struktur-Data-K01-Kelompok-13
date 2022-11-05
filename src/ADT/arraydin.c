@@ -77,7 +77,7 @@ void InsertLast(ArrayDin *array, ElType el)
 		(*array).Capacity *= 2;
 		(*array).A = (ElType *)malloc(sizeof(ElType) * GetCapacity(*array));
 		for (i = 0; i < Length(*array); i++)
-		{	
+		{
 			(*array).A[i] = temp[i];
 		}
 		free(temp);
@@ -147,9 +147,10 @@ void PrintArrayDin(ArrayDin array)
 		for (i = 0; i < Length(array); i++)
 		{
 			printf("%s", array.A[i]);
-			if (i < Length(array) - 1){
+			if (i < Length(array) - 1)
+			{
 				printf(", ");
-			} 
+			}
 		}
 	}
 	printf("]\n");
@@ -189,7 +190,8 @@ IdxType SearchArrayDin(ArrayDin array, ElType el)
 	int i;
 	for (i = 0; i < Length(array); i++)
 	{
-		if (array.A[i] == el) return i;
+		if (array.A[i] == el)
+			return i;
 	}
 	return -1;
 }
