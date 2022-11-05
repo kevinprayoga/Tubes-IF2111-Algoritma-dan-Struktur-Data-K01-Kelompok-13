@@ -2,13 +2,12 @@
 #include "arraydin.h"
 #include <stdio.h>
 
-ArrayDin MakeArrayDin()
+ArrayDin MakeArrayDin(ArrayDin *arr)
 {
-	ArrayDin A;
-	A.A = (ElType *)malloc(sizeof(ElType) * InitialSize);
-	A.Capacity = InitialSize;
-	A.Neff = 0;
-	return A;
+	arr->A = (ElType *)malloc(sizeof(ElType) * InitialSize);
+	arr->Capacity = InitialSize;
+	arr->Neff = 0;
+	return *arr;
 }
 
 void DeallocateArrayDin(ArrayDin *array)

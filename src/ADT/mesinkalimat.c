@@ -1,20 +1,20 @@
 #include <stdio.h>
-#include "mesinkata.h"
+#include "mesinkalimat.h"
 
 /* State Mesin Kata */
-boolean EndWord;
-Word currentWord;
+boolean EndSentence;
+Sentence currentSentence;
 
 void IgnoreBlanks()
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 {
-  while (currentChar == BLANK)
+  while (currentChar == BLANK2)
     ADV();
 }
 
-void STARTWORD()
+void STARTSENTENCE()
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
@@ -24,16 +24,16 @@ void STARTWORD()
   IgnoreBlanks();
   if (currentChar == MARK)
   {
-    EndWord = true;
+    EndSentence = true;
   }
   else
   {
-    EndWord = false;
-    CopyWord();
+    EndSentence = false;
+    CopySentence();
   }
 }
 
-void ADVWORD()
+void ADVSENTENCE()
 /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
    F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
           currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
@@ -41,26 +41,26 @@ void ADVWORD()
    Proses : Akuisisi kata menggunakan procedure SalinWord */
 {
   IgnoreBlanks();
-  CopyWord();
+  CopySentence();
   if (currentChar == MARK)
   {
-    EndWord = true;
+    EndSentence = true;
   }
 }
 
-void CopyWord()
+void CopySentence()
 /* Mengakuisisi kata, menyimpan dalam currentWord
    I.S. : currentChar adalah karakter pertama dari kata
    F.S. : currentWord berisi kata yang sudah diakuisisi;
-          currentChar = BLANK atau currentChar = MARK;
+          currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 {
-  currentWord.Length = 0;
-  while ((currentChar != MARK) && (currentChar != BLANK) && (currentWord.Length < NMax))
+  currentSentence.Length = 0;
+  while ((currentChar != MARK) && (currentChar != BLANK2) && (currentSentence.Length < NMax))
   {
-    currentWord.TabWord[currentWord.Length] = currentChar;
-    currentWord.Length++;
+    currentSentence.TabSentence[currentSentence.Length] = currentChar;
+    currentSentence.Length++;
     ADV();
   }
 }

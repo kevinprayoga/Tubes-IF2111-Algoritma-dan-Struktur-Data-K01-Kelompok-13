@@ -22,7 +22,7 @@ typedef struct
  * I.S. sembarang
  * F.S. Terbentuk ArrayDin kosong dengan ukuran InitialSize
  */
-ArrayDin MakeArrayDin();
+ArrayDin MakeArrayDin(ArrayDin *Arr);
 
 /**
  * Destruktor
