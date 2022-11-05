@@ -52,12 +52,12 @@ void CopyWord()
 /* Mengakuisisi kata, menyimpan dalam currentWord
    I.S. : currentChar adalah karakter pertama dari kata
    F.S. : currentWord berisi kata yang sudah diakuisisi;
-          currentChar = BLANK atau currentChar = MARK;
+          currentChar = MARK;
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 {
   currentWord.Length = 0;
-  while ((currentChar != MARK) && (currentChar != BLANK) && (currentWord.Length < NMax))
+  while ((currentChar != MARK) && (currentWord.Length < NMax))
   {
     currentWord.TabWord[currentWord.Length] = currentChar;
     currentWord.Length++;
