@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-#include ".\ADT\mesinkata_creategame.h"
-#include ".\ADT\mesinkarakter.h"
+#include ".\ADT\mesinkatav2.h"
+#include ".\ADT\mesinkarakterv2.h"
 #include ".\ADT\arraydin.h"
 
 #ifndef CREATE_GAME_
