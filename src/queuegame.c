@@ -28,7 +28,6 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
     }
 
     //menampilkan game yang tersedia apabila user ingin menambahkan game baru ke dalam antrian
-    printf("Berikut adalah daftar game yang tersedia\n");
     ListGame(list_game);
     scanf("%d", &a);
     printf("Nomor Game yang mau ditambahkan ke antrian: %d", a);

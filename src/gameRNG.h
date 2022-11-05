@@ -5,7 +5,10 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include "./ADT/mesinkatav2.h"
 
 void rng();
+
+int wordToInt(Word kata);
 
 #endif

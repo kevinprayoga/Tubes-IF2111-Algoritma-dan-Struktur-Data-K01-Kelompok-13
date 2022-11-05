@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "mesinkata.h"
+#include "mesinkatav2.h"
 
 /* State Mesin Kata */
 boolean EndWord;

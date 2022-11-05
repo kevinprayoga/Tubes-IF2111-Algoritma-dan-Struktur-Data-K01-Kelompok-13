@@ -4,7 +4,7 @@
 #ifndef __MESINKATA_H__
 #define __MESINKATA_H__
 
-#include "mesinkarakter.h"
+#include "mesinkarakterv2.h"
 
 #define boolean unsigned char
 #define true 1
