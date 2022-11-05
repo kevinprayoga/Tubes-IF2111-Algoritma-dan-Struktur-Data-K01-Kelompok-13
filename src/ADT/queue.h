@@ -4,7 +4,9 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "boolean.h"
+#define boolean unsigned char
+#define true 1
+#define false 0
 
 #define IDX_UNDEF -1
 #define CAPACITY 100
