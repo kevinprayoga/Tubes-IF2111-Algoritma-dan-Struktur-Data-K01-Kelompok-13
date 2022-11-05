@@ -9,7 +9,7 @@
 //     int Neff;
 // } ArrayDin;
 
-void ListGame(ArrayDin list_game)
+void ListGame(ArrayDin *list_game)
 /*
 Menampilkan daftar game yang disediakan oleh sistem
 Prekondisi: list_game tidak mungkin kosong karena 5 game pada konfigurasi
@@ -18,9 +18,9 @@ Prekondisi: list_game tidak mungkin kosong karena 5 game pada konfigurasi
 {
     // KAMUS
     int i = 0;
-    prtinf("Berikut adalah daftar game yang tersedia\n");
-    for (i = 0; i < Length(list_game); i++)
+    printf("Berikut adalah daftar game yang tersedia\n");
+    for (i = 0; i < Length(*list_game); i++)
     {
-        printf(">>%d %s", i+1, list_game.A[i]);
+        printf(">>%d %s", i+1, (*list_game).A[i]);
     }
 }

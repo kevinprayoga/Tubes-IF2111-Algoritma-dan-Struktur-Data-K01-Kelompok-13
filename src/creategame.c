@@ -5,16 +5,16 @@ int customGame(){
     printf("Skor akhir Anda = %d\n", rand()%100);
 }
 
-void createGame(ArrayDin* List){
+void createGame(ArrayDin* list_game){
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTWORD();
     boolean found;
     found = false;
     int j = 0;
     char* cc;
-    if (!(IsEmpty(*List))){
+    if (!(IsEmpty(*list_game))){
         while (j < 0 && found){
-            cc = (*List).A[j];
+            cc = (*list_game).A[j];
             if ((strcompare(WordToStr(currentWord), cc))){
                 found = true;
             }
@@ -24,7 +24,7 @@ void createGame(ArrayDin* List){
     if (found == true){
         printf("Game sudah tersedia.\n");
     } else{
-        InsertLast(List, WordToStr(currentWord));
+        InsertLast(list_game, WordToStr(currentWord));
         printf("Game berhasil ditambahkan\n");
     }
 }
