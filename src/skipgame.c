@@ -1,14 +1,13 @@
 #include "skipgame.h"
 
 //cek apakah next command itu berupa integer
-boolean isInteger(int arg)
+boolean isInteger(char arg)
 {
-    boolean check = false;
-    if (arg >= 48 && arg <=57)
-    {
-        check = true;
+    boolean k;
+	if ((arg>='0') && (arg<='9')){
+        k = 1;
     }
-    return check;
+    return k;
 }
 
 //prosedur skipgame
