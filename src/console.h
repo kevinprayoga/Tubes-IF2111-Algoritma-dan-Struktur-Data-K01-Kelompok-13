@@ -4,6 +4,7 @@
 #include "boolean.h"
 #include "ADT\arraydin.h"
 #include "ADT\mesinkata.h"
+#include "ADT\mesinkalimat.h"
 #include "ADT\queue.h"
 
 void start(ArrayDin *arr);
@@ -15,6 +16,16 @@ void load(ArrayDin *arr, char filename);
 /* I.S. : Sembarang
    F.S. : Menampilkan pesan load berhasil dan memasukkan data dari file ke array
    Proses : Menampilkan pesan load berhasil dan memasukkan data dari file ke array */
+
+void deleteGame(ArrayDin *arr, Queue q);
+/* I.S. : Sembarang
+   F.S. : Menghapus game dari array
+   Proses : Menghapus game dari array */
+
+void playGame(Queue *q, ArrayDin arrReady);
+/* I.S. : Sembarang
+   F.S. : Memainkan game yang sudah diambil dari queue
+   Proses : Memainkan game yang sudah diambil dari queue */
 
 char *readQ();
 /* I.S. : Sembarang
@@ -31,19 +42,9 @@ int wordToInt(Word word);
    F.S. : Mengembalikan integer dari word
    Proses : Mengembalikan integer dari word */
 
-void deleteGame(ArrayDin *arr, Queue q);
-/* I.S. : Sembarang
-   F.S. : Menghapus game dari array
-   Proses : Menghapus game dari array */
-
 boolean isMemberQ(Queue q, ElType val);
 /* I.S. : Sembarang
    F.S. : Mengembalikan true jika val ada di dalam queue
    Proses : Mengembalikan true jika val ada di dalam queue */
-
-void playGame(Queue *q, ArrayDin arrReady);
-/* I.S. : Sembarang
-   F.S. : Memainkan game yang sudah diambil dari queue
-   Proses : Memainkan game yang sudah diambil dari queue */
 
 #endif
