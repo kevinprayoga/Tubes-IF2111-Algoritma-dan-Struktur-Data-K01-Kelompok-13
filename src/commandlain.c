@@ -2,22 +2,6 @@
 #include "commandlain.h"
 #include "console.h"
 
-char *readQ()
-{
-  STARTWORD();
-  return wordToString(currentWord);
-}
-
-char wordToString(Word word)
-{
-  char *str = (char *)malloc(sizeof(char) * word.Length);
-  for (int i = 0; i < word.Length; i++)
-  {
-    str[i] = word.TabWord[i];
-  }
-  return str;
-}
-
 // ide 1
 boolean isCommand(char command)
 {
@@ -43,10 +27,11 @@ boolean isCommand(char command)
 
 void commandLain()
 {
-    if(!isCommand())
-    {
-        printf("Command tidak dikenali, silakan masukan command yang valid.\n");
-    }
+  char command;
+  if(!isCommand(command))
+  {
+      printf("Command tidak dikenali, silakan masukan command yang valid.\n");
+  }
 }
 
 //ide 2

@@ -20,4 +20,7 @@ I.S. word1 dan word2 terakuisisi
 F.S. mengembalikan nilai true jika word1 == word2, false jika sebaliknya
 */
 
+void cmdLain();
+// commandLain versi 2 sobsob
+
 #endif
