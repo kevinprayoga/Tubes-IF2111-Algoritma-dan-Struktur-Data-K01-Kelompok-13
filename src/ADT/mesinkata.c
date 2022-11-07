@@ -46,6 +46,12 @@ void ADVWORD()
   {
     EndWord = true;
   }
+  else
+  {
+    EndWord = false;
+    CopyWord();
+    IgnoreBlanks();
+  }
 }
 
 void CopyWord()

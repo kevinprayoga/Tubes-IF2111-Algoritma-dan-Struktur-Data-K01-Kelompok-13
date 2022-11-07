@@ -18,10 +18,10 @@ char wordToString(Word word)
   return str;
 }
 
-boolean isCommand()
+// ide 1
+boolean isCommand(char command)
 {
     boolean found = false;
-    char command, command2;
     command = *readQ();
     int i = 0;
     char validCmd[11][50] = {"START", "SAVE", "LOAD", "CREATE GAME", "LIST GAME", "DELETE GAME",
@@ -37,6 +37,8 @@ boolean isCommand()
             i++;
         }
     }
+
+    return found;
 }
 
 void commandLain()
@@ -45,4 +47,36 @@ void commandLain()
     {
         printf("Command tidak dikenali, silakan masukan command yang valid.\n");
     }
+}
+
+//ide 2
+boolean isWordSame(Word word1, Word word2)
+{
+  boolean diff = false;
+  int i = 0;
+  if (word1.Length == word2.Length)
+  {
+    while(!EndWord && !diff)
+    {
+      if (word1.TabWord[i] != word2.TabWord[i])
+      {
+        diff = true;
+      }
+      else
+      {
+        ADVWORD();
+      }
+    }
+  }
+  
+  return diff;
+}
+
+void cmdLain()
+{
+  Word word1, word2;
+  if(!isWordSame(word1,word2))
+  {
+    printf("Command tidak dikenali, silakan masukan command yang valid.\n");
+  }
 }
