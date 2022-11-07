@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "listgame.h"
+#include "console.h"
 
 // typedef int IdxType;
 // typedef int ElType;
@@ -18,9 +19,20 @@ Prekondisi: list_game tidak mungkin kosong karena 5 game pada konfigurasi
 {
     // KAMUS
     int i = 0;
-    printf("Berikut adalah daftar game yang tersedia\n");
-    for (i = 0; i < Length(*list_game); i++)
+    char command, command2;
+
+    command = *readQ();
+    if (command == "LIST")
     {
-        printf(">>%d %s", i+1, (*list_game).A[i]);
+        ADVWORD();
+        command2 = wordToString(currentWord);
+        if (command2 == "GAME")
+        {
+            printf("Berikut adalah daftar game yang tersedia\n");
+            for (i = 0; i < Length(*list_game); i++)
+            {
+                printf(">>%d %s", i+1, (*list_game).A[i]);
+            }
+        }
     }
 }
