@@ -1,6 +1,5 @@
 #include "skipgame.h"
 
-//cek apakah next command itu berupa integer
 boolean isInteger(char arg)
 {
     boolean k;
@@ -10,30 +9,21 @@ boolean isInteger(char arg)
     return k;
 }
 
-//prosedur skipgame
-void SkipGame(Queue* Game, int command3)
-{
-    
-    PLAYGAME(Game->buffer[command3-1]);
-
-   /* if (command1 == "SKIPGAME")
-    {
-        ADVWORD();
-        command2 = wordToString(currentWord);
-
-        //membaca kata kedua dalam command
-        command3 = wordToInt(currentWord);
-        if (isInteger(command2))
-        {
-            valid = true;
+Queue skipQueue(Queue* Game, int a){
+    Queue New;
+    CreateQueue(&New);
+    enqueue(&New, Game->buffer[a-1]);
+    for(int i = 0; i <= IDX_TAIL(*Game)-1; i++){
+        if (Game->buffer[i] != Game->buffer[a-1]){
+            enqueue(&Game, Game->buffer[i]);
         }
     }
+    return New;
+}
 
-    if (valid) 
-    {
-        if (command3 <= length(*Game))
-        {
-            PLAYGAME(*Game); // memulai game yang ke-a dihitung dari 0
-        }
-    }*/
+void SkipGame(Queue* Game, int command3)
+{
+    skipQueue(Game, command3);
+    PLAYGAME(Game);
+
 }
