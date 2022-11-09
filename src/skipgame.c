@@ -11,14 +11,12 @@ boolean isInteger(char arg)
 }
 
 //prosedur skipgame
-void SkipGame(Queue* Game, ArrayDin arrReady)
+void SkipGame(Queue* Game, int command3)
 {
-    char* command1, command2;
-    int command3;
-    boolean valid = false;
-    command1 = *readQ(); //membaca kata pertama dalam command
+    
+    PLAYGAME(Game->buffer[command3-1]);
 
-    if (command1 == "SKIPGAME")
+   /* if (command1 == "SKIPGAME")
     {
         ADVWORD();
         command2 = wordToString(currentWord);
@@ -35,7 +33,7 @@ void SkipGame(Queue* Game, ArrayDin arrReady)
     {
         if (command3 <= length(*Game))
         {
-            PLAYGAME(*Game, arrReady.A[command3-1]); // memulai game yang ke-a dihitung dari 0
+            PLAYGAME(*Game); // memulai game yang ke-a dihitung dari 0
         }
-    }
+    }*/
 }

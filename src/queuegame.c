@@ -23,13 +23,16 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
     {
         for (int i = 0; i<= (Game->idxTail); i++)
         {
-            printf(">>%d. %s",i+1, Game->buffer[i]);
+            printf("  %d. %s",i+1, Game->buffer[i]);
         }
     }
 
     //menampilkan game yang tersedia apabila user ingin menambahkan game baru ke dalam antrian
-    ListGame(list_game);
-    scanf("%d", &a);
+    ListGame(&list_game);
+    char nomor;
+    nomor = readQ();
+    int a;
+    a = wordToInt(nomor);
     printf("Nomor Game yang mau ditambahkan ke antrian: %d", a);
 
     //proses menambahkan game ke dalam antrian dari list_game
