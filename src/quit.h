@@ -3,7 +3,7 @@
 #include <math.h>
 #include <time.h>
 #include ".\ADT\mesinkata.h"
-#include ".\ADT\mesinkarakter.h"
+#include ".\ADT\mesinkar.h"
 #include ".\ADT\queue.h"
 
 #ifndef QUIT_GAME__
