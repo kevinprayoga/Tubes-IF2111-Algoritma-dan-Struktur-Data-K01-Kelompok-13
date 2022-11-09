@@ -18,9 +18,9 @@ Prekondisi: list_game tidak mungkin kosong karena 5 game pada konfigurasi
 */
 { int i;
     // KAMUS
-            printf("Berikut adalah daftar game yang tersedia : \n");
-            for (i = 0; i < Length(*list_game); i++)
-            {
-                printf("%d. %s\n", i, (*list_game).A[i]);
-            }
+    printf("Berikut adalah daftar game yang tersedia : \n");
+    for (i = 0; i < Length(*list_game); i++)
+    {
+        printf("%d. %s\n", i+1, (*list_game).A[i]);
+    }
 }
