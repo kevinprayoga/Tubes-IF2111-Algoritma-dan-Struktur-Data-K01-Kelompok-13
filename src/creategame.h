@@ -9,6 +9,7 @@
 #ifndef CREATE_GAME_
 #define CREATE_GAME_
 
+
 int ranNum();
 
 void createGame(ArrayDin* List);

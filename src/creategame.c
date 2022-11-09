@@ -6,8 +6,6 @@ int customGame(){
     printf("Skor akhir Anda = %d\n", rand()%100);
 }
 
-
-
 void createGame(ArrayDin* list_game){
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTWORD();
@@ -18,6 +16,7 @@ void createGame(ArrayDin* list_game){
     char* cc2;
     cc2 = wordToString(currentWord);
     printf("%s\n", cc2);
+
     if (!(IsEmpty(*list_game))){
         while (j < Length(*list_game) && found == false){
             cc = (*list_game).A[j];
