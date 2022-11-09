@@ -9,6 +9,6 @@
 #ifndef QUIT_GAME__
 #define QUIT_GAME__
 
-void Quit(Queue* Game);
+void Quit();
 
 #endif

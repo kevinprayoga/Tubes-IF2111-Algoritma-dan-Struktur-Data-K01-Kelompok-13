@@ -23,7 +23,7 @@ typedef struct
 extern boolean EndSentence;
 extern Sentence currentSentence;
 
-void IgnoreBlanks();
+void IgnoreBlanksKalimat();
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */

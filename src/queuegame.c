@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "queuegame.h"
+#include "listgame.h"
 
 /*
 typedef char *ElType;
@@ -29,20 +30,17 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
 
     //menampilkan game yang tersedia apabila user ingin menambahkan game baru ke dalam antrian
     ListGame(&list_game);
-    char nomor;
-    nomor = readQ();
-    int a;
-    a = wordToInt(nomor);
-    printf("Nomor Game yang mau ditambahkan ke antrian: %d", a);
-
-    //proses menambahkan game ke dalam antrian dari list_game
-    if (a <= Length(list_game))
-    {
-        enqueue(Game, list_game.A[a-1]);
-        printf("Game berhasil ditambahkan kedalam daftar antrian.");
-    }
-    else
-    {
-        printf("Nomor permainan tidak valid, silahkan masukkan nomor game pada list.");
+    printf("Masukkan nomor game yang ingin dimainkan: ");
+    STARTWORD();
+    if (currentWord.TabWord[0]){
+        a = currentWord.TabWord[0] - '0';
+        if (a > Length(list_game)){
+            printf("Game tidak tersedia.\n");
+        } else{
+            enqueue(Game, list_game.A[a-1]);
+        }
+    } else{
+        printf("Command tidak dikenali, silakan masukan command yang valid.\n");
     }
 }
+

@@ -5,7 +5,7 @@
 boolean EndSentence;
 Sentence currentSentence;
 
-void IgnoreBlanks()
+void IgnoreBlanksKalimat()
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
@@ -21,7 +21,7 @@ void STARTSENTENCE()
           currentChar karakter pertama sesudah karakter terakhir kata */
 {
   START();
-  IgnoreBlanks();
+  IgnoreBlanksKalimat();
   if (currentChar == MARK)
   {
     EndSentence = true;
@@ -40,7 +40,7 @@ void ADVSENTENCE()
           Jika currentChar = MARK, EndWord = true.
    Proses : Akuisisi kata menggunakan procedure SalinWord */
 {
-  IgnoreBlanks();
+  IgnoreBlanksKalimat();
   CopySentence();
   if (currentChar == MARK)
   {
