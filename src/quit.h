@@ -9,6 +9,6 @@
 #ifndef QUIT_GAME__
 #define QUIT_GAME__
 
-void Quit();
+void Quit(ArrayDin List);
 
 #endif
