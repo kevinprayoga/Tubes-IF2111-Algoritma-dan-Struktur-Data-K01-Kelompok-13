@@ -158,6 +158,34 @@ int searchIndexIdCook(QueueCook q, int id){
     }
 }
 
+Word getFirstWord(Word word){
+    Word firstWord;
+    int i = 0;
+    while (word.TabWord[i] != ' ' && i < word.Length){
+        firstWord.TabWord[i] = word.TabWord[i];
+        i++;
+    }
+    firstWord.Length = i;
+    return firstWord;
+}
+
+Word getSecondWord(Word word){
+    Word secondWord;
+    int i = 0;
+    while (word.TabWord[i] != ' ' && i < word.Length){
+        i++;
+    }
+    i++;
+    int j = 0;
+    while (i < word.Length){
+        secondWord.TabWord[j] = word.TabWord[i];
+        i++;
+        j++;
+    }
+    secondWord.Length = j;
+    return secondWord;
+}
+
 Cook cookFood(QueueFood q, int i){
     Cook food;
     food.id = (q).buffer[i].id;
@@ -227,11 +255,13 @@ void dinerdash(){
         putaran = false;
         show(qfood, qcook, saldo);
         printf("\nCOMMAND : ");
-        STARTWORDV2();
-        if (isWordSame(commandCook, currentWord)){
-            ADVWORD();
-            if (isFoodFormat(currentWord)){
-                idx = foodtonum(currentWord);
+        STARTWORD();
+
+
+
+        if (isWordSame(commandCook, getFirstWord(currentWord))){
+            if (isFoodFormat(getSecondWord(currentWord))){
+                idx = foodtonum(getSecondWord(currentWord));
                 if (searchIndexIdFood(qfood,idx) != -1) {
                     if (cookCapacity(qcook) <= 5){
                         temp = cookFood(qfood, searchIndexIdFood(qfood,idx));                   
@@ -251,10 +281,10 @@ void dinerdash(){
                 printf("\nCOMMAND TIDAK VALID\n");
                 printf("========================================\n");
             }
-        } else if (isWordSame(commandServe, currentWord)){ //else dari isWordSame(commandCook, currentWord)
-            ADVWORDV2();
-            if(isFoodFormat(currentWord)){
-                idx = foodtonum(currentWord);
+        } else if (isWordSame(commandServe, getFirstWord(currentWord))){ //else dari isWordSame(commandCook, currentWord)
+            ADVWORD();
+            if(isFoodFormat(getSecondWord(currentWord))){
+                idx = foodtonum(getSecondWord(currentWord));
                 if (searchIndexIdCook(qcook, idx) != -1){
                     if (qcook.buffer[searchIndexIdCook(qcook, idx)].cookLeft == 0){
                         if (qfood.buffer[IDX_HEAD(qfood)].id == idx){
@@ -263,14 +293,14 @@ void dinerdash(){
                             dequeueFood(&qfood);
                             serve++;
                             putaran = true;
-                            printf("\nBerhasil mengantar M%d\n", foodtonum(currentWord));
+                            printf("\nBerhasil mengantar M%d\n", foodtonum(getSecondWord(currentWord)));
                             printf("===============================================\n");        
                         } else if (qfood.buffer[IDX_HEAD(qfood)].id > idx) {
                             printf("\nMakanan telah disajikan sebelumnya\n");
                             printf("===============================================\n");
                             putaran = true;
                         } else{
-                            printf("\nM%d belum dapat disajikan karena M%d belum selesai\n", foodtonum(currentWord), foodtonum(currentWord) - 1);
+                            printf("\nM%d belum dapat disajikan karena M%d belum selesai\n", foodtonum(getSecondWord(currentWord)), foodtonum(getSecondWord(currentWord)) - 1);
                             printf("===============================================\n");
                         }
                     } else {
@@ -285,7 +315,7 @@ void dinerdash(){
                 printf("\nCOMMAND TIDAK VALID\n");
                 printf("========================================\n");
             }
-        } else if (isWordSame(commandSkip, currentWord)){
+        } else if (isWordSame(commandSkip, getFirstWord(currentWord))){
             printf("\nKamu melewati giliran\n");
             printf("========================================\n");
             putaran = true;
@@ -293,9 +323,6 @@ void dinerdash(){
             printf("\nCOMMAND TIDAK VALID\n");
             printf("========================================\n");
         } //else dari ngecek command
-    while (!(EndWord)){
-        ADVWORDV2();
-    }
     }
     printf("\nGAME OVER\n");
 }
