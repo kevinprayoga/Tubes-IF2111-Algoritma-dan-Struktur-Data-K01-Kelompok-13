@@ -10,7 +10,7 @@ void IgnoreBlanks()
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 {
-  while ((currentChar == BLANK) && (currentChar != MARK))
+  while ((currentChar == BLANK))
     ADV();
 }
 
@@ -21,7 +21,7 @@ void STARTWORD()
           currentChar karakter pertama sesudah karakter terakhir kata */
 {
   START();
-  IgnoreBlanks();
+  // IgnoreBlanks();
   if (currentChar == MARK)
   {
     EndWord = true;
@@ -40,17 +40,17 @@ void ADVWORD()
           Jika currentChar = MARK, EndWord = true.
    Proses : Akuisisi kata menggunakan procedure SalinWord */
 {
-  IgnoreBlanks();
-  CopyWord();
+  // IgnoreBlanks();
+  // CopyWord();
   if (currentChar == MARK)
   {
     EndWord = true;
   }
   else
   {
-    EndWord = false;
+    // EndWord = false;
     CopyWord();
-    IgnoreBlanks();
+    // IgnoreBlanks();
   }
 }
 
@@ -63,7 +63,7 @@ void CopyWord()
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 {
   currentWord.Length = 0;
-  while ((currentChar != MARK) && (currentChar != BLANK) && (currentWord.Length < NMax))
+  while ((currentChar != MARK) && (currentWord.Length < NMax))
   {
     currentWord.TabWord[currentWord.Length] = currentChar;
     currentWord.Length++;

@@ -9,7 +9,7 @@
 #define false 0
 
 #define MARK '\n'
-#define BLANK ' '
+
 /* State Mesin */
 extern char currentChar;
 extern boolean EOP;

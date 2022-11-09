@@ -2,7 +2,7 @@
 #define COBA_H
 
 #include "ADT/mesinkata.h"
-#include "ADT/mesinkalimat.h"
+#include "ADT/mesinkar.h"
 #include "boolean.h"
 
 char *readQ();
@@ -19,13 +19,15 @@ char *wordToString(Word word);
    F.S. : Mengembalika string dari word
    Proses : Mengembalikan string dari word */
 
-char *sentenceToString(Sentence sentence);
-
 int wordToInt(Word word);
 /* I.S. : Sembarang
    F.S. : Mengembalikan integer dari word
    Proses : Mengembalikan integer dari word */
 
-int sentenceToInt(Sentence sentence);
+char *firststring(char *command);
+
+char *secondstring(char *command);
+
+int space_char(char *str);
 
 #endif

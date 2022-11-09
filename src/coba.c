@@ -52,18 +52,6 @@ char *wordToString(Word word)
   return str;
 }
 
-char *sentenceToString(Sentence sentence)
-{
-  char *str = (char *)malloc(sizeof(char) * sentence.Length);
-  int i;
-  for (i = 0; i < sentence.Length; i++)
-  {
-    str[i] = sentence.TabSentence[i];
-  }
-  str[i] = '\0';
-  return str;
-}
-
 int wordToInt(Word word)
 {
   int i = 0;
@@ -76,14 +64,55 @@ int wordToInt(Word word)
   return ans;
 }
 
-int sentenceToInt(Sentence sentence)
+char *firststring(char *command)
 {
   int i = 0;
-  int ans = 0;
-  while (i < sentence.Length)
+  char *firststr;
+  firststr = (char *)malloc(50 * sizeof(char));
+  while (command[i] != BLANK && command[i] != '\0')
   {
-    ans = ans * 10 + (sentence.TabSentence[i] - '0');
+    *(firststr + i) = command[i];
     i++;
   }
-  return ans;
+  firststr[i] = '\0';
+  return firststr;
+}
+
+char *secondstring(char *command)
+{
+  int i = 0;
+  int j = 0;
+  char *secstr;
+  secstr = (char *)malloc(50 * sizeof(char));
+  while (command[i] != BLANK && command[i] != '\0')
+  {
+    i++;
+  }
+  while (command[i] == BLANK)
+  {
+    i++;
+  }
+
+  while (command[i] != '\0')
+  {
+    secstr[j] = command[i];
+    i++;
+    j++;
+  }
+  secstr[j] = '\0';
+  return secstr;
+}
+
+int space_char(char *str)
+{
+    int count = 0;
+    while(*str != '\0')
+    {
+        if(*str == ' ')
+        {
+            count++;
+        }
+        str++;
+    }
+    return count;
 }

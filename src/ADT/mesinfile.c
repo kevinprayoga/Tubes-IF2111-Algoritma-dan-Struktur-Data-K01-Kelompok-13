@@ -1,14 +1,10 @@
 #include <stdio.h>
-#include "mesinkarakter.h"
-
-/* State Mesin */
-char currentChar;
-boolean EOP;
+#include "mesinfile.h"
 
 static FILE *pita;
 static int retval;
 
-void START()
+void STARTFILE(char *filename)
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
@@ -17,11 +13,11 @@ void START()
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 {
-  pita = stdin;
-  ADV();
+  pita = fopen(filename, "r");
+  ADVFILE();
 }
 
-void ADV()
+void ADVFILE()
 /* Pita dimajukan satu karakter.
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
@@ -29,16 +25,41 @@ void ADV()
           Jika  currentChar = MARK maka EOP akan menyala (true) */
 {
   retval = fscanf(pita, "%c", &currentChar);
+  EOP = (retval < 0);
+  if (EOP)
+  {
+    fclose(pita);
+  }
 }
 
-char GetCC()
-/* Mengirimkan currentChar */
+void IgnoreNewLine()
 {
-  return (currentChar);
+  while (currentChar == MARK)
+  {
+    ADVFILE();
+  }
 }
 
-boolean IsEOP()
-/* Mengirimkan true jika currentChar = MARK */
+void ADVWORDFILE()
 {
-  return (currentChar == MARK);
+  IgnoreNewLine();
+  if (retval < 0)
+  {
+    EndWord = true;
+  }
+  else
+  {
+    CopyWordFile();
+  }
+}
+
+void CopyWordFile()
+{
+  currentWord.Length = 0;
+  while ((currentChar != MARK) && (currentWord.Length < NMax) && (!EOP))
+  {
+    currentWord.TabWord[currentWord.Length] = currentChar;
+    currentWord.Length++;
+    ADVFILE();
+  }
 }
