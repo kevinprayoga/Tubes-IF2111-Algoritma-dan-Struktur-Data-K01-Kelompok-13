@@ -42,7 +42,7 @@ int stringLength(char *str)
 
 char *wordToString(Word word)
 {
-  char *str = (char *)malloc(sizeof(char) * word.Length);
+  char *str = (char *)malloc(sizeof(char) * (word.Length-1));
   int i;
   for (i = 0; i < word.Length; i++)
   {
@@ -115,4 +115,26 @@ int space_char(char *str)
         str++;
     }
     return count;
+}
+
+char *strconcat(char *dest, char *src){
+    char *ret;
+    ret = (char *) malloc((stringLength(dest) + stringLength(src) + 1) * sizeof(char));
+    int i = 0;
+    while (dest[i] != '\0')
+    {
+        ret[i] = dest[i];
+        i++;
+    }
+    int j = 0;
+    ret[i] = ' ';
+    i++;
+    while (src[j] != '\0')
+    {
+        ret[i] = src[j];
+        i++;
+        j++;
+    }
+    ret[i] = '\0';
+    return ret;
 }

@@ -30,4 +30,6 @@ char *secondstring(char *command);
 
 int space_char(char *str);
 
+char *strconcat(char *dest, char *src);
+
 #endif
