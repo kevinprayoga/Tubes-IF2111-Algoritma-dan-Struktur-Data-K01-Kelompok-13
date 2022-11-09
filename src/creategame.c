@@ -15,6 +15,7 @@ char* strconcat(char* str1, char* str2){
         ans[i] = str1[i];
         i++;
     }
+    i++;
     while (j < len2){
         ans[i] = str2[j];
         i++;
@@ -24,23 +25,6 @@ char* strconcat(char* str1, char* str2){
     return ans;
 }
 
-Word concatword(Word word1, Word word2){
-    Word word;
-    int i = 0;
-    int j = 0;
-    while (i < word1.Length){
-        word.TabWord[i] = word1.TabWord[i];
-        i++;
-    }
-
-    while (j < word2.Length){
-        word.TabWord[i] = word2.TabWord[j];
-        i++;
-        j++;
-    }
-    word.Length = i;
-    return word;
-}
 
 void createGame(ArrayDin* list_game){
     printf("Masukkan nama game yang akan ditambahkan: ");
@@ -55,11 +39,10 @@ void createGame(ArrayDin* list_game){
         ADVWORD();
         cc2 = strconcat(cc2, WordToStr(currentWord));
     }
-    
+    printf("%s\n", cc2);
     if (!(IsEmpty(*list_game))){
-        while (j < Length(*list_game) && found){
+        while (j < Length(*list_game) && found == false){
             cc = (*list_game).A[j];
-            printf("testing\n");
             if ((strcompare(cc2, cc))){
                 found = true;
             }
@@ -69,7 +52,7 @@ void createGame(ArrayDin* list_game){
     if (found == true){
         printf("Game sudah tersedia.\n");
     } else{
-        InsertLast(list_game, WordToStr(currentWord));
+        InsertLast(list_game, cc2);
         printf("Game berhasil ditambahkan\n");
     }
 }
