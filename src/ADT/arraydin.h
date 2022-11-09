@@ -12,7 +12,7 @@ typedef int IdxType;
 typedef char *ElType;
 typedef struct
 {
-    ElType A;
+    ElType *A;
     int Capacity;
     int Neff;
 } ArrayDin;
@@ -22,7 +22,7 @@ typedef struct
  * I.S. sembarang
  * F.S. Terbentuk ArrayDin kosong dengan ukuran InitialSize
  */
-ArrayDin MakeArrayDin(ArrayDin *Arr);
+ArrayDin MakeArrayDin();
 
 /**
  * Destruktor

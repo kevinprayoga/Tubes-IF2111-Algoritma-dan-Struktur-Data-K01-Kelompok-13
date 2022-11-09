@@ -5,6 +5,27 @@ int customGame(){
     printf("Skor akhir Anda = %d\n", rand()%100);
 }
 
+char* strconcat(char* str1, char* str2){
+    int i = 0;
+    int j = 0;
+    int len1 = stringLength(str1);
+    int len2 = stringLength(str2);
+    char* ans = (char*) malloc((len1+len2+1)*sizeof(char));
+    while (i < len1){
+        ans[i] = str1[i];
+        i++;
+    }
+    i++;
+    while (j < len2){
+        ans[i] = str2[j];
+        i++;
+        j++;
+    }
+    ans[i] = '\0';
+    return ans;
+}
+
+
 void createGame(ArrayDin* list_game){
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTWORD();
@@ -12,10 +33,17 @@ void createGame(ArrayDin* list_game){
     found = false;
     int j = 0;
     char* cc;
+    char* cc2;
+    cc2 = WordToStr(currentWord);
+    while(!(EndWord)){
+        ADVWORD();
+        cc2 = strconcat(cc2, WordToStr(currentWord));
+    }
+    printf("%s\n", cc2);
     if (!(IsEmpty(*list_game))){
-        while (j < 0 && found){
+        while (j < Length(*list_game) && found == false){
             cc = (*list_game).A[j];
-            if ((strcompare(WordToStr(currentWord), cc))){
+            if ((strcompare(cc2, cc))){
                 found = true;
             }
         j++;
@@ -24,7 +52,7 @@ void createGame(ArrayDin* list_game){
     if (found == true){
         printf("Game sudah tersedia.\n");
     } else{
-        InsertLast(list_game, WordToStr(currentWord));
+        InsertLast(list_game, cc2);
         printf("Game berhasil ditambahkan\n");
     }
 }
