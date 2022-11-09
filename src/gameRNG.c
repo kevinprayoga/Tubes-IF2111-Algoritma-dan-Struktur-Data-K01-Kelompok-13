@@ -6,7 +6,7 @@ void rng() {
     int ans;
     int i = 1;
     printf("Tebakan : ");
-    STARTWORD();
+    STARTWORDV2();
     ans = wordToInt(currentWord);
     while (ans != rng){
         i++;
@@ -16,7 +16,7 @@ void rng() {
             printf("Lebih besar.\n");
         }
         printf("Tebakan : ");
-        STARTWORD();
+        STARTWORDV2();
         ans = wordToInt(currentWord);
    }
    printf("Ya, Tebakan adalah %d\n", rng);

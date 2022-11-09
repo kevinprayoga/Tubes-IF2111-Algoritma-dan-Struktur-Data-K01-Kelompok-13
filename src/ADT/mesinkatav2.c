@@ -5,23 +5,23 @@
 boolean EndWord;
 Word currentWord;
 
-void IgnoreBlanks()
+void IgnoreBlanksV2()
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 {
   while (currentChar == BLANK)
-    ADV();
+    ADVV2();
 }
 
-void STARTWORD()
+void STARTWORDV2()
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
           atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
           currentChar karakter pertama sesudah karakter terakhir kata */
 {
-  START();
-  IgnoreBlanks();
+  STARTV2();
+  IgnoreBlanksV2();
   if (currentChar == MARK)
   {
     EndWord = true;
@@ -29,11 +29,11 @@ void STARTWORD()
   else
   {
     EndWord = false;
-    CopyWord();
+    CopyWordV2();
   }
 }
 
-void ADVWORD()
+void ADVWORDV2()
 /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
    F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
           currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
@@ -41,14 +41,14 @@ void ADVWORD()
    Proses : Akuisisi kata menggunakan procedure SalinWord */
 {
   IgnoreBlanks();
-  CopyWord();
+  CopyWordV2();
   if (currentChar == MARK)
   {
     EndWord = true;
   }
 }
 
-void CopyWord()
+void CopyWordV2()
 /* Mengakuisisi kata, menyimpan dalam currentWord
    I.S. : currentChar adalah karakter pertama dari kata
    F.S. : currentWord berisi kata yang sudah diakuisisi;
@@ -61,6 +61,6 @@ void CopyWord()
   {
     currentWord.TabWord[currentWord.Length] = currentChar;
     currentWord.Length++;
-    ADV();
+    ADVV2();
   }
 }

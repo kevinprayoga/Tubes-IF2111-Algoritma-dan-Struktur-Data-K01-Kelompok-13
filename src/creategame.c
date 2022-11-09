@@ -28,7 +28,7 @@ char* strconcat(char* str1, char* str2){
 
 void createGame(ArrayDin* list_game){
     printf("Masukkan nama game yang akan ditambahkan: ");
-    STARTWORD();
+    STARTWORDV2();
     boolean found;
     found = false;
     int j = 0;
@@ -36,7 +36,7 @@ void createGame(ArrayDin* list_game){
     char* cc2;
     cc2 = WordToStr(currentWord);
     while(!(EndWord)){
-        ADVWORD();
+        ADVWORDV2();
         cc2 = strconcat(cc2, WordToStr(currentWord));
     }
     printf("%s\n", cc2);

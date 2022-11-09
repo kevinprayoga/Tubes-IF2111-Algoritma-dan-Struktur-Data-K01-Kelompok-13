@@ -227,7 +227,7 @@ void dinerdash(){
         putaran = false;
         show(qfood, qcook, saldo);
         printf("\nCOMMAND : ");
-        STARTWORD();
+        STARTWORDV2();
         if (isWordSame(commandCook, currentWord)){
             ADVWORD();
             if (isFoodFormat(currentWord)){
@@ -252,7 +252,7 @@ void dinerdash(){
                 printf("========================================\n");
             }
         } else if (isWordSame(commandServe, currentWord)){ //else dari isWordSame(commandCook, currentWord)
-            ADVWORD();
+            ADVWORDV2();
             if(isFoodFormat(currentWord)){
                 idx = foodtonum(currentWord);
                 if (searchIndexIdCook(qcook, idx) != -1){
@@ -294,7 +294,7 @@ void dinerdash(){
             printf("========================================\n");
         } //else dari ngecek command
     while (!(EndWord)){
-        ADVWORD();
+        ADVWORDV2();
     }
     }
     printf("\nGAME OVER\n");

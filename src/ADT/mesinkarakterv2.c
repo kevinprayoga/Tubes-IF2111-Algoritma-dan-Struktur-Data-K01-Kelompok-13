@@ -8,7 +8,7 @@ boolean EOP;
 static FILE *pita;
 static int retval;
 
-void START()
+void STARTV2()
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
@@ -18,10 +18,10 @@ void START()
           Jika currentChar = MARK maka EOP akan menyala (true) */
 {
   pita = stdin;
-  ADV();
+  ADVV2();
 }
 
-void ADV()
+void ADVV2()
 /* Pita dimajukan satu karakter.
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
@@ -31,13 +31,13 @@ void ADV()
   retval = fscanf(pita, "%c", &currentChar);
 }
 
-char GetCC()
+char GetCCV2()
 /* Mengirimkan currentChar */
 {
   return (currentChar);
 }
 
-boolean IsEOP()
+boolean IsEOPV2()
 /* Mengirimkan true jika currentChar = MARK */
 {
   return (currentChar == MARK);
