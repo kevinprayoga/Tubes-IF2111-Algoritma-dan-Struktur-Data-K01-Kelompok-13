@@ -1,4 +1,5 @@
 #include "skipgame.h"
+#include "playgame.h"
 
 void SkipGame(Queue* Game, int command3)
 {
@@ -7,4 +8,5 @@ void SkipGame(Queue* Game, int command3)
     for(int i=0; i<command3; i++){
         dequeue(Game, &var);
     }
+    playGame(Game);
 }
