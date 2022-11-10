@@ -2,7 +2,7 @@
 #define SAVE_H
 
 #include "ADT\arraydin.h"
-#include "coba.h"
+#include "function.h"
 
 void save(char *filename, ArrayDin listGame);
 
