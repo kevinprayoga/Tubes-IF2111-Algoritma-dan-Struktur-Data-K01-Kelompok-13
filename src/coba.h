@@ -3,6 +3,8 @@
 
 #include "ADT/mesinkata.h"
 #include "ADT/mesinkar.h"
+#include "ADT/queue.h"
+#include "ADT/arraydin.h"
 #include "boolean.h"
 
 char *readQ();
@@ -31,5 +33,7 @@ char *secondstring(char *command);
 int space_char(char *str);
 
 char *strconcat(char *dest, char *src);
+
+boolean isMemberQ(Queue q, char* val);
 
 #endif

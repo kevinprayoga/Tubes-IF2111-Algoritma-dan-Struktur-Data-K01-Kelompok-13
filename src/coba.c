@@ -138,3 +138,15 @@ char *strconcat(char *dest, char *src){
     ret[i] = '\0';
     return ret;
 }
+
+boolean isMemberQ(Queue q, char* val){
+    int i = 0;
+    boolean found = false;
+    while (i < q.idxTail && !found){
+        if (strcompare(val, q.buffer[i])){
+            found = true;
+        }
+        i++;
+    }
+    return found;
+}
