@@ -21,13 +21,11 @@ void load(ArrayDin *arr, char *filename)
   if (num != -38)
   {
     ADVFILE();
-    printf("testing\n");
     for (int i = 0; i < num; i++)
     {
       ADVWORDFILE();
       char *name = wordToString(currentWord);
-      printf("%s\n", name);
-      InsertAt(arr, name, i);
+      InsertLast(arr, name);
     }
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
   }
