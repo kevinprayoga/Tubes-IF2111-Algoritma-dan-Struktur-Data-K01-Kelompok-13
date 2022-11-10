@@ -42,7 +42,7 @@ int stringLength(char *str)
 
 char *wordToString(Word word)
 {
-  char *str = (char *)malloc(sizeof(char) * (word.Length-1));
+  char *str = (char *)malloc(sizeof(char) * (word.Length));
   int i;
   for (i = 0; i < word.Length; i++)
   {
@@ -142,9 +142,31 @@ char *strconcat(char *dest, char *src){
 boolean isMemberQ(Queue q, char* val){
     int i = 0;
     boolean found = false;
-    while (i < q.idxTail && !found){
+    while (i <= q.idxTail && !found){
         if (strcompare(val, q.buffer[i])){
             found = true;
+        }
+        i++;
+    }
+    return found;
+}
+
+int strToInt(char *str){
+    int i = 0;
+    int ans = 0;
+    while (i < stringLength(str)){
+        ans = ans * 10 + (str[i] - '0');
+        i++;
+    }
+    return ans;
+}
+
+boolean isNum(char *str){
+    int i = 0;
+    boolean found = true;
+    while (i < stringLength(str) && found){
+        if (str[i] < '0' || str[i] > '9'){
+            found = false;
         }
         i++;
     }

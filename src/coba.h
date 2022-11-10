@@ -36,4 +36,8 @@ char *strconcat(char *dest, char *src);
 
 boolean isMemberQ(Queue q, char* val);
 
+int strToInt(char *str);
+
+boolean isNum(char* str);
+
 #endif
