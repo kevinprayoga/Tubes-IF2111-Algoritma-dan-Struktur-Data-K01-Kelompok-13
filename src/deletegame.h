@@ -3,7 +3,8 @@
 
 #include "ADT\arraydin.h"
 #include "ADT\queue.h"
-#include "coba.h"
+#include "listgame.h"
+#include "function.h"
 
 void deleteGame(ArrayDin *arr, Queue q);
 /* I.S. : Sembarang

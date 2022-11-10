@@ -6,11 +6,7 @@ void deleteGame(ArrayDin *arr, Queue q)
 {
   int num;
   ElType val;
-  printf("Berikut adalah daftar game yang tersedia\n");
-  for (int i = 0; i < arr->Neff; i++)
-  {
-    printf("%d. %s\n", i + 1, arr->A[i]);
-  }
+  ListGame(arr);
   printf("Masukkan nomor game yang akan dihapus: ");
   STARTWORD();
   num = wordToInt(currentWord);
