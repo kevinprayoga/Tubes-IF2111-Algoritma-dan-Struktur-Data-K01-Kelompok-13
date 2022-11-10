@@ -93,17 +93,15 @@ void displayQueue(Queue q)
 {
   if (isEmpty(q))
   {
-    printf("[]\n");
+    printf("Antrian kosong.\n");
   }
   else
   {
-    printf("[");
-    int i = IDX_HEAD(q);
-    while (i != IDX_TAIL(q))
+    int num = 1;
+    for (int i = IDX_HEAD(q); i <= ((q).idxTail); i++)
     {
-      printf("%s,", q.buffer[i]);
-      i = (i + 1) % CAPACITY;
+      printf("\t%d. %s\n", num, (q).buffer[i]);
+      num++;
     }
-    printf("%s]\n", q.buffer[i]);
   }
 }
