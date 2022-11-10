@@ -16,7 +16,7 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
     int a; // integer masukan game ke-
 
     //menampilkan daftar antrian game yang akan dimainkan
-    printf("\nBerikut adalah daftar antrian game-mu\n");
+    printf("\nBerikut adalah daftar antrian Game-mu\n");
     if (isEmpty(*Game)){
         printf("Antrian Kosong.\n");
     }
