@@ -5,7 +5,7 @@
 #include "ADT\mesinkar.h"
 #include "ADT\mesinkata.h"
 #include "ADT\mesinfile.h"
-#include "coba.h"
+#include "function.h"
 
 void start(ArrayDin *arr);
 /* I.S. : Sembarang
