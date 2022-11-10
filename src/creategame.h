@@ -5,6 +5,7 @@
 #include ".\ADT\mesinkata.h"
 #include ".\ADT\mesinkar.h"
 #include ".\ADT\arraydin.h"
+#include "function.h"
 
 #ifndef CREATE_GAME_
 #define CREATE_GAME_

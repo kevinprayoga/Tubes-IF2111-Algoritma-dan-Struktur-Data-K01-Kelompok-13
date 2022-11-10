@@ -1,5 +1,4 @@
 #include "creategame.h"
-#include "coba.h"
 
 int customGame(){
     srand(time(0));
@@ -7,7 +6,7 @@ int customGame(){
 }
 
 void createGame(ArrayDin* list_game){
-    printf("Masukkan nama game yang akan ditambahkan: ");
+    printf("\nMasukkan nama game yang akan ditambahkan: ");
     STARTWORD();
     boolean found;
     found = false;
