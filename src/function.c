@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "coba.h"
+#include <math.h>
+#include <time.h>
+#include "function.h"
 
 char *readQ()
 {

@@ -7,6 +7,7 @@
 #include "ADT/arraydin.h"
 #include "boolean.h"
 
+
 char *readQ();
 /* I.S. : Sembarang
    F.S. : Mengembalikan string yang sudah diinputkan
@@ -39,5 +40,7 @@ boolean isMemberQ(Queue q, char* val);
 int strToInt(char *str);
 
 boolean isNum(char* str);
+
+void loading();
 
 #endif
