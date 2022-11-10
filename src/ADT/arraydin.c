@@ -1,6 +1,6 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "arraydin.h"
-#include <stdio.h>
 
 ArrayDin MakeArrayDin()
 {

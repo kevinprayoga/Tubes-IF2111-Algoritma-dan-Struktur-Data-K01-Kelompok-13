@@ -1,12 +1,7 @@
-/* File: mesinkarakter.h */
-/* Definisi Mesin Karakter */
-
 #ifndef __MESIN_KAR_H_
 #define __MESIN_KAR_H_
 
-#define boolean unsigned char
-#define true 1
-#define false 0
+#include "../boolean.h"
 
 #define MARK '\n'
 
@@ -17,7 +12,6 @@ extern boolean EOP;
 void START();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
-   Pita baca diambil dari stdin.
    I.S. : sembarang
    F.S. : currentChar adalah karakter pertama pada pita
           Jika currentChar != MARK maka EOP akan padam (false)
@@ -29,11 +23,5 @@ void ADV();
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
-
-char GetCC();
-/* Mengirimkan currentChar */
-
-boolean IsEOP();
-/* Mengirimkan true jika currentChar = MARK */
 
 #endif
