@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "startload.h"
-#include "coba.h"
+#include "function.h"
 #include "save.h"
 #include "ADT\queue.h"
 #include "ADT\mesinkata.h"
@@ -17,9 +17,15 @@
 #include "quit.h"
 #include "save.h"
 #include "skipgame.h"
+#include "asciiart.h"
 
 int main()
 {
+  welcompage();
+  printf ("Selamat datang di BNMO!\n");
+  printf ("Silahkan pilih perintah yang ingin anda lakukan!\n");
+  printf ("\n\t>> START\n");
+  printf ("\n\t>> LOAD\n");
   ArrayDin listgame;
   listgame = MakeArrayDin();
   Queue q;
@@ -28,19 +34,18 @@ int main()
   char* command;
   while (!initial)
   {
-    printf("ENTER COMMAND: ");
+    printf("\nENTER COMMAND: ");
     command = readQ();
     if (space_char(command) == 0)
     {
       if (strcompare(command, "START"))
       {
         start(&listgame);
-        printf("testing\n");
         initial = true;
       }
       else
       {
-        //command lain
+        commandLain();
       }
     }
     else if (space_char(command) == 1)
@@ -57,22 +62,24 @@ int main()
       }
       else
       {
-        //command lain
+        commandLain();
       }
     }
     else
     {
-      // command lain
+      commandLain();
     }
+    printf("\nPress ENTER key to continue...");
+    fgetchar();
+    system("cls");
   } 
 
   while (initial && !final)
   {
-    printf("\n=====MENU=====\n");
+    printf("\n========== M E N U ==========\n");
     printf("\nENTER COMMAND: ");
     STARTWORD();
     char* command = wordToString(currentWord);
-    printf("tes menu\n");
     if (space_char(command) > 1)
     {
       commandLain();
@@ -82,18 +89,26 @@ int main()
       if (strcompare(command, "CREATE GAME"))
       {
         createGame(&listgame);
+        printf("\nPress ENTER key to back...");
+        fgetchar();
       }
       else if (strcompare(command, "LIST GAME"))
       {
         ListGame(&listgame);
+        printf("\nPress ENTER key to back...");
+        fgetchar();
       }
       else if (strcompare(command, "DELETE GAME"))
       {
         deleteGame(&listgame, q);
+        printf("\nPress ENTER key to back...");
+        fgetchar();
       }
       else if (strcompare(command, "QUEUE GAME"))
       {
         QueueGame(&q, listgame);
+        printf("\nPress ENTER key to back...");
+        fgetchar();
       }
       else if (strcompare(command, "PLAY GAME"))
       {
@@ -102,6 +117,8 @@ int main()
       else if (strcompare(command, "HELP"))
       {
         help();
+        printf("\nPress ENTER key to back...");
+        fgetchar();
       }
       else if (strcompare(command, "QUIT"))
       {
@@ -115,6 +132,8 @@ int main()
         if (strcompare(string_first, "SAVE"))
         {
           save(string_second, listgame);
+          printf("\nPress ENTER key to back...");
+          fgetchar();
         }
         else if (strcompare(string_first, "SKIPGAME"))
         {
@@ -126,17 +145,27 @@ int main()
           else
           {
             commandLain();
+            printf("\nPress ENTER key to back...");
+            fgetchar();
           }
         }
         else
         {
           commandLain();
+          printf("\nPress ENTER key to back...");
+          fgetchar();
         }
       }
       else
       {
         commandLain();
+        printf("\nPress ENTER key to back...");
+        fgetchar();
       }
+    }
+    if (!final)
+    {
+      system("cls");
     }
   }
   return 0;
