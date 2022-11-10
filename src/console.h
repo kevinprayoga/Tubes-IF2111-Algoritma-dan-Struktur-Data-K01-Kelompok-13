@@ -4,7 +4,6 @@
 #include "boolean.h"
 #include "ADT\arraydin.h"
 #include "ADT\mesinkata.h"
-#include "ADT\mesinkalimat.h"
 #include "ADT\queue.h"
 
 void start(ArrayDin *arr);
