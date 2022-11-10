@@ -1,5 +1,6 @@
 #include "boolean.h"
 #include "./ADT/arraydin.h"
+#include "function.h"
 
 #ifndef LIST_GAME_
 #define LIST_GAME_
