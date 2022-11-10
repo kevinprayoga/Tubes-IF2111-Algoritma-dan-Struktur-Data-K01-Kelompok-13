@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-#include "coba.h"
+#include "function.h"
 
 #ifndef DINER_DASH_H
 #define DINER_DASH_H
