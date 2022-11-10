@@ -1,6 +1,5 @@
 #include "quit.h"
 #include "save.h"
-#include "coba.h"
 
 
 void Quit(ArrayDin list){
@@ -15,7 +14,11 @@ void Quit(ArrayDin list){
         printf("Anda kelur dari game BNMO.\n");
         printf("Bye bye...\n");
         exit(0);
-    } else{
+    } else if(currentWord.TabWord[0] == 'N' || currentWord.TabWord[0] == 'n'){
+        printf("Anda keluar dari game BNMO.\n");
+        printf("Bye bye...\n");
+        exit(0);
+    }else{
         printf("Command tidak dikenali, silakan masukan command yang valid.\n");
         Quit(list);
     }

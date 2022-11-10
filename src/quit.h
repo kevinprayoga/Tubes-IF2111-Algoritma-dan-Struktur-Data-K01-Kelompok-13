@@ -6,6 +6,7 @@
 #include ".\ADT\mesinkar.h"
 #include ".\ADT\queue.h"
 #include ".\ADT\arraydin.h"
+#include "function.h"
 
 #ifndef QUIT_GAME__
 #define QUIT_GAME__
