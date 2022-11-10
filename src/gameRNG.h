@@ -5,7 +5,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-#include "./ADT/mesinkatav2.h"
+#include "./ADT/mesinkata.h"
+#include "function.h"
 
 void rng();
 
