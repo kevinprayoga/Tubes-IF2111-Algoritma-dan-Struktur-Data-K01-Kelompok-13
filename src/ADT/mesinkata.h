@@ -1,14 +1,9 @@
-/* File: mesinkata.h */
-/* Definisi Mesin Kata: Model Akuisisi Versi I */
-
 #ifndef __MESINKATA_H__
 #define __MESINKATA_H__
 
 #include "mesinkar.h"
 
-#define boolean unsigned char
-#define true 1
-#define false 0
+#include "../boolean.h"
 
 #define NMax 50
 #define BLANK ' '
@@ -23,30 +18,23 @@ typedef struct
 extern boolean EndWord;
 extern Word currentWord;
 
-void IgnoreBlanks();
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : currentChar sembarang
-   F.S. : currentChar ≠ BLANK atau currentChar = MARK */
-
 void STARTWORD();
-/* I.S. : currentChar sembarang
-   F.S. : EndWord = true, dan currentChar = MARK;
-          atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
-          currentChar karakter pertama sesudah karakter terakhir kata */
+/* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
+   Karakter pertama yang ada pada pita posisinya adalah pada jendela.
+   I.S. : sembarang
+   F.S. : currentWord adalah kata pertama pada pita
+          EndWord = false; currentWord.Length > 0 */
 
 void ADVWORD();
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, EndWord = true.
-   Proses : Akuisisi kata menggunakan procedure SalinWord */
+/* Pita dimajukan satu kata.
+   I.S. : currentWord adalah kata yang sudah diakuisisi,
+          currentWord.Length > 0
+   F.S. : currentWord adalah kata berikutnya, mungkin MARK
+          Jika currentWord = MARK maka EndWord = true */
 
 void CopyWord();
-/* Mengakuisisi kata, menyimpan dalam currentWord
-   I.S. : currentChar adalah karakter pertama dari kata
-   F.S. : currentWord berisi kata yang sudah diakuisisi;
-          currentChar = BLANK atau currentChar = MARK;
-          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+/* I.S. : currentWord.Length > 0
+   F.S. : currentWord adalah kata yang sudah diakuisisi,
+          currentWord.Length > 0 */
 
 #endif
