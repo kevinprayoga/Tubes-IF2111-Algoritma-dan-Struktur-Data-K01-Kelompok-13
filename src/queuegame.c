@@ -37,13 +37,13 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
     int gameNum = 0;
     int j  = 0;
     boolean found = false;
-    if (currentWord.TabWord[j] <= '9' && currentWord.TabWord[j] >= '0'){
+    if (currentWord.TabWord[j] <= '9' && currentWord.TabWord[j] > '0'){
             gameNum += currentWord.TabWord[j] - '0';
             j++;
     }
     while(j < currentWord.Length && found == false){
         gameNum *= 10;
-        if (currentWord.TabWord[j] <= '9' && currentWord.TabWord[j] >= '0'){
+        if (currentWord.TabWord[j] <= '9' && currentWord.TabWord[j] > '0'){
             gameNum += currentWord.TabWord[j] - '0';
         } else {
             found = true;
