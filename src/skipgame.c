@@ -4,7 +4,6 @@
 void SkipGame(Queue *Game, int command3)
 {
     ElType var;
-    displayQueue(*Game);
     if (command3 > 0 && command3 <= length(*Game))
     {
         for (int i = 0; i < command3; i++)
@@ -21,5 +20,4 @@ void SkipGame(Queue *Game, int command3)
         }   
         printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
     }
-    playGame(Game);
 }
