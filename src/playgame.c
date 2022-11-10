@@ -5,14 +5,14 @@
 void playGame(Queue *q)
 {
   ElType val;
-  printf("\nBerikut adalah daftar antrian game-mu\n");
-  displayQueue(*q);
+  printf("\nBerikut adalah daftar antrian Game-mu\n");
   if (isEmpty(*q))
   {
-    printf("Antrian Kosong.\n");
+    displayQueue(*q);
   }
   else
   {
+    displayQueue(*q);
     dequeue(q, &val);
     if (strcompare(val, "RNG"))
     {
@@ -31,7 +31,7 @@ void playGame(Queue *q)
     }
     else
     {
-      printf("Game %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.", val);
+      printf("\nGame %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
     }
   }
 }
