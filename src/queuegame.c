@@ -16,15 +16,17 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
     int a; // integer masukan game ke-
 
     //menampilkan daftar antrian game yang akan dimainkan
-    printf("Berikut adalah daftar antrian game-mu\n");
+    printf("\nBerikut adalah daftar antrian game-mu\n");
     if (isEmpty(*Game)){
-        printf("Antrian Kosong.");
+        printf("Antrian Kosong.\n");
     }
     else
     {
-        for (int i = 0; i<= (Game->idxTail); i++)
+        int num= 1;
+        for (int i = IDX_HEAD(*Game); i<= ((*Game).idxTail); i++)
         {
-            printf("  %d. %s",i+1, Game->buffer[i]);
+            printf("  %d. %s\n",num, (*Game).buffer[i]);
+            num++;
         }
     }
 
