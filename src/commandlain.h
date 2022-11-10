@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "boolean.h"
 
 #ifndef CMD_LAIN_
 #define CMD_LAIN_
