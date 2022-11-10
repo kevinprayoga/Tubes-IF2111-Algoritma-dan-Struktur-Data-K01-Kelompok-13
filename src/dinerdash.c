@@ -242,7 +242,26 @@ void dinerdash(){
         orderFood(&qfood, id);    
     }
 
-    while ((serve < 10) && (lengthFood(qfood) < 10)){
+                                                                                                                                                                        
+printf("DDDDDDDDDDDDD          iiii                                                                DDDDDDDDDDDDD                                        hhhhhhh\n");          
+printf("D::::::::::::DDD      i::::i                                                               D::::::::::::DDD                                     h:::::h\n");            
+printf("D:::::::::::::::DD     iiii                                                                D:::::::::::::::DD                                   h:::::h\n");          
+printf("DDD:::::DDDDD:::::D                                                                        DDD:::::DDDDD:::::D                                  h:::::h\n");             
+printf("  D:::::D    D:::::D iiiiiiinnnn  nnnnnnnn        eeeeeeeeeeee    rrrrr   rrrrrrrrr          D:::::D    D:::::D  aaaaaaaaaaaaa      ssssssssss   h::::h hhhhh\n");       
+printf("  D:::::D     D:::::Di:::::in:::nn::::::::nn    ee::::::::::::ee  r::::rrr:::::::::r         D:::::D     D:::::D a::::::::::::a   ss::::::::::s  h::::hh:::::hhh\n");  
+printf("  D:::::D     D:::::D i::::in::::::::::::::nn  e::::::eeeee:::::eer:::::::::::::::::r        D:::::D     D:::::D aaaaaaaaa:::::ass:::::::::::::s h::::::::::::::hh\n"); 
+printf("  D:::::D     D:::::D i::::inn:::::::::::::::ne::::::e     e:::::err::::::rrrrr::::::r       D:::::D     D:::::D          a::::as::::::ssss:::::sh:::::::hhh::::::h\n"); 
+printf("  D:::::D     D:::::D i::::i  n:::::nnnn:::::ne:::::::eeeee::::::e r:::::r     r:::::r       D:::::D     D:::::D   aaaaaaa:::::a s:::::s  ssssss h::::::h   h::::::h\n");
+printf("  D:::::D     D:::::D i::::i  n::::n    n::::ne:::::::::::::::::e  r:::::r     rrrrrrr       D:::::D     D:::::D aa::::::::::::a   s::::::s      h:::::h     h:::::h\n");
+printf("  D:::::D     D:::::D i::::i  n::::n    n::::ne::::::eeeeeeeeeee   r:::::r                   D:::::D     D:::::Da::::aaaa::::::a      s::::::s   h:::::h     h:::::h\n");
+printf("  D:::::D    D:::::D  i::::i  n::::n    n::::ne:::::::e            r:::::r                   D:::::D    D:::::Da::::a    a:::::assssss   s:::::s h:::::h     h:::::h\n");
+printf("DDD:::::DDDDD:::::D  i::::::i n::::n    n::::ne::::::::e           r:::::r                 DDD:::::DDDDD:::::D a::::a    a:::::as:::::ssss::::::sh:::::h     h:::::h\n");
+printf("D:::::::::::::::DD   i::::::i n::::n    n::::n e::::::::eeeeeeee   r:::::r                 D:::::::::::::::DD  a:::::aaaa::::::as::::::::::::::s h:::::h     h:::::h\n");
+printf("D::::::::::::DDD     i::::::i n::::n    n::::n  ee:::::::::::::e   r:::::r                 D::::::::::::DDD     a::::::::::aa:::as:::::::::::ss  h:::::h     h:::::h\n");
+printf("DDDDDDDDDDDDD        iiiiiiii nnnnnn    nnnnnn    eeeeeeeeeeeeee   rrrrrrr                 DDDDDDDDDDDDD         aaaaaaaaaa  aaaa sssssssssss    hhhhhhh     hhhhhhh\n");
+    
+    printf("\nSelamat Datang di Diner Dash\n");
+    while ((serve <= 15) && (lengthFood(qfood) < 7)){
         if (putaran){
             orderFood(&qfood, id);
             id++;
@@ -256,7 +275,6 @@ void dinerdash(){
         show(qfood, qcook, saldo);
         printf("\nCOMMAND : ");
         STARTWORD();
-
 
 
         if (isWordSame(commandCook, getFirstWord(currentWord))){
@@ -324,82 +342,6 @@ void dinerdash(){
             printf("========================================\n");
         } //else dari ngecek command
     }
+    printf("Skor akhir anda adalah %d\n", saldo);
     printf("\nGAME OVER\n");
 }
-
-/*
-    printf("Selamat Datang di Diner Dash!\n");
-    while (serve < 15 && lengthFood(qfood) < 15){
-        show(qfood, qcook, saldo);
-        if (putaran == true){
-            checkCook(&qcook);
-        }
-        putaran = false;
-        printf("\nMASUKKAN COMMAND: ");
-        STARTWORD();
-        if ((isWordSame(commandCook, currentWord) || isWordSame(commandServe, currentWord))){
-            if (isWordSame(commandCook, currentWord)){
-                cookorserve = 1;
-            } else if (isWordSame(commandServe, currentWord)){
-                cookorserve = 2;
-            } else {
-                cookorserve = 0;
-            }
-            if (!(IsEOP())){
-                ADVWORD();
-                if (isFoodFormat(currentWord)){
-                if ((searchIndexIdFood(qfood, foodtonum(currentWord)) != -1) || (searchIndexIdCook(qcook, foodtonum(currentWord)) != -1)){
-                    if (cookorserve == 1){
-                        idx = searchIndexIdFood(qfood, foodtonum(currentWord));
-                        enqueueCook(&qcook, cookFood(qfood, idx));
-                        printf("\nBerhasil memasak M%d\n", foodtonum(currentWord));
-                        printf("===============================================\n");
-                    } else if (cookorserve == 2){
-                        idx = searchIndexIdCook(qcook, foodtonum(currentWord));
-                        if (qcook.buffer[idx].cookLeft == 0 && searchIndexIdCook(qcook, foodtonum(currentWord) != -1 )){
-                            if (qfood.buffer[IDX_HEAD(qfood)].id == qcook.buffer[idx].id){
-                                qcook.buffer[idx].serveLeft = 999;
-                                idx = searchIndexIdFood(qfood, foodtonum(currentWord));
-                                saldo += qfood.buffer[idx].price;
-                                printf("\nBerhasil mengantar M%d\n", foodtonum(currentWord));
-                                printf("===============================================\n");
-                                dequeueFood(&qfood);
-                                serve++;
-                            } else if(qcook.buffer[idx].id > qfood.buffer[IDX_HEAD(qfood)].id){
-                                printf("\nM%d belum dapat disajikan karena M%d belum selesai\n", foodtonum(currentWord), foodtonum(currentWord) - 1);
-                                printf("===============================================\n");
-                            }else{
-                                printf("\nMakanan telah disajikan sebelumnya\n");
-                                printf("===============================================\n");
-                            }
-                        }    
-                    }
-                    orderFood(&qfood, id);
-                    id++;
-                    putaran = true;
-                } else{
-                    printf("\nCOMMAND TIDAK VALID\n");
-                    printf("===============================================\n");
-                }
-            } else{
-                printf("\nCOMMAND TIDAK VALID\n");
-                printf("===============================================\n");
-            }
-                
-            }
-            
-        } else if (isWordSame(commandSkip, currentWord)){
-            printf("\nBerhasil melewati putaran\n");
-            printf("===============================================\n");
-            orderFood(&qfood, id);
-            id++;
-            putaran = true;
-        } else{
-            printf("\nCOMMAND TIDAK VALID\n");
-            printf("===============================================\n");
-        }
-    }
-    show(qfood, qcook, saldo);
-    printf("\nGAME OVER\n");
-}
-*/
