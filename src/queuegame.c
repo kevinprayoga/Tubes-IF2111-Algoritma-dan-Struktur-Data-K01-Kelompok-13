@@ -34,7 +34,33 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
     ListGame(&list_game);
     printf("Masukkan nomor game yang ingin dimainkan: ");
     STARTWORD();
-    if (currentWord.TabWord[0]){
+    int gameNum = 0;
+    int j  = 0;
+    boolean found = false;
+    if (currentWord.TabWord[j] <= '9' && currentWord.TabWord[j] >= '0'){
+            gameNum += currentWord.TabWord[j] - '0';
+            j++;
+    }
+    while(j < currentWord.Length && found == false){
+        gameNum *= 10;
+        if (currentWord.TabWord[j] <= '9' && currentWord.TabWord[j] >= '0'){
+            gameNum += currentWord.TabWord[j] - '0';
+        } else {
+            found = true;
+        }
+        j++;
+    }
+    if (!found){
+        if (gameNum > Length(list_game)){
+            printf("Game tidak tersedia.\n");
+        } else{
+            enqueue(Game, list_game.A[gameNum-1]);
+            printf("Game berhasil dimasukkan ke dalam antrian.\n");
+        }
+    } else {
+        printf("Command tidak dikenali, silakan masukan command yang valid.\n");
+    }
+/*    if (currentWord.TabWord[0]){
         a = currentWord.TabWord[0] - '0';
         if (a > Length(list_game)){
             printf("Game tidak tersedia.\n");
@@ -46,4 +72,7 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
         printf("Command tidak dikenali, silakan masukan command yang valid.\n");
     }
 }
+*/
+}
+
 

@@ -197,6 +197,7 @@ Cook cookFood(QueueFood q, int i){
 
 
 void dinerdash(){
+    srand(time(0));
     QueueFood qfood;
     QueueCook qcook;
     CreateQueueFood(&qfood);
