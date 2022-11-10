@@ -14,23 +14,26 @@
 void STARTFILE(char *filename);
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
-   Pita baca diambil dari stdin.
    I.S. : sembarang
-   F.S. : currentChar adalah karakter pertama pada pita
-          Jika currentChar != MARK maka EOP akan padam (false)
-          Jika currentChar = MARK maka EOP akan menyala (true) */
+   F.S. : CC adalah karakter pertama pada pita
+          Jika CC != MARK, EOP akan padam (false)
+          Jika CC = MARK, EOP akan menyala (true) */
 
 void ADVFILE();
 /* Pita dimajukan satu karakter.
-   I.S. : Karakter pada jendela = currentChar, currentChar != MARK
-   F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
-          currentChar mungkin = MARK
-          Jika  currentChar = MARK maka EOP akan menyala (true) */
+   I.S. : Karakter pada jendela =
+          CC, CC != MARK
+   F.S. : CC adalah karakter berikutnya dari CC yang lama,
+          CC mungkin = MARK
+          Jika  CC = MARK, EOP akan menyala (true) */
 
 void IgnoreNewLine();
+/* Mengabaikan karakter newline */
 
 void ADVWORDFILE();
+/* Mengambil kata dari pita */
 
 void CopyWordFile();
+/* Menyalin kata dari pita ke currentWord */
 
 #endif
