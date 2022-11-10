@@ -18,6 +18,7 @@
 #include "save.h"
 #include "skipgame.h"
 #include "asciiart.h"
+#include "playgame.h"
 
 int main()
 {
@@ -69,17 +70,21 @@ int main()
     {
       commandLain();
     }
-    printf("\nPress ENTER key to continue...");
+    if (!initial)
+    {
+    printf("\nPress ENTER key to back...");
     fgetchar();
-    system("cls");
+    }
   } 
+  printf("\nPress ENTER key to continue...");
+  fgetchar();
+  system("cls");
 
   while (initial && !final)
   {
     printf("\n========== M E N U ==========\n");
     printf("\nENTER COMMAND: ");
-    STARTWORD();
-    char* command = wordToString(currentWord);
+    char* command = readQ();
     if (space_char(command) > 1)
     {
       commandLain();
@@ -89,36 +94,26 @@ int main()
       if (strcompare(command, "CREATE GAME"))
       {
         createGame(&listgame);
-        printf("\nPress ENTER key to back...");
-        fgetchar();
       }
       else if (strcompare(command, "LIST GAME"))
       {
         ListGame(&listgame);
-        printf("\nPress ENTER key to back...");
-        fgetchar();
       }
       else if (strcompare(command, "DELETE GAME"))
       {
         deleteGame(&listgame, q);
-        printf("\nPress ENTER key to back...");
-        fgetchar();
       }
       else if (strcompare(command, "QUEUE GAME"))
       {
         QueueGame(&q, listgame);
-        printf("\nPress ENTER key to back...");
-        fgetchar();
       }
       else if (strcompare(command, "PLAY GAME"))
       {
-        //play game
+        playGame(&q);
       }
       else if (strcompare(command, "HELP"))
       {
         help();
-        printf("\nPress ENTER key to back...");
-        fgetchar();
       }
       else if (strcompare(command, "QUIT"))
       {
@@ -132,8 +127,6 @@ int main()
         if (strcompare(string_first, "SAVE"))
         {
           save(string_second, listgame);
-          printf("\nPress ENTER key to back...");
-          fgetchar();
         }
         else if (strcompare(string_first, "SKIPGAME"))
         {
@@ -145,26 +138,22 @@ int main()
           else
           {
             commandLain();
-            printf("\nPress ENTER key to back...");
-            fgetchar();
           }
         }
         else
         {
           commandLain();
-          printf("\nPress ENTER key to back...");
-          fgetchar();
         }
       }
       else
       {
         commandLain();
-        printf("\nPress ENTER key to back...");
-        fgetchar();
       }
     }
     if (!final)
     {
+      printf("\nPress ENTER key to back...");
+      fgetchar();
       system("cls");
     }
   }
