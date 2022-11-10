@@ -1,5 +1,4 @@
 #include "help.h"
-#include <stdio.h>
 
 void help()
 {
