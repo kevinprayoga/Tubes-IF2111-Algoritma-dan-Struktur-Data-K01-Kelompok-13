@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "startload.h"
 
 void start(ArrayDin *arr)
@@ -9,29 +10,29 @@ void start(ArrayDin *arr)
 void load(ArrayDin *arr, char *filename)
 {
   FILE *file;
-  char path[100] = "data/";
+  char path[100] = "../data/";
   while (*filename != '\0')
   {
     path[stringLength(path)] = *filename;
     *filename++;
   }
-  file = fopen(path, "r");
-  if (file == NULL)
+  STARTFILE(path);
+  int num = currentChar - '0';
+  if (num != -38)
   {
-    printf("File konfigurasi sistem tidak ditemukan.\n");
-  }
-  else
-  {
-    STARTSENTENCE();
-    int num = sentenceToInt(currentSentence);
-    printf("%d\n", num);
+    ADVFILE();
+    printf("testing\n");
     for (int i = 0; i < num; i++)
     {
-      ADVSENTENCE();
-      char *name = sentenceToString(currentSentence);
+      ADVWORDFILE();
+      char *name = wordToString(currentWord);
       printf("%s\n", name);
       InsertAt(arr, name, i);
     }
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
+  }
+  else
+  {
+    printf("File konfigurasi sistem tidak ditemukan.\n");
   }
 }

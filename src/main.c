@@ -3,7 +3,6 @@
 #include "startload.h"
 #include "coba.h"
 #include "save.h"
-#include "deletegame.h"
 #include "ADT\queue.h"
 
 int main()
@@ -17,86 +16,103 @@ int main()
   {
     printf("ENTER COMMAND: ");
     char *command = readQ();
-    if (strcompare(command, "START"))
+    if (space_char(command) == 0)
     {
-      start(&listgame);
-      initial = true;
-    }
-    else if(strcompare(command, "LOAD"))
-    {
-      ADVWORD();
-      char *filename = wordToString(currentWord);
-      if (filename[stringLength(filename) - 1] != 't' && filename[stringLength(filename) - 2] != 'x' && filename[stringLength(filename) - 3] != 't' && filename[stringLength(filename) - 4] != '.')
+      if (strcompare(command, "START"))
       {
-        printf("File konfigurasi sistem tidak ditemukan.\n");
+        start(&listgame);
+        initial = true;
       }
       else
       {
-        load(&listgame, filename);
-        initial = true;
+        //command lain
       }
     }
-    // else
-    // {
-    //   //command lain
-    //   return 0;
-    // }
-  }
+    else if (space_char(command) == 1)
+    {
+      char *string_first = firststring(command);
+      char *string_second = secondstring(command);
+      if (strcompare(string_first, "LOAD"))
+      {
+        load(&listgame, string_second);
+        if (!IsEmpty(listgame))
+        {
+          initial = true;
+        }
+      }
+      else
+      {
+        //command lain
+      }
+    }
+    else
+    {
+      // command lain
+    }
+  } 
 
   while (initial && !final)
   {
     printf("\nENTER COMMAND: ");
     char *command = readQ();
-    if (strcompare(command, "SAVE"))
+    if (space_char(command) > 1)
     {
-      ADVWORD();
-      char *filename = wordToString(currentWord);
-      save(filename, listgame);
-      final = true;
+      //command lain
     }
-    // else if (strcompare(command, "CREATE GAME"))
-    // {
-    //   return 0;
-    // }
-    // else if (strcompare(command, "LIST GAME"))
-    // {
-    //   return 0;
-    // }
-    else if (strcompare(command, "DELETE GAME"))
+    else
     {
-      ADVWORD();
-      char *command2 = wordToString(currentWord);
-      if (strcompare(command2, "GAME"))
+      if (strcompare(command, "CREATE GAME"))
       {
-        deleteGame(&listgame, q);
+        //create game 
+      }
+      else if (strcompare(command, "LIST GAME"))
+      {
+        //list game
+      }
+      else if (strcompare(command, "DELETE GAME"))
+      {
+        //delete game
+      }
+      else if (strcompare(command, "QUEUE GAME"))
+      {
+        //queue game
+      }
+      else if (strcompare(command, "PLAY GAME"))
+      {
+        //play game
+      }
+      else if (strcompare(command, "HELP"))
+      {
+        //help
+      }
+      else if (strcompare(command, "QUIT"))
+      {
+        //quit
+        final = true;
+      }
+      else if (space_char(command) == 1)
+      {
+        char *string_first = firststring(command);
+        char *string_second = secondstring(command);
+        if (strcompare(string_first, "SAVE"))
+        {
+          save(string_second, listgame);
+        }
+        else if (strcompare(string_first, "SKIPGAME"))
+        {
+          //ubah string ke integer
+          //skipgame
+        }
+        else
+        {
+          //command lain
+        }
+      }
+      else
+      {
+        //command lain
       }
     }
-    // else if (strcompare(command, "QUEUE GAME"))
-    // {
-    //   return 0;
-    // }
-    // else if (strcompare(command, "PLAY GAME"))
-    // {
-    //   return 0;
-    // }
-    // else if (strcompare(command, "SKIPGAME"))
-    // {
-    //   return 0;
-    // }
-    // else if (strcompare(command, "HELP"))
-    // {
-    //   return 0;
-    // }
-    // else if (strcompare(command, "QUIT"))
-    // {
-    //   final = true;
-    //   return 0;
-    // }
-    // else
-    // {
-    //   // run command_lain function
-    //   return 0;
-    // }
   }
   return 0;
 }

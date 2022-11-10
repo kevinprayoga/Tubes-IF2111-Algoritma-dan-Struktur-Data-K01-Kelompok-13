@@ -2,8 +2,9 @@
 #define STARTLOAD_H
 
 #include "ADT\arraydin.h"
-#include "ADT\mesinkalimat.h"
+#include "ADT\mesinkar.h"
 #include "ADT\mesinkata.h"
+#include "ADT\mesinfile.h"
 #include "coba.h"
 
 void start(ArrayDin *arr);
