@@ -65,6 +65,6 @@ void displayQueue(Queue q);
 /* I.S. q boleh kosong */
 /* F.S. Jika q tidak kosong: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika Queue kosong : menulis [] */
+/* Jika Queue kosong : menulis Antrian kosong */
 
 #endif

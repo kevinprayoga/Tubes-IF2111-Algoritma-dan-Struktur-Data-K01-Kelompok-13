@@ -89,7 +89,7 @@ void displayQueue(Queue q)
 /* I.S. q boleh kosong */
 /* F.S. Jika q tidak kosong: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika Queue kosong : menulis [] */
+/* Jika Queue kosong : menulis Antrian kosong */
 {
   if (isEmpty(q))
   {
@@ -97,6 +97,7 @@ void displayQueue(Queue q)
   }
   else
   {
+    printf("Berikut adalah daftar Game-mu\n");
     int num = 1;
     for (int i = IDX_HEAD(q); i <= ((q).idxTail); i++)
     {
