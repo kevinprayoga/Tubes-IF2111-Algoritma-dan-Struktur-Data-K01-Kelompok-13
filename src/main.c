@@ -4,6 +4,19 @@
 #include "coba.h"
 #include "save.h"
 #include "ADT\queue.h"
+#include "ADT\mesinkata.h"
+#include "ADT\mesinkar.h"
+#include "ADT\arraydin.h"
+#include "ADT\mesinfile.h"
+#include "commandlain.h"
+#include "creategame.h"
+#include "deletegame.h"
+#include "help.h"
+#include "listgame.h"
+#include "queuegame.h"
+#include "quit.h"
+#include "save.h"
+#include "skipgame.h"
 
 int main()
 {
@@ -12,15 +25,17 @@ int main()
   Queue q;
   CreateQueue(&q);
   boolean initial = false, final = false;
+  char* command;
   while (!initial)
   {
     printf("ENTER COMMAND: ");
-    char *command = readQ();
+    command = readQ();
     if (space_char(command) == 0)
     {
       if (strcompare(command, "START"))
       {
         start(&listgame);
+        printf("testing\n");
         initial = true;
       }
       else
@@ -53,29 +68,32 @@ int main()
 
   while (initial && !final)
   {
+    printf("\n=====MENU=====\n");
     printf("\nENTER COMMAND: ");
-    char *command = readQ();
+    STARTWORD();
+    char* command = wordToString(currentWord);
+    printf("tes menu\n");
     if (space_char(command) > 1)
     {
-      //command lain
+      commandLain();
     }
     else
     {
       if (strcompare(command, "CREATE GAME"))
       {
-        //create game 
+        createGame(&listgame);
       }
       else if (strcompare(command, "LIST GAME"))
       {
-        //list game
+        ListGame(&listgame);
       }
       else if (strcompare(command, "DELETE GAME"))
       {
-        //delete game
+        deleteGame(&listgame, q);
       }
       else if (strcompare(command, "QUEUE GAME"))
       {
-        //queue game
+        QueueGame(&q, listgame);
       }
       else if (strcompare(command, "PLAY GAME"))
       {
@@ -83,11 +101,11 @@ int main()
       }
       else if (strcompare(command, "HELP"))
       {
-        //help
+        help();
       }
       else if (strcompare(command, "QUIT"))
       {
-        //quit
+        Quit(listgame);
         final = true;
       }
       else if (space_char(command) == 1)
@@ -100,17 +118,24 @@ int main()
         }
         else if (strcompare(string_first, "SKIPGAME"))
         {
-          //ubah string ke integer
-          //skipgame
+          if (isNum(string_second))
+          {
+            SkipGame(&q, strToInt(string_second));
+            printf("Game berhasil di-SKIP\n");
+          }
+          else
+          {
+            commandLain();
+          }
         }
         else
         {
-          //command lain
+          commandLain();
         }
       }
       else
       {
-        //command lain
+        commandLain();
       }
     }
   }
