@@ -17,9 +17,11 @@ void load(ArrayDin *arr, char *filename)
     *filename++;
   }
   STARTFILE(path);
-  int num = currentChar - '0';
-  if (num != -38)
+  CopyWordFile();
+  if (path != NULL)
   {
+    char *strnum = wordToString(currentWord);
+    int num = strToInt(strnum);
     ADVFILE();
     for (int i = 0; i < num; i++)
     {
