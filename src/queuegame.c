@@ -25,7 +25,7 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
         int num= 1;
         for (int i = IDX_HEAD(*Game); i<= ((*Game).idxTail); i++)
         {
-            printf("  %d. %s\n",num, (*Game).buffer[i]);
+            printf("\t%d. %s\n",num, (*Game).buffer[i]);
             num++;
         }
     }
@@ -40,6 +40,7 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
             printf("Game tidak tersedia.\n");
         } else{
             enqueue(Game, list_game.A[a-1]);
+            printf("Game berhasil dimasukkan ke dalam antrian.\n");
         }
     } else{
         printf("Command tidak dikenali, silakan masukan command yang valid.\n");

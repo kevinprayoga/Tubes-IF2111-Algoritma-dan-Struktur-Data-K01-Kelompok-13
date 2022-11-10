@@ -7,6 +7,8 @@
 #include ".\ADT\arraydin.h"
 #include ".\ADT\queue.h"
 #include "listgame.h"
+#include "function.h"
+
 
 #ifndef QUEUE_GAME_
 #define QUEUE_GAME_
