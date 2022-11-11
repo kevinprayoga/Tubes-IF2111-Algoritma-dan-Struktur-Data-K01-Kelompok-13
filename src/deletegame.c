@@ -11,7 +11,7 @@ void deleteGame(ArrayDin *arr, Queue q)
   STARTWORD();
   num = wordToInt(currentWord);
   val = (*arr).A[num - 1];
-  if ((num - 1 > 4) && (num - 1 < Length(*arr)) && (!(isMemberQ(q, val))))
+  if ((num - 1 > 5) && (num - 1 < Length(*arr)) && (!(isMemberQ(q, val))))
   {
     DeleteAt(arr, num - 1);
     printf("\nGame berhasil dihapus");
