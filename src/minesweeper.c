@@ -386,7 +386,7 @@ int score(minefield *field)
 		for (j = 0; j < field->col; j++)
 		{
 			int idx = get_index(field, i, j);
-			if (field->cells[idx].is_mine == true && field->cells[idx].is_flag == true)
+			if (field->cells[idx].is_mine == false && field->cells[idx].is_open == true)
 			{
 				count++;
 			}
@@ -404,12 +404,12 @@ int playmine()
 	boolean game_over;
 	boolean eop;
 	boolean retry = true;
-	boolean error = true;
+	boolean error = false;
 	boolean cell_err = false;
 	minefield *field;
 
 	system("cls");
-	printf("=== Minesweeper in BNMO ===\n\n");
+	printf("=== Minesweeper in BNMO ===\n");
 	while (retry)
 	{
 		init_row = undef;
@@ -419,43 +419,43 @@ int playmine()
 		eop = false;
 		while (init_row == undef || init_col == undef || init_seed == undef)
 		{
-			printf("Jumlah row yang diinginkan: ");
+			printf("\nJumlah row yang diinginkan (>= 2): ");
 			STARTWORD();
-			if (currentWord.TabWord[0] >= 2 && isNum(wordToString(currentWord)))
+			if (currentWord.TabWord[0] && wordToInt(currentWord) >= 2 && isNum(wordToString(currentWord)))
 			{
 				init_row = wordToInt(currentWord);
 			}
 			else
 			{
-				init_row = undef;
 				error = true;
 			}
-			printf("Jumlah col yang diinginkan: ");
+			printf("Jumlah col yang diinginkan (>= 2): ");
 			STARTWORD();
-			if (currentWord.TabWord[0] >= 2 && isNum(wordToString(currentWord)))
+			if (currentWord.TabWord[0] && wordToInt(currentWord) >= 2 && isNum(wordToString(currentWord)))
 			{
 				init_col = wordToInt(currentWord);
 			}
 			else
 			{
-				init_col = undef;
 				error = true;
 			}
-			printf("Seed kesulitan yang diinginkan (1-2 mudah, 3-4 sedang, >=5 sulit): ");
+			printf("Tingkat kesulitan yang diinginkan (1-2 mudah, 3-4 sedang, >=5 sulit): ");
 			STARTWORD();
-			if (currentWord.TabWord[0] >= 1 && isNum(wordToString(currentWord)))
+			if (currentWord.TabWord[0] && wordToInt(currentWord) >= 1 && isNum(wordToString(currentWord)))
 			{
 				init_seed = wordToInt(currentWord);
 			}
 			else
 			{
-				init_seed = undef;
 				error = true;
 			}
 			if (error)
 			{
 				printf("Input Anda salah, coba lagi.\n");
 				error = false;
+				currentWord.TabWord[0] = undef;
+				printf("\nPress ENTER key to back...");
+				fgetchar();
 			}
 		}
 		field = create_field(init_row, init_col, init_seed);
@@ -498,11 +498,19 @@ int playmine()
 			{
 				printf("Input Anda salah, coba lagi.\n");
 				error = false;
+				cell_err = false;
+				currentWord.TabWord[0] = undef;
+				printf("\nPress ENTER key to back...");
+				fgetchar();
 			}
 			else if (cell_err)
 			{
 				printf("Cell tidak ditemukan.\n");
+				error = false;
 				cell_err = false;
+				currentWord.TabWord[0] = undef;
+				printf("\nPress ENTER key to back...");
+				fgetchar();
 			}
 			else
 			{
