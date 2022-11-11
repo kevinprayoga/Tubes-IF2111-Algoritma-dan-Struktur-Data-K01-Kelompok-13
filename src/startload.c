@@ -18,10 +18,10 @@ void load(ArrayDin *arr, char *filename)
   }
   STARTFILE(path);
   CopyWordFile();
-  if (path != NULL)
+  char *strnum = wordToString(currentWord);
+  int num = strToInt(strnum);
+  if (num != 0)
   {
-    char *strnum = wordToString(currentWord);
-    int num = strToInt(strnum);
     ADVFILE();
     for (int i = 0; i < num; i++)
     {
