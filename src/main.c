@@ -147,7 +147,6 @@ int main()
           if (isNum(string_second))
           {
             SkipGame(&q, strToInt(string_second));
-            printf("Game berhasil di-SKIP\n");
           }
           else
           {
