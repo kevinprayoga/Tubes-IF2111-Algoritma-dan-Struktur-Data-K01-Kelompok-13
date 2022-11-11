@@ -94,4 +94,4 @@ Program dimulai dengan meminta pilih menu START atau LOAD <filename>. Jika kita 
 
 1. Go to folder bin
 2. Double Click program file
-3. Enjot your game :)))
+3. Enjoy your game :)))
