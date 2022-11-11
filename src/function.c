@@ -95,7 +95,7 @@ char *secondstring(char *command)
     i++;
   }
 
-  while (command[i] != '\0')
+  while (command[i] != BLANK && command[i] != '\0')
   {
     secstr[j] = command[i];
     i++;
@@ -103,6 +103,38 @@ char *secondstring(char *command)
   }
   secstr[j] = '\0';
   return secstr;
+}
+
+char *thirdstring(char *command)
+{
+  int i = 0;
+  int j = 0;
+  char *thirdstr;
+  thirdstr = (char *)malloc(50 * sizeof(char));
+  while (command[i] != BLANK && command[i] != '\0')
+  {
+    i++;
+  }
+  while (command[i] == BLANK)
+  {
+    i++;
+  }
+  while (command[i] != BLANK && command[i] != '\0')
+  {
+    i++;
+  }
+  while (command[i] == BLANK)
+  {
+    i++;
+  }
+  while (command[i] != '\0')
+  {
+    thirdstr[j] = command[i];
+    i++;
+    j++;
+  }
+  thirdstr[j] = '\0';
+  return thirdstr;
 }
 
 int space_char(char *str)

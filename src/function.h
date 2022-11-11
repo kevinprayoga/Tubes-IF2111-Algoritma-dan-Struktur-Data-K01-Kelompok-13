@@ -31,6 +31,8 @@ char *firststring(char *command);
 
 char *secondstring(char *command);
 
+char *thirdstring(char *command);
+
 int space_char(char *str);
 
 char *strconcat(char *dest, char *src);
