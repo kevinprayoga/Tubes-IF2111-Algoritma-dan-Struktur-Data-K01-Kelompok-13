@@ -7,17 +7,15 @@ void Quit(ArrayDin list){
     STARTWORD();
     char* filename;
     if (currentWord.TabWord[0] == 'Y' || currentWord.TabWord[0] == 'y'){
-        printf("Masukkan nama file: \n");
+        printf("Masukkan nama file: ");
         STARTWORD();
         filename = wordToString(currentWord);
         save(filename, list);
         printf("Anda keluar dari game BNMO.\n");
         printf("Bye bye...\n");
-        exit(0);
     } else if(currentWord.TabWord[0] == 'N' || currentWord.TabWord[0] == 'n'){
         printf("Anda keluar dari game BNMO.\n");
         printf("Bye bye...\n");
-        exit(0);
     }else{
         printf("Command tidak dikenali, silakan masukan command yang valid.\n");
         Quit(list);
