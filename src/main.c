@@ -19,6 +19,9 @@
 #include "skipgame.h"
 #include "asciiart.h"
 #include "playgame.h"
+#include "dinerdash.h"
+#include "gameRNG.h"
+#include "minesweeper.h"
 
 int main()
 {
