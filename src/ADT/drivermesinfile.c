@@ -5,7 +5,7 @@
 int main()
 {
   FILE *file;
-  char path[100] = "../data/config.txt";
+  char path[100] = "../../data/config.txt";
   STARTFILE(path);
   CopyWordFile();
   char *strnum = wordToString(currentWord);
