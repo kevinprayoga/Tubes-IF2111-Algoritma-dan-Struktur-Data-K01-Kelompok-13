@@ -11,7 +11,7 @@ void Quit(ArrayDin list){
         STARTWORD();
         filename = wordToString(currentWord);
         save(filename, list);
-        printf("Anda kelur dari game BNMO.\n");
+        printf("Anda keluar dari game BNMO.\n");
         printf("Bye bye...\n");
         exit(0);
     } else if(currentWord.TabWord[0] == 'N' || currentWord.TabWord[0] == 'n'){
