@@ -5,7 +5,8 @@ void SkipGame(Queue *Game, int command3)
 {
     printf("Game berhasil di-SKIP\n");
     ElType var;
-    if (command3 > 0 && command3 <= length(*Game))
+    int len = length(*Game);
+    if (command3 > 0 && command3 <= len)
     {
         for (int i = 0; i < command3; i++)
         {
@@ -13,9 +14,9 @@ void SkipGame(Queue *Game, int command3)
         }
         playGame(Game);
     }
-    else if (command3 > length(*Game))
+    else if (command3 > len)
     {
-        for (int i = 0; i < length(*Game); i++)
+        for (int i = 0; i < len; i++)
         {
             dequeue(Game, &var);
         }   
