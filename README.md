@@ -57,6 +57,8 @@ Program dimulai dengan meminta pilih menu START atau LOAD <filename>. Jika kita 
     |   listgame.c
     |   listgame.h
     |   main.c
+    |   minesweeper.c
+    |   minesweeper.h
     |   playgame.c
     |   playgame.h
     |   queuegame.c
