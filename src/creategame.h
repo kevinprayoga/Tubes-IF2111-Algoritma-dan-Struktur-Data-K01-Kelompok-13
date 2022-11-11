@@ -11,7 +11,7 @@
 #define CREATE_GAME_
 
 
-int ranNum();
+void customGame();
 
 void createGame(ArrayDin* List);
 

@@ -1,6 +1,6 @@
 #include "creategame.h"
 
-int customGame(){
+void customGame(){
     srand(time(0));
     printf("Skor akhir Anda = %d\n", rand()%100);
 }
@@ -14,7 +14,6 @@ void createGame(ArrayDin* list_game){
     char* cc;
     char* cc2;
     cc2 = wordToString(currentWord);
-    printf("%s\n", cc2);
 
     if (!(IsEmpty(*list_game))){
         while (j < Length(*list_game) && found == false){
