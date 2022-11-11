@@ -3,6 +3,7 @@
 
 void SkipGame(Queue *Game, int command3)
 {
+    printf("Game berhasil di-SKIP\n");
     ElType var;
     if (command3 > 0 && command3 <= length(*Game))
     {
