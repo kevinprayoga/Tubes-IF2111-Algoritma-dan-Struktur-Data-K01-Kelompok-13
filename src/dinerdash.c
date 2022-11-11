@@ -301,7 +301,6 @@ printf("DDDDDDDDDDDDD        iiiiiiii nnnnnn    nnnnnn    eeeeeeeeeeeeee   rrrrr
                 printf("========================================\n");
             }
         } else if (isWordSame(commandServe, getFirstWord(currentWord))){ //else dari isWordSame(commandCook, currentWord)
-            ADVWORD();
             if(isFoodFormat(getSecondWord(currentWord))){
                 idx = foodtonum(getSecondWord(currentWord));
                 if (searchIndexIdCook(qcook, idx) != -1){
@@ -325,6 +324,7 @@ printf("DDDDDDDDDDDDD        iiiiiiii nnnnnn    nnnnnn    eeeeeeeeeeeeee   rrrrr
                     } else {
                         printf("\nMAKANAN BELUM SIAP\n");
                         printf("========================================\n");
+                        putaran = true;
                     }
                 } else {
                     printf("\nMAKANAN TIDAK TERSEDIA\n");
