@@ -6,7 +6,7 @@ Sekumpulan mahasiswa Sistem dan Teknologi Informasi mencoba memperbaiki game con
 
 ## Anggota
 
-> Muhammad Naufal                       18221089
+> Muhammad Naufal                       18221089\n
 > Ibnu Khairy Algifari                  18221091
 > Christopher Febrian Nugraha           18221115
 > Natasya Vercelly Harijadi             18221119
