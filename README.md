@@ -6,11 +6,11 @@ Sekumpulan mahasiswa Sistem dan Teknologi Informasi mencoba memperbaiki game con
 
 ## Anggota
 
-> Muhammad Naufal - 18221089
-> Ibnu Khairy Algifari - 18221091
-> Christopher Febrian Nugraha - 18221115
-> Natasya Vercelly Harijadi - 18221119
-> Kevin Prayoga Abdinegara - 18221141
+> Muhammad Naufal                       18221089
+> Ibnu Khairy Algifari                  18221091
+> Christopher Febrian Nugraha           18221115
+> Natasya Vercelly Harijadi             18221119
+> Kevin Prayoga Abdinegara              18221141
 
 ## Alur Program
 
