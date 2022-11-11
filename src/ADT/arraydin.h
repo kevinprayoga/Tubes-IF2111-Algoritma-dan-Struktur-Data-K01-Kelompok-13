@@ -99,24 +99,4 @@ void DeleteFirst(ArrayDin *array);
  */
 void PrintArrayDin(ArrayDin array);
 
-/**
- * Fungsi untuk melakukan reverse suatu ArrayDin.
- * Prekondisi: array terdefinisi
- */
-void ReverseArrayDin(ArrayDin *array);
-
-/**
- * Fungsi untuk melakukan copy suatu ArrayDin.
- * Prekondisi: array terdefinisi
- */
-ArrayDin CopyArrayDin(ArrayDin array);
-
-/**
- * Fungsi untuk melakukan search suatu ArrayDin.
- * Index pertama yang ditemukan akan dikembalikan.
- * Jika tidak ditemukan, akan mengembalikan -1.
- * Prekondisi: array terdefinisi
- */
-IdxType SearchArrayDin(ArrayDin array, ElType el);
-
 #endif
