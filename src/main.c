@@ -82,7 +82,18 @@ int main()
 
   while (initial && !final)
   {
-    printf("\n========== M E N U ==========\n");
+    printf("\n==================== M E N U ====================\n");
+    printf ("Silahkan pilih perintah yang ingin anda lakukan!\n");
+    printf ("\n\t>> LIST GAME\n");
+    printf ("\n\t>> QUEUE GAME\n");
+    printf ("\n\t>> CREATE GAME\n");
+    printf ("\n\t>> DELETE GAME\n");
+    printf ("\n\t>> SKIPGAME\n");
+    printf ("\n\t>> PLAY GAME\n");
+    printf ("\n\t>> SAVE\n");
+    printf ("\n\t>> HELP\n");
+    printf ("\n\t>> QUIT\n");
+    printf("===================================================\n");
     printf("\nENTER COMMAND: ");
     char* command = readQ();
     if (space_char(command) > 1)
