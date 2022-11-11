@@ -97,7 +97,6 @@ void displayQueue(Queue q)
   }
   else
   {
-    printf("Berikut adalah daftar Game-mu\n");
     int num = 1;
     for (int i = IDX_HEAD(q); i <= ((q).idxTail); i++)
     {
