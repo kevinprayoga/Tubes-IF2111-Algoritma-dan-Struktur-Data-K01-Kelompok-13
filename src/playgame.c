@@ -5,7 +5,7 @@
 void playGame(Queue *q)
 {
   ElType val;
-  printf("\nBerikut adalah daftar antrian Game-mu\n");
+  printf("\nBerikut adalah daftar antrian Game-mu :\n");
   if (isEmpty(*q))
   {
     displayQueue(*q);
@@ -36,15 +36,15 @@ void playGame(Queue *q)
     }
     else if (strcompare(val, "DINOSAUR IN EARTH"))
     {
-      printf("\nGame %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
+      printf("Game %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
     }
     else if (strcompare(val, "DRISEWOMAN"))
     {
-      printf("\nGame %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
+      printf("Game %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
     }
     else if (strcompare(val, "EIFFEL TOWER"))
     {
-      printf("\nGame %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
+      printf("Game %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
     } else {
       customGame();
     }
