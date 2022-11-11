@@ -132,6 +132,7 @@ int main()
       else if (strcompare(command, "QUIT"))
       {
         Quit(listgame);
+        fgetchar();
         final = true;
       }
       else if (space_char(command) == 1)
@@ -180,5 +181,6 @@ int main()
       system("cls");
     }
   }
+  exit(0);
   return 0;
 }
