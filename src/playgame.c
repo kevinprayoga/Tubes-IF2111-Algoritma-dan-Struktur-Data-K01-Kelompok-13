@@ -14,25 +14,24 @@ void playGame(Queue *q)
   {
     displayQueue(*q);
     dequeue(q, &val);
-  printf("\nPress ENTER key to play %s...", val);
-  fgetchar();
-  system("cls");
+    printf("\nPress ENTER key to play %s...", val);
+    fgetchar();
+    system("cls");
     if (strcompare(val, "RNG"))
     {
 
       rng();
-      
     }
     else if (strcompare(val, "Diner DASH"))
     {
 
       dinerdash();
-      //mulai game diner dash
+      // mulai game diner dash
     }
     else if (strcompare(val, "Minesweeper"))
     {
       playmine();
-      //mulai game minesweeper
+      // mulai game minesweeper
     }
     else if (strcompare(val, "DINOSAUR IN EARTH"))
     {
@@ -45,7 +44,9 @@ void playGame(Queue *q)
     else if (strcompare(val, "EIFFEL TOWER"))
     {
       printf("Game %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
-    } else {
+    }
+    else
+    {
       customGame();
     }
   }
