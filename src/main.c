@@ -26,16 +26,16 @@
 int main()
 {
   welcompage();
-  printf ("Selamat datang di BNMO!\n");
-  printf ("Silahkan pilih perintah yang ingin anda lakukan!\n");
-  printf ("\n\t>> START\n");
-  printf ("\n\t>> LOAD\n");
+  printf("Selamat datang di BNMO!\n");
+  printf("Silahkan pilih perintah yang ingin anda lakukan!\n");
+  printf("\n\t>> START\n");
+  printf("\n\t>> LOAD\n");
   ArrayDin listgame;
   listgame = MakeArrayDin();
   Queue q;
   CreateQueue(&q);
   boolean initial = false, final = false;
-  char* command;
+  char *command;
   while (!initial)
   {
     printf("\nENTER COMMAND: ");
@@ -75,10 +75,10 @@ int main()
     }
     if (!initial)
     {
-    printf("\nPress ENTER key to back...");
-    fgetchar();
+      printf("\nPress ENTER key to back...");
+      fgetchar();
     }
-  } 
+  }
   printf("\nPress ENTER key to continue...");
   fgetchar();
   system("cls");
@@ -86,20 +86,20 @@ int main()
   while (initial && !final)
   {
     printf("\n==================== M E N U ====================\n");
-    printf ("Silahkan pilih perintah yang ingin anda lakukan!\n");
-    printf ("\n\t>> LIST GAME\n");
-    printf ("\n\t>> QUEUE GAME\n");
-    printf ("\n\t>> CREATE GAME\n");
-    printf ("\n\t>> DELETE GAME\n");
-    printf ("\n\t>> SKIPGAME\n");
-    printf ("\n\t>> PLAY GAME\n");
-    printf ("\n\t>> SAVE\n");
-    printf ("\n\t>> HELP\n");
-    printf ("\n\t>> QUIT\n");
+    printf("Silahkan pilih perintah yang ingin anda lakukan!\n");
+    printf("\n\t>> LIST GAME\n");
+    printf("\n\t>> QUEUE GAME\n");
+    printf("\n\t>> CREATE GAME\n");
+    printf("\n\t>> DELETE GAME\n");
+    printf("\n\t>> SKIP GAME\n");
+    printf("\n\t>> PLAY GAME\n");
+    printf("\n\t>> SAVE\n");
+    printf("\n\t>> HELP\n");
+    printf("\n\t>> QUIT\n");
     printf("===================================================\n");
     printf("\nENTER COMMAND: ");
-    char* command = readQ();
-    if (space_char(command) > 1)
+    command = readQ();
+    if (space_char(command) > 2)
     {
       commandLain();
     }
@@ -142,11 +142,21 @@ int main()
         {
           save(string_second, listgame);
         }
-        else if (strcompare(string_first, "SKIPGAME"))
+        else
         {
-          if (isNum(string_second))
+          commandLain();
+        }
+      }
+      else if (space_char(command) == 2)
+      {
+        char *string_first = firststring(command);
+        char *string_second = secondstring(command);
+        char *string_third = thirdstring(command);
+        if (strcompare(string_first, "SKIP") && strcompare(string_second, "GAME"))
+        {
+          if (isNum(string_third))
           {
-            SkipGame(&q, strToInt(string_second));
+            SkipGame(&q, strToInt(string_third));
           }
           else
           {
