@@ -1,1 +1,0 @@
-gcc -o main main.c startload.c function.c save.c deletegame.c ADT/queue.c ADT/mesinkata.c ADT/mesinfile.c ADT/mesinkar.c ADT/arraydin.c help.c queuegame.c listgame.c creategame.c quit.c commandlain.c skipgame.c asciiart.c playgame.c
