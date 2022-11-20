@@ -14,39 +14,37 @@ void playGame(Queue *q)
   {
     displayQueue(*q);
     dequeue(q, &val);
-    printf("\nPress ENTER key to play %s...", val);
-    fgetchar();
-    system("cls");
-    if (strcompare(val, "RNG"))
+    if (strcompare(val, "RNG") || strcompare(val, "Diner DASH") || strcompare(val, "Minesweeper"))
     {
-
-      rng();
+      printf("Loading %s ...\n", val);
+      printf("\nPress ENTER key to play %s...", val);
+      fgetchar();
+      system("cls");
+      if (strcompare(val, "RNG"))
+      {
+        rng();
+      }
+      else if (strcompare(val, "Diner DASH"))
+      {
+        dinerdash();
+        // mulai game diner dash
+      }
+      else if (strcompare(val, "Minesweeper"))
+      {
+        playmine();
+        // mulai game minesweeper
+      }
     }
-    else if (strcompare(val, "Diner DASH"))
+    else if (strcompare(val, "DINOSAUR IN EARTH") || strcompare(val, "RISEWOMAN") || strcompare(val, "EIFFEL TOWER"))
     {
-
-      dinerdash();
-      // mulai game diner dash
-    }
-    else if (strcompare(val, "Minesweeper"))
-    {
-      playmine();
-      // mulai game minesweeper
-    }
-    else if (strcompare(val, "DINOSAUR IN EARTH"))
-    {
-      printf("Game %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
-    }
-    else if (strcompare(val, "DRISEWOMAN"))
-    {
-      printf("Game %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
-    }
-    else if (strcompare(val, "EIFFEL TOWER"))
-    {
-      printf("Game %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
+      printf("\nGame %s masih dalam maintenance, belum dapat dimainkan.\nSilahkan pilih game lain.\n", val);
     }
     else
     {
+      printf("\n\nLoading %s ...\n", val);
+      printf("\nPress ENTER key to play %s...", val);
+      fgetchar();
+      system("cls");
       customGame();
     }
   }
