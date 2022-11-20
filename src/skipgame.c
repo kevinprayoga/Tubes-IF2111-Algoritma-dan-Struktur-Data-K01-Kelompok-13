@@ -20,6 +20,6 @@ void SkipGame(Queue *Game, int command3)
         {
             dequeue(Game, &var);
         }   
-        printf("Tidak ada permainan lagi dalam daftar game-mu.\n");
+        printf("\nTidak ada permainan lagi dalam daftar game-mu.\n");
     }
 }
