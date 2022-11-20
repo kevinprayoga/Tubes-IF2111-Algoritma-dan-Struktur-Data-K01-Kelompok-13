@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "queuegame.h"
 #include "listgame.h"
+#include "commandlain.h"
 
 /*
 typedef char *ElType;
@@ -32,7 +33,7 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
 
     //menampilkan game yang tersedia apabila user ingin menambahkan game baru ke dalam antrian
     ListGame(&list_game);
-    printf("Masukkan nomor game yang ingin dimainkan: ");
+    printf("\n\nMasukkan nomor game yang ingin dimainkan: ");
     STARTWORD();
     int gameNum = 0;
     int j  = 0;
@@ -52,13 +53,13 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
     }
     if (!found){
         if (gameNum > Length(list_game)){
-            printf("Game tidak tersedia.\n");
+            printf("\nGame tidak tersedia.\n");
         } else{
             enqueue(Game, list_game.A[gameNum-1]);
-            printf("Game berhasil dimasukkan ke dalam antrian.\n");
+            printf("\nGame berhasil dimasukkan ke dalam antrian.\n");
         }
     } else {
-        printf("Command tidak dikenali, silakan masukan command yang valid.\n");
+        commandLain();
     }
 /*    if (currentWord.TabWord[0]){
         a = currentWord.TabWord[0] - '0';
