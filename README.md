@@ -1,4 +1,4 @@
-<h1 align="center"> Tubes 1 Alstrukdat <h4 align="center">
+<h1 align="center"> Tubes Alstrukdat <h4 align="center">
 K01_Kelompok 13 <h4> <h1>
 
 ## Deskripsi
