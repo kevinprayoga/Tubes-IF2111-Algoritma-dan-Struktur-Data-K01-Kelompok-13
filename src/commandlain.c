@@ -4,6 +4,6 @@
 // ide 1
 void commandLain()
 {
-  printf("Command tidak dikenali, silakan masukan command yang valid.\n");
+  printf("\nCommand tidak dikenali, silakan masukan command yang valid.\n");
 }
 
