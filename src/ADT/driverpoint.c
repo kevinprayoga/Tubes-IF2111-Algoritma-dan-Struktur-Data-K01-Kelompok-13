@@ -18,6 +18,7 @@ int main () {
     printf(" adalah titik origin");
     }
     printf("\n");
+    
     /* Test geser */
     printf("Geser sejajar sumbu x sebesar = ");
     scanf("%f", &dx);
