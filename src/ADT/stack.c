@@ -43,3 +43,37 @@ void Pop(Stack *S, info *X)
   *X = InfoTop(*S);
   Top(*S)--;
 }
+
+void printStack(Stack *S, int command)
+/* Menampilkan elemen Stack S berdasarkan jumlah command yang ingin ditampilkan. */
+/* I.S. S mungkin kosong */
+/* F.S. Jika Stack S tidak kosong maka akan print nilai Stack */
+{
+  int i = 1;
+  info val;
+  Stack s1;
+  CreateEmptyStack(&s1);
+  s1 = *S;
+  while (i <= command && !IsEmptyStack(s1))
+  {
+    printf("%d. %s\n", i, InfoTop(s1));
+    Pop(&s1, &val);
+    i++;
+  }
+}
+
+int countStack(Stack S)
+/* Mengembalikan jumlah alamat dalam Stack S */
+{
+  info val;
+  Stack s1;
+  CreateEmptyStack(&s1);
+  s1 = S;
+  int count = 0;
+  while (!IsEmptyStack(s1))
+  {
+    Pop(&s1, &val);
+    count++;
+  }
+  return count;
+}
