@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "playgame.h"
+#include "ADT/stack.h"
 
-void playGame(Queue *q)
+void playGame(Queue *q, Stack *s)
 {
+
   ElType val;
   printf("\nBerikut adalah daftar antrian Game-mu :\n");
   if (isEmpty(*q))
@@ -14,6 +16,7 @@ void playGame(Queue *q)
   {
     displayQueue(*q);
     dequeue(q, &val);
+    Push(&s, val);
     if (strcompare(val, "RNG") || strcompare(val, "Diner DASH") || strcompare(val, "Minesweeper"))
     {
       printf("Loading %s ...\n", val);
