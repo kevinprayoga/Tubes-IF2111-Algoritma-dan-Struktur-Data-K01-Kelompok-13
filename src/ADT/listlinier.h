@@ -6,6 +6,8 @@
 #ifndef listlinier_H
 #define listlinier_H
 
+#include "point.h"
+
 // Boolean
 #define boolean unsigned char
 #define true 1
@@ -13,7 +15,7 @@
 
 #define Nil NULL
 
-typedef int infotype;
+typedef point infotype;
 typedef struct tElmtlist *address;
 typedef struct tElmtlist { 
 	infotype info;
@@ -28,12 +30,14 @@ typedef struct {
 /* Setiap elemen dengan address P dapat diacu Info(P), Next(P) */
 /* Elemen terakhir list : jika addressnya Last, maka Next(Last)=Nil */
 #define Info(P) (P)->info
+#define InfoX(P) ABSIS(Info(P))
+#define InfoY(P) ORDINAT(Info(P))
 #define Next(P) (P)->next
 #define First(L) ((L).First)
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (List L);
+boolean IsEmptyListLinier (List L);
 /* Mengirim true jika list kosong */
 
 /****************** PEMBUATAN LIST KOSONG ******************/

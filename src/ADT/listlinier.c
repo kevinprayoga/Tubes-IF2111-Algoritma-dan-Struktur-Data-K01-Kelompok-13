@@ -2,7 +2,7 @@
 #include "listlinier.h"
 
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (List L)
+boolean IsEmptyListLinier (List L)
 /* Mengirim true jika list kosong */
 {
     return (First(L) == Nil);
@@ -54,7 +54,7 @@ address Search (List L, infotype X)
     boolean found = false;
     while ((p != Nil) && !found)
     {
-        if (Info(p) == X)
+        if ((InfoX(p) == ABSIS(X)) && (InfoY(p) == ORDINAT(X)))
         {
             found = true;
         }
@@ -88,7 +88,7 @@ void InsVLast (List *L, infotype X)
 /* bernilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 {
     address p, last;
-    if (IsEmpty(*L))
+    if (IsEmptyListLinier(*L))
     {
         InsVFirst(L, X);
     }
@@ -170,7 +170,7 @@ void InsertLast (List *L, address P)
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
 {
     address last;
-    if (IsEmpty(*L))
+    if (IsEmptyListLinier(*L))
     {
         InsertFirst(L,P);
     }
@@ -299,134 +299,4 @@ int NbElmt (List L)
         p = Next(p);
     }
     return count;
-}
-
-/*** Prekondisi untuk Max/Min/rata-rata : List tidak kosong ***/
-infotype Max (List L)
-/* Mengirimkan nilai info(P) yang maksimum */
-{
-    address p = First(L);
-    infotype max = Info(p);
-    while (p != Nil)
-    {
-        if (Info(p) > max)
-        {
-            max = Info(p);
-        }
-        p = Next(p);
-    }
-    return max;    
-}
-
-address AdrMax (List L)
-/* Mengirimkan address P, dengan info(P) yang bernilai maksimum */
-{
-    return (Search(L, Max(L)));
-}
-
-infotype Min (List L)
-/* Mengirimkan nilai info(P) yang minimum */
-{
-    address p = First(L);
-    infotype min = Info(p);
-    while (p != Nil)
-    {
-        if (Info(p) < min)
-        {
-            min = Info(p);
-        }
-        p = Next(p);
-    }
-    return min;    
-}
-
-address AdrMin (List L)
-/* Mengirimkan address P, dengan info(P) yang bernilai minimum */
-{
-    return (Search(L, Min(L)));
-}
-
-float Average (List L)
-/* Mengirimkan nilai rata-rata info(P) */
-{
-    infotype sum = 0;
-    int count = 0;
-    float avg;
-    address p = First(L);
-    while (p != Nil)
-    {
-        sum += Info(p);
-        count++;
-        p = Next(p);
-    }
-    avg = (float) sum / (float) count;
-    return avg;
-}
-
-/****************** PROSES TERHADAP LIST ******************/
-
-void InversList (List *L)
-/* I.S. sembarang. */
-/* F.S. elemen list dibalik : */
-/* Elemen terakhir menjadi elemen pertama, dan seterusnya. */
-/* Membalik elemen list, tanpa melakukan alokasi/dealokasi. */
-{
-    address prev = Nil;
-    address cur = First(*L);
-    address next = Next(cur);
-    while (cur != Nil)
-    {
-        Next(cur) = prev;
-        prev = cur;
-        cur = next;
-        if (next != Nil)
-        {
-            next = Next(next);
-        }
-    }
-    First(*L) = prev;
-}
-
-void Konkat1 (List *L1, List *L2, List *L3)
-/* I.S. L1 dan L2 sembarang */
-/* F.S. L1 dan L2 kosong, L3 adalah hasil konkatenasi L1 & L2 */
-/* Konkatenasi dua buah list : L1 dan L2    */
-/* menghasilkan L3 yang baru (dengan elemen list L1 dan L2) */
-/* dan L1 serta L2 menjadi list kosong.*/
-/* Tidak ada alokasi/dealokasi pada prosedur ini */
-{
-    First(*L3) = First(*L1);
-    InsertLast(L3, First(*L2));
-    First(*L1) = Nil;
-    First(*L2) = Nil;
-}
-
-int main()
-{
-    List L;
-    infotype val;
-    CreateEmpty(&L);
-    scanf("%d", &val);
-    while((val >= 0) && (val <= 100))
-    {
-        InsVLast(&L, val);
-        scanf("%d", &val);
-    }
-
-    if(IsEmpty(L))
-    {
-        printf("Daftar nilai kosong\n");
-    }
-    else
-    {
-        printf("%d\n", NbElmt(L));
-        printf("%d\n", Max(L));
-        printf("%d\n", Min(L));
-        printf("%.2f\n", Average(L));
-        PrintInfo(L);
-        printf("\n");
-        InversList(&L);
-        PrintInfo(L);
-        printf("\n");
-    }
 }

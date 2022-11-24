@@ -25,8 +25,7 @@ void readPoint (point * p);
 void displayPoint (point p);
 /* Nilai p ditulis ke layar dg format "(X,Y)" */
 /**** Fungsi/Operasi lain terhadap point ****/
-point move (point p, float dx, float dy);
-/* Menghasilkan point yang merupakan hasil penggeseran p */
-/* sebesar dx arah sumbu x dan dy arah sumbu y */
+point movePoint (point p, float dx, float dy);
+/* Menggeser point p sebesar dx arah sumbu x dan dy arah sumbu y */
 
 #endif

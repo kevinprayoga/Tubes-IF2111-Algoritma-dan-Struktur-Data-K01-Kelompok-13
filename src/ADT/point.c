@@ -25,7 +25,7 @@ void readPoint (point *p) {
     /* ALGORITMA */
     scanf("%f %f", &x, &y);
     scanf("%f", &y);
-    CreatePoint(p, x,y);
+    CreatePoint(p, x, y);
 }
 
 void displayPoint (point p) {
@@ -35,12 +35,12 @@ void displayPoint (point p) {
 }
 
 /**** Fungsi/Operasi lain terhadap point ****/
-point move (point p, float dx, float dy) {
-/* Menghasilkan point yang merupakan hasil penggeseran p */
-/* sebesar dx arah sumbu x dan dy arah sumbu y */
+point movePoint (point p, float dx, float dy) {
+/* Menggeser point p sebesar dx arah sumbu x dan dy arah sumbu y */
     /* KAMUS */
     point pt;
     /* ALGORITMA */
-    CreatePoint(&pt, ABSIS(p)+dx, ORDINAT(p)+dy);
+    ABSIS(pt) = ABSIS(p) + dx;
+    ORDINAT(pt) = ORDINAT(p) + dy;
     return (pt);
 }
