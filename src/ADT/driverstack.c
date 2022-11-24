@@ -24,6 +24,7 @@ int main()
   Push(&s, str1);
 
   int command = countStack(s);
+  printf("Berikut adalah isi dari stack:\n");
   printStack(&s, command);
 
   Pop(&s, &str1);
