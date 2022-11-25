@@ -2,12 +2,18 @@
 #include "point.h"
 
 /**** Konstruktor POINT ****/
-void CreatePoint (point *p, float x, float y) {
+void CreatePoint (point *p, int x, int y) {
 /* Membentuk sebuah point p dari x dan y dengan x sebagai absis dan y sebagai
 ordinat */
     /* ALGORITMA */
     ABSIS(*p) = x;
     ORDINAT(*p) = y;
+}
+void CreatePointNil (point *p) {
+/* Membuat sebuah point dari x dan y pada koordinat (Nil, Nil). Nil didefinisikan sebagai -999 */
+    /* ALGORITMA */
+    ABSIS(*p) = NilPoint;
+    ORDINAT(*p) = NilPoint;
 }
 
 /**** Predikat ****/
@@ -17,25 +23,30 @@ boolean isOrigin (point p) {
     return ((ABSIS(p) == 0) && (ORDINAT(p) == 0));
 }
 
+boolean isPointEq (point p, point q) {
+/* Mengirimkan nilai benar jika p dan q adalah titik yang sama */
+    /* ALGORITMA */
+    return ((ABSIS(p) == ABSIS(q)) && (ORDINAT(p) == ORDINAT(q)));
+}
+
 /**** Prosedur - Interaksi dengan I/O device, BACA/TULIS ****/
 void readPoint (point *p) {
 /* Membentuk p dari x dan y yang dibaca dari keyboard */
     /* KAMUS */
-    float x, y;
+    int x, y;
     /* ALGORITMA */
-    scanf("%f %f", &x, &y);
-    scanf("%f", &y);
+    scanf("%d %d", &x, &y);
     CreatePoint(p, x, y);
 }
 
 void displayPoint (point p) {
 /* Nilai p ditulis ke layar dg format "(X,Y)" */
     /* ALGORITMA */
-    printf("(%.2f,%.2f)", ABSIS(p), ORDINAT(p));
+    printf("(%d,%d)", ABSIS(p), ORDINAT(p));
 }
 
 /**** Fungsi/Operasi lain terhadap point ****/
-point movePoint (point p, float dx, float dy) {
+point movePoint (point p, int dx, int dy) {
 /* Menggeser point p sebesar dx arah sumbu x dan dy arah sumbu y */
     /* KAMUS */
     point pt;
