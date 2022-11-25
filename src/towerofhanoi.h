@@ -5,7 +5,7 @@
 #include "function.h"
 #include "ADT/mesinkata.h"
 
-void toh();
+int toh();
 
 void printToMiddle(char* str, int length);
 

@@ -106,7 +106,7 @@ boolean isWordNumber(Word K){
     return isNumber;
 }
 
-void toh(){
+int toh(){
     Stack A, B, C;
     Word command;
     char asal;
@@ -188,6 +188,7 @@ void toh(){
     show(A,B,C,n);
     printf("\nKamu berhasil!\n");
     printf("\nSkor didapatkan = %.2f\n", scoring(n, move));
+    return scoring(n, move);
 }
 
 float scoring(int n, int move){
