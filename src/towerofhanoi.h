@@ -5,9 +5,23 @@
 #include "function.h"
 #include "ADT/mesinkata.h"
 
-int toh();
+char* intToHanoi(int n);
+
+char* intToAlas(int n);
+
+void printAlas(int n, int length);
+
+void show(Stack A, Stack B, Stack C, int n);
 
 void printToMiddle(char* str, int length);
+
+char wordToChar(Word K);
+
+boolean isValid(Word K);
+
+boolean isWordNumber(Word K);
+
+int toh();
 
 float scoring(int n, int move);
 
