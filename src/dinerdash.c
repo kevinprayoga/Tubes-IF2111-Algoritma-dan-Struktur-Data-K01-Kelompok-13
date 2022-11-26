@@ -451,6 +451,8 @@ void dinerdash()
             }
         }
         putaran = false;
+        currentWord.Length = 0;
+        
     }
     printf("Skor akhir anda adalah %d\n", saldo);
     printf("\nGAME OVER\n");
