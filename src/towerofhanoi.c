@@ -118,7 +118,7 @@ int toh(){
     CreateEmptyStack(&C);
     printf("Masukkan jumlah disk: ");
     STARTWORD();
-    while (!isWordNumber(currentWord) || currentWord.TabWord[0] == '\0'){
+    while (!isWordNumber(currentWord) || currentWord.TabWord[0] == '\0' || wordToInt(currentWord) > 100){
         printf("Masukkan tidak valid!\n");
         printf("\nMasukkan jumlah disk: ");
         STARTWORD();
