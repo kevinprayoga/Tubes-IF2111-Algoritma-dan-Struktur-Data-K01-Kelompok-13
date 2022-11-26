@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "towerofhanoi.h"
 #include "function.h"
 
@@ -116,6 +117,16 @@ int toh(){
     CreateEmptyStack(&A);
     CreateEmptyStack(&B);
     CreateEmptyStack(&C);
+    printf("        __    __     _                            _\n");                 
+    printf("       / / /\\ \\ \\___| | ___ ___  _ __ ___   ___  | |_ ___\n");           
+    printf("       \\ \\/  \\/ / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\ | __/ _ \\ \n");         
+    printf("        \\  /\\  /  __/ | (_| (_) | | | | | |  __/ | || (_) | \n");        
+    printf("         \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|  \\__\\___/   \n\n");                                                                        
+    printf(" _____                                __                           _ \n");
+    printf("/__   \\_____      _____ _ __    ___  / _|   /\\  /\\__ _ _ __   ___ (_)\n");
+    printf("  / /\\/ _ \\ \\ /\\ / / _ \\ '__|  / _ \\| |_   / /_/ / _` | '_ \\ / _ \\| |\n");
+    printf(" / / | (_) \\ V  V /  __/ |    | (_) |  _| / __  / (_| | | | | (_) | |\n");
+    printf(" \\/   \\___/ \\_/\\_/ \\___|_|     \\___/|_|   \\/ /_/ \\__,_|_| |_|\\___/|_|)\n\n");
     printf("Masukkan jumlah disk: ");
     STARTWORD();
     while (!isWordNumber(currentWord) || currentWord.TabWord[0] == '\0' || wordToInt(currentWord) > 100){
@@ -123,6 +134,9 @@ int toh(){
         printf("\nMasukkan jumlah disk: ");
         STARTWORD();
     }
+    printf("\nTekan ENTER untuk memulai permainan!\n");
+    fgetchar();
+    system("cls");
     n = wordToInt(currentWord);
     int disk = n;
     for (int i = 0; i < n; i++){
