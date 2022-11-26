@@ -327,8 +327,9 @@ void dinerdash()
     printf("DDDDDDDDDDDDD        iiiiiiii nnnnnn    nnnnnn    eeeeeeeeeeeeee   rrrrrrr                 DDDDDDDDDDDDD         aaaaaaaaaa  aaaa sssssssssss    hhhhhhh     hhhhhhh\n");
 
     printf("\nSelamat Datang di Diner Dash\n");
-    while ((serve <= 15) && (lengthFood(qfood) < 7))
+    while ((serve <= 15) && (lengthFood(qfood) <= 7))
     {
+        show(qfood, qcook, saldo);
         if (putaran)
         {
             orderFood(&qfood, id);
@@ -341,7 +342,6 @@ void dinerdash()
             }
         }
         putaran = false;
-        show(qfood, qcook, saldo);
         printf("\nCOMMAND : ");
         STARTWORD();
 
@@ -439,6 +439,18 @@ void dinerdash()
             printf("\nCOMMAND TIDAK VALID\n");
             printf("========================================\n");
         } // else dari ngecek command
+        if (putaran)
+        {
+            orderFood(&qfood, id);
+            id++;
+            checkCook(&qcook);
+            if (masak)
+            {
+                enqueueCook(&qcook, temp);
+                masak = false;
+            }
+        }
+        putaran = false;
     }
     printf("Skor akhir anda adalah %d\n", saldo);
     printf("\nGAME OVER\n");
