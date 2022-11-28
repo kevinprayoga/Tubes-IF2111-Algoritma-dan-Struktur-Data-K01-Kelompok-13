@@ -49,7 +49,7 @@ void printAlas(int n, int length){
     }
 }
 
-void show(Stack A, Stack B, Stack C, int n){
+void show(Tower A, Tower B, Tower C, int n){
     printf("\n");
     int i = n - 1;
     int temp;
@@ -108,15 +108,15 @@ boolean isWordNumber(Word K){
 }
 
 int toh(){
-    Stack A, B, C;
+    Tower A, B, C;
     Word command;
     char asal;
     char tujuan;
     int X, n;
     int move = 0;
-    CreateEmptyStack(&A);
-    CreateEmptyStack(&B);
-    CreateEmptyStack(&C);
+    CreateEmptyTower(&A);
+    CreateEmptyTower(&B);
+    CreateEmptyTower(&C);
     printf("        __    __     _                            _\n");                 
     printf("       / / /\\ \\ \\___| | ___ ___  _ __ ___   ___  | |_ ___\n");           
     printf("       \\ \\/  \\/ / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\ | __/ _ \\ \n");         
@@ -140,13 +140,17 @@ int toh(){
     n = wordToInt(currentWord);
     int disk = n;
     for (int i = 0; i < n; i++){
-        Push(&A, 2*disk-1);
+        PushTower(&A, 2*disk-1);
         disk--;
     }
-    while (!(IsEmptyStack(A) && IsEmptyStack(B))){
+    while (!(IsEmptyTower(A) && IsEmptyTower(B))){
         show(A, B, C, n);
         printf("\nTIANG ASAL : ");
         STARTWORD();
+        if (strcompare(wordToString(currentWord), "QUIT")){
+            printf("\nPermainan dihentikan!\n");
+            return 0;
+        }
         while (!isValid(currentWord) || currentWord.TabWord[0] == '\0'){
             printf("\nMasukkan tidak valid!\n");
             printf("\nTIANG ASAL : ");
@@ -160,31 +164,31 @@ int toh(){
         tujuan = currentWord.TabWord[0];
         if (isValid(currentWord) && (tujuan != asal)){
             boolean valid = true;
-            if (asal == 'A' && !IsEmptyStack(A)){
-                Pop(&A, &X);
-            } else if (asal == 'B' && !IsEmptyStack(B)){
-                Pop(&B, &X);
-            } else if (asal == 'C' && !IsEmptyStack(C)) {
-                Pop(&C, &X);
+            if (asal == 'A' && !IsEmptyTower(A)){
+                PopTower(&A, &X);
+            } else if (asal == 'B' && !IsEmptyTower(B)){
+                PopTower(&B, &X);
+            } else if (asal == 'C' && !IsEmptyTower(C)) {
+                PopTower(&C, &X);
             } else {
                 valid = false;
                 printf("\nTiang Asal Kosong!\n");
             }
             if (valid){
-                if (tujuan == 'A' && (IsEmptyStack(A) || InfoTop(A) > X)){
-                    Push(&A, X);
-                } else if (tujuan == 'B' && (IsEmptyStack(B) || InfoTop(B) > X)){
-                    Push(&B, X);
-                } else if (tujuan == 'C' && (IsEmptyStack(C) || InfoTop(C) > X)){
-                    Push(&C, X);
+                if (tujuan == 'A' && (IsEmptyTower(A) || InfoTop(A) > X)){
+                    PushTower(&A, X);
+                } else if (tujuan == 'B' && (IsEmptyTower(B) || InfoTop(B) > X)){
+                    PushTower(&B, X);
+                } else if (tujuan == 'C' && (IsEmptyTower(C) || InfoTop(C) > X)){
+                    PushTower(&C, X);
                 } else {
                     printf("\nTiang tujuan tidak valid!\n");
                     if (asal == 'A'){
-                        Push(&A, X);
+                        PushTower(&A, X);
                     } else if (asal == 'B'){
-                        Push(&B, X);
+                        PushTower(&B, X);
                     } else if (asal == 'C'){
-                        Push(&C, X);
+                        PushTower(&C, X);
                     }
                     valid = false;
                 }
