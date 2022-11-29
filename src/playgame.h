@@ -9,7 +9,8 @@
 #include "gameRNG.h"
 #include "creategame.h"
 #include "minesweeper.h"
+#include "ADT/stack.h"
 
-void playGame (Queue *q);
+void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr);
 
 #endif
