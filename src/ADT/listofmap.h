@@ -42,6 +42,23 @@ void CreateEmptyMap(ListMap *L);
 /* F.S. Membuat sebuah Map kosong berkapasitas MaxEl dari ListMap L */
 /* Ciri Map kosong : count bernilai Nil */
 
+/* ********* Predikat Untuk test keadaan KOLEKSI ********* */
+boolean IsEmptyList(ListMap L);
+/* Mengirim true jika ListMap L kosong*/
+/* Ciri ListMap kosong : total bernilai Nil */
+
+boolean IsEmptyMap(ListMap L, address num);
+/* Mengirim true jika Map di ListMap L dengan address num kosong */
+/* Ciri Map kosong : count bernilai Nil di ListMap L dengan address num */
+
+boolean IsFullList(ListMap L);
+/* Mengirim true jika ListMap L penuh */
+/* Ciri ListMap penuh : total bernilai MaxEl */
+
+boolean IsFullMap(ListMap L, address num);
+/* Mengirim true jika Map di ListMap L dengan address num penuh */
+/* Ciri Map penuh : count bernilai MaxEl */
+
 /* ********** Operator Dasar Map ********* */
 valuetype Value(ListMap L, keytype k, address num);
 /* Mengembalikan nilai value dengan key k dari Map sebuah ListMap L ber address num */

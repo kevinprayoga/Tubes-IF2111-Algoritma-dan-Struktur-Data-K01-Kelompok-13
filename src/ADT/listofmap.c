@@ -18,6 +18,38 @@ void CreateEmptyMap(ListMap *L)
 /* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
 /* Ciri Map kosong : count bernilai Nil */
 
+/* ********* Predikat Untuk test keadaan KOLEKSI ********* */
+boolean IsEmptyList(ListMap L)
+{
+  return (L.total == Nilz);
+}
+/* Mengirim true jika Map M kosong*/
+/* Ciri Map kosong : count bernilai Nil */
+
+boolean IsEmptyMap(ListMap L, address num)
+{
+  if (!IsEmptyList(L))
+  {
+    return (L.list[num - 1].Count == Nilz);
+  }
+}
+/* Mengirim true jika Map M kosong*/
+/* Ciri Map kosong : count bernilai Nil */
+
+boolean IsFullList(ListMap L)
+{
+  return (L.total == MaxEl);
+}
+/* Mengirim true jika Map M penuh */
+/* Ciri Map penuh : count bernilai MaxEl */
+
+boolean IsFullMap(ListMap L, address num)
+{
+  return (L.list[num - 1].Count == MaxEl);
+}
+/* Mengirim true jika Map M penuh */
+/* Ciri Map penuh : count bernilai MaxEl */
+
 /* ********** Operator Dasar Map ********* */
 valuetype Value(ListMap L, keytype k, address num)
 {
