@@ -6,10 +6,7 @@
 
 #include "mesinkar.h"
 #include "mesinkata.h"
-
-#define boolean unsigned char
-#define true 1
-#define false 0
+#include "../boolean.h"
 
 void STARTFILE(char *filename);
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
@@ -30,10 +27,16 @@ void ADVFILE();
 void IgnoreNewLine();
 /* Mengabaikan karakter newline */
 
+void IgnoreBlank();
+
 void ADVWORDFILE();
 /* Mengambil kata dari pita */
 
+void ADVWORDFILEWOBLANK();
+
 void CopyWordFile();
 /* Menyalin kata dari pita ke currentWord */
+
+void CopyWordFileWOBlank();
 
 #endif

@@ -28,10 +28,19 @@ void IgnoreNewLine()
   }
 }
 
+void ignoreBlank()
+{
+  while (currentChar == BLANK)
+  {
+    ADVFILE();
+  }
+}
+
 void ADVWORDFILE()
 {
   IgnoreNewLine();
-  if (retval < 0)
+  ignoreBlank();
+  if (EOP)
   {
     EndWord = true;
   }
@@ -41,10 +50,39 @@ void ADVWORDFILE()
   }
 }
 
+void ADVWORDFILEWOBLANK()
+{
+  IgnoreNewLine();
+  ignoreBlank();
+  if (EOP)
+  {
+    EndWord = true;
+  }
+  else
+  {
+    CopyWordFileWOBlank();
+  }
+}
+
 void CopyWordFile()
 {
   currentWord.Length = 0;
   while ((currentChar != MARK) && (currentWord.Length < NMax) && (!EOP))
+  {
+    currentWord.TabWord[currentWord.Length] = currentChar;
+    currentWord.Length++;
+    ADVFILE();
+  }
+  if (EOP)
+  {
+    EndWord = true;
+  }
+}
+
+void CopyWordFileWOBlank()
+{
+  currentWord.Length = 0;
+  while ((currentChar != MARK) && (currentWord.Length < NMax) && (!EOP) && (currentChar != BLANK))
   {
     currentWord.TabWord[currentWord.Length] = currentChar;
     currentWord.Length++;
