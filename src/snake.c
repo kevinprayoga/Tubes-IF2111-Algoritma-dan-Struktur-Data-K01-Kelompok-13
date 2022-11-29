@@ -234,10 +234,10 @@ void teleport(point *pt)
     }
 }
 
-void inputCmd()
+void inputCmd(char *cmd)
 {
    printf("Silakan masukkan command Anda: ");
-   STARTWORD();    
+   cmd = readQ();
 }
 
 boolean isCollideMeteor(List snake, point meteor)
@@ -276,7 +276,6 @@ void displayField(List snake, point meteor, point food, point crater, point obst
     // KAMUS
     point loc;
     int i, j;
-    char field[5][5];
 
     // ALGORITMA
     printf("+-----+\n");
@@ -289,19 +288,19 @@ void displayField(List snake, point meteor, point food, point crater, point obst
             // kalau pointnya merupakan head, dia nyimpen H, dst...
             CreatePoint(&loc, j, i);
             if (isPointEq(loc, Info(First(snake)))) {
-                field[i][j] = "H";
+                printf("H");
             } else if (isPointEq(loc, food)) {
-                field[i][j] = "O";
+                printf("O");
             } else if (isPointEq(loc, meteor)) {
-                field[i][j] = "M";
+                printf("M");
             } else if (isPointEq(loc, crater)) {
-                field[i][j] = "C";
+                printf("C");
             } else if (isPointEq(loc, obstacle1) || isPointEq(loc, obstacle2)) {
-                field[i][j] = "#";
+                printf("#");
             } else if (Search(snake, loc) != Nil) {
-                field[i][j] = "X"; //nah ini ceritanya body snake, masih bingung cara supaya body snake bisa 1,2,3...
+                printf("X"); 
             } else {
-                field[i][j] = ' ';
+                printf(" ");
             }
         }
         printf("|");
@@ -315,8 +314,9 @@ int snakeOnMeteor()
     // KAMUS
     List snake;
     point meteor, crater, obstacle1, obstacle2, food;
-    boolean dead;
+    boolean dead = false;
     int turn, len, score;
+    char *moveCmd;
 
     // ALGORITMA
     // generate field awal: snek, obstacle, makanan
@@ -334,12 +334,40 @@ int snakeOnMeteor()
     growSnake(snake, &obstacle1, &obstacle2, &crater, &meteor, false, &score);
     generateFood(&meteor, &obstacle1, &obstacle2, &food, &crater, snake);
     displayField(snake, meteor, food, crater, obstacle1, obstacle2);
+    generateMeteor(&meteor, &obstacle1, &food, &obstacle2, &crater, snake, dead);
 
-    // main loop sampe mati, blm kepikiran gmn cara handle turnnya, krn tiap 1 turn
-    // harus ngecek apakah nabrak meteor, obstacle, atau makanan
-    // abis tu ngecek apakah nabrak diri sendiri
-    // pokoknya kalau nabrak: meteor di kepala/obstacle = game over
-    // nabrak crater/dirinya sendiri = input ulang
-    // gak bisa tumbuh lagi = game over
+    while (!dead)
+    {
+        // input command
+        inputCmd(moveCmd);
+        if (isValidInput(moveCmd, snake, &crater)) {
+            moveSnake(moveCmd, snake);
+            if (isCollideMeteor(snake, meteor)) {
+                collideMeteor(snake, &meteor, dead, &score);
+                displayField(snake, meteor, food, crater, obstacle1, obstacle2);
+            }
+            if (isCollideObstacle(snake, obstacle1, obstacle2)) {
+                collideObstacle(snake, &obstacle1, &obstacle2, dead, &score);
+                displayField(snake, meteor, food, crater, obstacle1, obstacle2);
+            }
+            if (isPointEq(Info(First(snake)), food)) {
+                growSnake(snake, &obstacle1, &obstacle2, &crater, &meteor, dead, &score);
+                generateFood(&meteor, &obstacle1, &obstacle2, &food, &crater, snake);
+                displayField(snake, meteor, food, crater, obstacle1, obstacle2);
+            }
+            generateMeteor(&meteor, &obstacle1, &food, &obstacle2, &crater, snake, dead);
+            displayField(snake, meteor, food, crater, obstacle1, obstacle2);
+        } else {
+            printf("Input tidak valid!\n");
+            inputCmd(moveCmd);
+        }
+    }
 
+    // cek apakah mati
+    if (dead) {
+        printf("Game over! Score Anda: %d\n", score);
+    } 
+
+    score = NbElmt(snake) * 2;
+    return score;
 }

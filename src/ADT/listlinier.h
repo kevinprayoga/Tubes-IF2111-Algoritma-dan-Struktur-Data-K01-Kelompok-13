@@ -7,6 +7,7 @@
 #define listlinier_H
 
 #include "point.h"
+#include <stdlib.h>
 
 // Boolean
 #define boolean unsigned char
@@ -86,14 +87,14 @@ void DelVLast (List *L, infotype *X);
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
 /*** PENAMBAHAN ELEMEN BERDASARKAN ALAMAT ***/
-void InsertFirst (List *L, address P);
+void InsertFirstList (List *L, address P);
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. Menambahkan elemen ber-address P sebagai elemen pertama */
 void InsertAfter (List *L, address P, address Prec);
 /* I.S. Prec pastilah elemen list dan bukan elemen terakhir, */
 /*      P sudah dialokasi  */
 /* F.S. Insert P sebagai elemen sesudah elemen beralamat Prec */
-void InsertLast (List *L, address P);
+void InsertLastList (List *L, address P);
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
 

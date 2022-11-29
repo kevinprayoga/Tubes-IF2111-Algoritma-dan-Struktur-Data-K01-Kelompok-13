@@ -7,9 +7,9 @@
 #include <time.h>
 #include "function.h"
 #include "boolean.h"
-#include "./ADT/mesinkata.h"
-#include "./ADT/point.h"
-#include "./ADT/listlinier.h"
+#include "ADT/mesinkata.h"
+#include "ADT/point.h"
+#include "ADT/listlinier.h"
 
 void generateMeteor(point *meteor, point *obstacle1, point *obstacle2, point *food, point *crater, List snake, boolean dead);
 /* Membuat meteor secara acak di suatu titik pada field. Meteor tidak mungkin ada di titik yang sama dengan
@@ -39,7 +39,7 @@ void growSnake(List snake, point *obstacle1, point *obstacle2, point *crater, po
    I.S. ekor belum tumbuh
    F.S. Jika bisa, ekor tumbuh. Jika tidak bisa, snake mati:( skor dihitung dari jumlah elemen awal */
 
-boolean isValidInput(char *cmd, List snake, point *meteor, point *crater, point *food, point *obstacle1, point *obstacle2);
+boolean isValidInput(char *cmd, List snake, point *crater);
 /* Mengecek apakah input valid.
    Input dikatakan valid jika input merupakan "wasdWASD" dan tidak menabrak crater atau tubuhnya sendiri
    Jika input tidak valid, minta input ulang.*/

@@ -148,7 +148,7 @@ void DelVLast (List *L, infotype *X)
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
 /*** PENAMBAHAN ELEMEN BERDASARKAN ALAMAT ***/
-void InsertFirst (List *L, address P)
+void InsertFirstList (List *L, address P)
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. Menambahkan elemen ber-address P sebagai elemen pertama */
 {
@@ -165,14 +165,14 @@ void InsertAfter (List *L, address P, address Prec)
     Next(Prec) = P;
 }
 
-void InsertLast (List *L, address P)
+void InsertLastList (List *L, address P)
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
 {
     address last;
     if (IsEmptyListLinier(*L))
     {
-        InsertFirst(L,P);
+        InsertFirstList(L,P);
     }
     else
     {
