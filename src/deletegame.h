@@ -5,8 +5,10 @@
 #include "ADT\queue.h"
 #include "listgame.h"
 #include "function.h"
+#include "history.h"
+#include "ADT\listofmap.h"
 
-void deleteGame(ArrayDin *arr, Queue q);
+void deleteGame(ArrayDin *arr, Stack *s, ListMap *l, Queue q);
 /* I.S. : Sembarang
    F.S. : Menghapus game dari array
    Proses : Menghapus game dari array */

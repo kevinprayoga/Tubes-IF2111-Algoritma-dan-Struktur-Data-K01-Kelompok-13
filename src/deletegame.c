@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "deletegame.h"
 
-void deleteGame(ArrayDin *arr, Queue q)
+void deleteGame(ArrayDin *arr, Stack *s, ListMap *l, Queue q)
 {
   int num;
   ElType val;
@@ -10,9 +10,11 @@ void deleteGame(ArrayDin *arr, Queue q)
   printf("Masukkan nomor game yang akan dihapus: ");
   STARTWORD();
   num = wordToInt(currentWord);
-  val = (*arr).A[num - 1];
+  val = arr->A[num - 1];
   if ((num - 1 > 5) && (num - 1 < Length(*arr)) && (!(isMemberQ(q, val))))
   {
+    deleteHistory(s, *arr, num - 1);
+    DeleteMap(l, num);
     DeleteAt(arr, num - 1);
     printf("\nGame berhasil dihapus");
   }
