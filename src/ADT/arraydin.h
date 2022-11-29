@@ -99,4 +99,6 @@ void DeleteFirst(ArrayDin *array);
  */
 void PrintArrayDin(ArrayDin array);
 
+IdxType GetNum(ArrayDin array, ElType el);
+
 #endif

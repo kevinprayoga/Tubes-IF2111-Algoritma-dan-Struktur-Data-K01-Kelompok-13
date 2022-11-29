@@ -44,5 +44,8 @@ int main()
 
     printf("\nDeallocate array\n");    
     DeallocateArrayDin(&arr);
+
+    printf("\nGet number of element from array\n");
+    GetNum(arr, "Second");
     return 0;
 }

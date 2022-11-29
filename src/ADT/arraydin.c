@@ -155,3 +155,16 @@ void PrintArrayDin(ArrayDin array)
 	}
 	printf("]\n");
 }
+
+IdxType GetNum(ArrayDin array, ElType el)
+{
+	int i;
+	for (i = 0; i < Length(array); i++)
+	{
+		if (array.A[i] == el)
+		{
+			return (i + 1);
+		}
+	}
+	return -1;
+}
