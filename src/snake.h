@@ -11,7 +11,7 @@
 #include "./ADT/point.h"
 #include "./ADT/listlinier.h"
 
-void generateMeteor(point *meteor, point *obstacle1, point *obstacle2, point *food, point *crater, List snake);
+void generateMeteor(point *meteor, point *obstacle1, point *obstacle2, point *food, point *crater, List snake, boolean dead);
 /* Membuat meteor secara acak di suatu titik pada field. Meteor tidak mungkin ada di titik yang sama dengan
    obstacle maupun crater. Jika meteor jatuh pada tubuh snake, panjang snake berkurang 1. Jika meteor jatuh
    pada kepala snake, permainan berakhir.
@@ -34,31 +34,47 @@ void generateHead(point *obstacle1, point *obstacle2);
    I.S. Field memiliki 2 obstacle, 0 snake.
    F.S. Field memiliki 2 obstacle, 1 snake yang berukurang 3 unit. */
 
-void growSnake(List snake, point *obstacle1, point *obstacle2, point *crater, point *meteor);
+void growSnake(List snake, point *obstacle1, point *obstacle2, point *crater, point *meteor, boolean dead, int *score);
 /* Menumbuhkan ekor snake
    I.S. ekor belum tumbuh
-   F.S. Jika bisa, ekor tumbuh. Jika tidak bisa, snake mati:( */
+   F.S. Jika bisa, ekor tumbuh. Jika tidak bisa, snake mati:( skor dihitung dari jumlah elemen awal */
 
-boolean isInputValid(char *cmd, List snake, point *meteor, point *crater, point *food, point *obstacle1, point *obstacle2);
+boolean isValidInput(char *cmd, List snake, point *meteor, point *crater, point *food, point *obstacle1, point *obstacle2);
 /* Mengecek apakah input valid.
-   Input dikatakan valid jika input merupakan "w"/"a"/"s"/"d"/"W"/"A"/"S"/"D" 
-   Jika input tidak valid, minta input ulang. Jika input valid, akan memanggil fungsi move */
+   Input dikatakan valid jika input merupakan "wasdWASD" dan tidak menabrak crater atau tubuhnya sendiri
+   Jika input tidak valid, minta input ulang.*/
 
-void moveSnake(char *cmd, List snake, point *meteor, point *crater, point *food, point *obstacle1, point *obstacle2);
+void moveSnake(char *cmd, List snake);
 /* Menggerakkan snake sesuai dengan input user.
    Snake bergerak dengan cara menghapus titik tail (titik terakhir
    pada tubuhnya) lalu menambahkan titik baru dengan arah sesuai input user
-   sebagai head*/
+   sebagai head.
+   I.S. input pasti valid (pasti wasd/WASD, pasti tidak menabrak crater/tubuhnya sendiri)
+   F.S. snake pindah */
 
-boolean isCollide(char *cmd, List snake, point *meteor, point *crater, point *food, point *obstacle1, point *obstacle2);
-/* Mengembalikan nilai true jika 
-   - menabrak tubuhnya sendiri/crater lalu minta input ulang,
-   - menabrak meteor/obstacle lalu game over */
+void teleport(point *pt);
+/* Supaya snek bisa nembus fieldnya */
 
-void invalidMove();
-/* Snek ga bisa gerak:( program minta ulangi input */
+void inputCmd();
+/* Program minta input */
 
-void displayField();
+boolean isCollideMeteor(List snake, point meteor);
+/* Jika head menabrak meteor atau meteor jatuh pada tubuh snek, fungsi akan return true */
+
+void collideMeteor(List snake, point *meteor, boolean dead, int *score);
+/* I.S. Snake dipastikan menabrak meteor, baik pada head maupun body.
+   F.S. Tubuh snake berkurang 1, jika menabrak pada kepala snake akan mati.
+        Skor berkurang 2 ((NbElmt(snake)-1) * 2) */
+
+boolean isCollideObstacle(List snake, point obstacle1, point obstacle2);
+/* Jika snake menabrak obstacle, fungsi akan return true */
+
+void collideObstacle(List snake, point *obstacle1, point *obstacle2, boolean dead, int *score);
+/* I.S. Snake dipastikan menabrak obstacle 
+   F.S. Game over. Panjang tubuh snake berkurang 1 (yang nabrak akan hilang).
+        Skor berkurang 2 ((NbElmt(snake)-1) * 2) */
+
+void displayField(List snake, point meteor, point food, point crater, point obstacle1, point obstacle2);
 /* Menampilkan map */
 
 int snakeOnMeteor();
