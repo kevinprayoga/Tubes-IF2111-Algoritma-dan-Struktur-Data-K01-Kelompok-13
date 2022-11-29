@@ -22,4 +22,8 @@ void resetHistory(Stack *s)
     int num = countStack(*s);
     printStack(s, num);
   }
+  else
+  {
+    printf("\nInput tidak valid. Silakan coba lagi.\n");
+  }
 }
