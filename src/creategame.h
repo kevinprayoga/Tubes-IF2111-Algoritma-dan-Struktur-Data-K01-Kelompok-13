@@ -2,17 +2,17 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-#include ".\ADT\mesinkata.h"
-#include ".\ADT\mesinkar.h"
-#include ".\ADT\arraydin.h"
+#include "ADT\mesinkata.h"
+#include "ADT\mesinkar.h"
+#include "ADT\arraydin.h"
 #include "function.h"
+#include "scoreboard.h"
 
 #ifndef CREATE_GAME_
 #define CREATE_GAME_
 
+void customGame(ListMap *L, ArrayDin arr, ElType gameName);
 
-void customGame();
-
-void createGame(ArrayDin* List);
+void createGame(ArrayDin* List, ListMap *L);
 
 #endif
