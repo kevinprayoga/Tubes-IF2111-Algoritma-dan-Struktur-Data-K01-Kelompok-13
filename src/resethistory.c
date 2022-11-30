@@ -4,10 +4,10 @@
 
 void resetHistory(Stack *s)
 {
-  printf("\nAPAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? ");
+  printf("\nAPAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY (YA/TIDAK)? ");
   char *command;
   command = readQ();
-  if (strcompare(command, "YA"))
+  if (strcompare(command, "YA") || strcompare(command, "ya"))
   {
     while (!IsEmptyStack(*s))
     {
@@ -16,7 +16,7 @@ void resetHistory(Stack *s)
     }
     printf("\nHistory berhasil di-reset.\n");
   }
-  else if (strcompare(command, "TIDAK"))
+  else if (strcompare(command, "TIDAK") || strcompare(command, "tidak"))
   {
     printf("\nHistory tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");
     int num = countStack(*s);
@@ -24,6 +24,7 @@ void resetHistory(Stack *s)
   }
   else
   {
-    printf("\nInput tidak valid. Silakan coba lagi.\n");
+    printf("Command tidak dikenali, silakan masukan command yang valid.\n");
+    resetHistory(s);
   }
 }
