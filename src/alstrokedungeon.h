@@ -2,8 +2,18 @@
 #define __ALSTROKEDUNGEON__
 
 #include "boolean.h"
-#include "dungeon_tree.h"
+#include "ADT/mesinkar_dungeon.h"
+#include "ADT/mesinkar.h"
+#include "ADT/dungeon_tree.h"
 
-#define ElType int
+Tree create_map(int level, int difficulty);
+
+void startArt(char* filename);
+
+void printArt(char* filename);
+
+void print_dungeon(Tree *p);
+
+int playdungeon();
 
 #endif

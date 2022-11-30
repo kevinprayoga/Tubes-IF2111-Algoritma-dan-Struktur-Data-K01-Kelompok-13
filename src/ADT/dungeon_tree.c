@@ -1,17 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "dungeon_tree.h"
 
 /* Menghasilkan sebuah pohon dari root, left, mid, dan right, jika alokasi berhasil 
    Menghasilkan pohon kosong (Nil) jika alokasi gagal */
-void createTree(Tree *p, ElType root, Tree left, Tree mid, Tree right){
-    *p = (Address) malloc (sizeof(Tree));
-    if(*p != Nil){
-        Info(*p) = root;
-        Left(*p) = left;
-        Mid(*p) = mid;
-        Right(*p) = right;
+Tree createTree(ElType root, Tree left, Tree mid, Tree right, int level, int diff){
+    srand(time(0));
+
+    Tree p = (Address) malloc (sizeof(Tree));
+    if(p != Nil){
+        int i = 0;
+        if(i != level){
+            i++;
+            Info(p) = root;
+            if(rand()%100 < diff){
+                Left(p) = createTree(root, Left(left), Mid(left), Right(left), i);
+            }
+            if(rand()%100 < diff){
+                Mid(p) = createTree(root, Left(mid), Mid(mid), Right(mid), i);
+            }
+            if(rand()%100 < diff){
+                Right(p) = createTree(root, Left(right), Mid(right), Right(right), i);
+            }
+        }
     }
+    return p;
 }
 
 /* Alokasi sebuah address p, bernilai tidak Nil jika berhasil */
@@ -151,4 +165,104 @@ void printLevelTree(Tree p, int h, int lvl){
 /* Menampilkan tree dari level tertentu */
 void printTree(Tree p){
     printLevelTree(p, 2, 0);
+}
+
+/* Mengirimkan address hasil alokasi sebuah elemen */
+/* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
+/* menghasilkan P, maka info(P)=X, Next(P)=Nil */
+/* Jika alokasi gagal, mengirimkan Nil */
+addr alloc(Address x){
+    addr p = (addr) malloc (sizeof(InfoList));
+    if (p != Nil){
+        Elmt(p) = x;
+        Next(p) = Nil;
+    }
+    return p;
+}
+
+/* I.S. P terdefinisi */
+/* F.S. P dikembalikan ke sistem */
+/* Melakukan dealokasi/pengembalian address P */
+void dealloc(addr *p){
+    free(*p);
+}
+
+/* Mengirim true jika list kosong */
+boolean isEmptyList(ListOfNode l){
+    return(First(l) == Nil && Last(l) == Nil);
+}
+
+/* I.S. L mungkin kosong */
+/* F.S. Melakukan alokasi sebuah elemen dan */
+/* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
+void insFirst(ListOfNode *l, Address x){
+    addr p = alloc(x);
+    if(p != Nil){
+        if(isEmptyList(*l)){
+            Last(*l) = p;
+        }
+        Next(p) = First(*l);
+        First(*l) = p;
+    }
+}
+
+/* Mengirimkan salinan hasil konkatenasi list L1 dan L2 (menjadi list baru)
+   Jika ada alokasi gagal, menghasilkan Nil */
+ListOfNode concat(ListOfNode L1, ListOfNode L2, ListOfNode L3){
+	switch(L1, L2, L3)
+		case L1 == Nil && L2 == Nil && L3 == Nil:
+            return Nil;
+        case L2 == Nil && L3 == Nil:
+            return L1;
+        case L1 == Nil && L3 == Nil:
+            return L2;
+        case L1 == Nil && L2 == Nil:
+            return L3;
+        case L1 == Nil:
+            ListOfNode L;
+            First(L) = First(L2);
+            Last(L) = Last(L2);
+            Next(Last(L)) = First(L3);
+            Last(L) = Last(L3);
+            return L;
+        case L2 == Nil:
+            ListOfNode L;
+            First(L) = First(L1);
+            Last(L) = Last(L1);
+            Next(Last(L)) = First(L3);
+            Last(L) = Last(L3);
+            return L;
+        case L3 == Nil:
+            ListOfNode L;
+            First(L) = First(L1);
+            Last(L) = Last(L1);
+            Next(Last(L)) = First(L2);
+            Last(L) = Last(L2);
+            return L;
+        default:
+            ListOfNode L;
+            First(L) = First(L1);
+            Last(L) = Last(L1);
+            Next(Last(L)) = First(L2);
+            Last(L) = Last(L2);
+            Next(Last(L)) = First(L3);
+            Last(L) = Last(L3);
+            return L;
+}
+
+/* Jika p adalah pohon kosong, maka menghasilkan list kosong.
+   Jika p bukan pohon kosong: menghasilkan list yang elemennya adalah semua elemen
+   pohon p yang levelnya=n, jika semua alokasi berhasil. Menghasilkan list kosong jika ada alokasi yang gagal. */
+void makeListLevel(ListOfNode *L, Tree p, int n){
+	if(isTreeEmpty(p)){
+		*L = Nil;
+	}
+	else{
+		if(n==0){
+			*L = insFirst(L, p);
+		}
+		else{
+			*L = concat(makeListLevel(L, Left(p), n-1), makeListLevel(L, Mid(p), n-1), makeListLevel(L, Right(p), n-1));
+		}
+	}
 }
