@@ -5,7 +5,7 @@ void InsertToScoreboard(ListMap *L, ArrayDin arr, ElType gameName, valuetype sco
 {
   int num = GetNum(arr, gameName);
   printf("Nama: ");
-  keytype name = readQ();
+  char *name = readQ();
   while (IsMemberMap(*L, name, num))
   {
     printf("\nNama sudah ada di scoreboard, silahkan ketik ulang!\n");
@@ -20,12 +20,12 @@ void scoreboard(ListMap L, ArrayDin arr)
 {
   for (int i = 0; i < L.total; i++)
   {
-    printf("**** SCOREBOARD %s ****\n", arr.A[i]);
+    printf("**** SCOREBOARD GAME %s ****\n", arr.A[i]);
     printf("| NAMA\t\t|SKOR\t\t|\n");
-    printf("|-----------------------|\n");
+    printf("|-------------------------------|\n");
     if (IsEmptyMap(L, i + 1))
     {
-      printf("---- SCOREBOARD KOSONG ----\n\n");
+      printf("------- SCOREBOARD KOSONG -------\n\n");
     }
     else
     {
