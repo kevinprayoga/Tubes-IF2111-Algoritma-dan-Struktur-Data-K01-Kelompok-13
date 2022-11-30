@@ -23,7 +23,7 @@ void resetscoreboard(ListMap *L, ArrayDin arr)
   int num = strToInt(strnum);
   printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD %s (YA/TIDAK)? ", listtemp.A[num]);
   char *str = readQ();
-  if (strcmp(str, "YA") || strcmp(str, "ya"))
+  if (strcompare(str, "YA") || strcompare(str, "ya"))
   {
     if (num == 0)
     {
@@ -45,7 +45,7 @@ void resetscoreboard(ListMap *L, ArrayDin arr)
       printf("INPUT TIDAK VALID!\n");
     }
   }
-  else if (strcmp(str, "TIDAK") || strcmp(str, "tidak"))
+  else if (strcompare(str, "TIDAK") || strcompare(str, "tidak"))
   {
     printf("RESET SCOREBOARD DIBATALKAN!\n");
   }
