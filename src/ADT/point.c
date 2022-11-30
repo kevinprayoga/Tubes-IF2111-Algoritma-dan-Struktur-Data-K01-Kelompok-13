@@ -26,7 +26,7 @@ boolean isOrigin (point p) {
 boolean isPointEq (point p, point q) {
 /* Mengirimkan nilai benar jika p dan q adalah titik yang sama */
     /* ALGORITMA */
-    return ((ABSIS(p) == ABSIS(q)) && (ORDINAT(p) == ORDINAT(q)));
+    return p.x == q.x && p.y == q.y;
 }
 
 /**** Prosedur - Interaksi dengan I/O device, BACA/TULIS ****/

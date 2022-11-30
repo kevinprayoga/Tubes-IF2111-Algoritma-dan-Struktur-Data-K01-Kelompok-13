@@ -3,9 +3,9 @@
 
 #include "../boolean.h"
 /**** Definisi Abstract Data Type POINT ****/
-typedef struct Point {
-int x; /* absis */
-int y; /* ordinat */
+typedef struct {
+    int x; /* absis */
+    int y; /* ordinat */
 } point;
 
 #define NilPoint -999
