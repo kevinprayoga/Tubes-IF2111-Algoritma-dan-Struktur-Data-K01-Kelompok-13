@@ -6,7 +6,7 @@ void history(Stack *s, int command)
 {
   if (IsEmptyStack(*s) || command < 1)
   {
-    printf("\nTidak ada daftar game yang telah dimainkan\n");
+    printf("\nTidak ada daftar game yang telah dimainkan.\n");
   }
   else
   {
