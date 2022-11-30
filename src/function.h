@@ -7,7 +7,6 @@
 #include "ADT/arraydin.h"
 #include "boolean.h"
 
-
 char *readQ();
 /* I.S. : Sembarang
    F.S. : Mengembalikan string yang sudah diinputkan

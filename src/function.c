@@ -50,7 +50,7 @@ char *wordToString(Word word)
   {
     str[i] = word.TabWord[i];
   }
-  str[i] = '\0';
+  str[word.Length] = '\0';
   return str;
 }
 
