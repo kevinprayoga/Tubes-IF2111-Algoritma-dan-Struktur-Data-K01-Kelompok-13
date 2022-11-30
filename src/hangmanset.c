@@ -1,4 +1,5 @@
 #include "hangmanset.h"
+#include "asciihangman.h"
 #include "function.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -112,10 +113,8 @@ void saveKata(){
 int menu(){
     int score = 0;
     boolean exit = false;
-    printf("Selamat datang di HANGMAN!\n");
-    printf("\n\t1. Mulai permainan\n");
-    printf("\t2. Tambahkan kata baru\n");
-    printf("\t3. Keluar\n");
+    opening1();
+    mainhangman();
     while (!exit){
         printf("\nMasukkan perintah : ");
         STARTWORD();
