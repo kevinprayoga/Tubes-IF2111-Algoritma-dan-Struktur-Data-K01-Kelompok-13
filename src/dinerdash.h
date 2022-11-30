@@ -30,6 +30,6 @@ Word getSecondWord(Word word);
 
 Cook cookFood(QueueFood q, int i);
 
-void dinerdash();
+int dinerdash();
 
 #endif

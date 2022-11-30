@@ -261,7 +261,7 @@ Cook cookFood(QueueFood q, int i)
     return food;
 }
 
-void dinerdash()
+int dinerdash()
 {
     srand(time(0));
     QueueFood qfood;
@@ -454,6 +454,7 @@ void dinerdash()
         currentWord.Length = 0;
         
     }
-    printf("Skor akhir anda adalah %d\n", saldo);
     printf("\nGAME OVER\n");
+    printf("Skor: %d\n", saldo);
+    return saldo;
 }
