@@ -4,7 +4,7 @@
 #include "boolean.h"
 
 #define Nil NULL
-#define size 50
+
 /* selektor */
 #define Info(p) (p)->info
 #define Left(p) (p)->left
@@ -26,7 +26,7 @@ typedef Address Tree;
  * Fungsi pembangun tree dari akar, left tree, middle tree, dan right tree.
  * Jika alokasi gagal, maka dihasilkan pohon kosong (Nil)
  */
-Tree NewTree(ElType root, Tree left, Tree mid, Tree right);
+void createTree(Tree *p, ElType root, Tree left, Tree mid, Tree right);
 
 /* 
  * Alokasi
@@ -38,11 +38,18 @@ Tree NewTree(ElType root, Tree left, Tree mid, Tree right);
 Address newNode(ElType x);
 
 /*
- * Destruktor/Dealokasi
+ * Destruktor
+ * I.S. Tree terdefinisi
+ * F.S. Tree terdealokasi
+ */
+void destroyTree(Tree p);
+
+/*
+ * Dealokasi
  * I.S. Node terdefinisi
  * F.S. Node terdealokasi
  */
-void deleteNode(Address *p);
+void delNode(Address *p);
 
 /*
  * Fungsi untuk mengetahui apakah suatu tree kosong.
@@ -81,21 +88,40 @@ boolean isNoneRight(Tree p);
 boolean isTerner(Tree p);
 
 /*
- * Fungsi untuk mendapatkan banyaknya elemen efektif tree, 0 jika tree kosong.
+ * Fungsi untuk mengembalikan jumlah elemen tree
  * Prekondisi: tree terdefinisi
  */
-int nbElmt(Tree p);
+int NbElmt(Tree p);
 
 /*
- * Fungsi untuk menambahkan tree baru di leaf dengan nilai n
- * Prekondisi: tree terdefinisi, n berada dalam range 0-999.
+ * Fungsi untuk mengembalikan level dari node x yang merupakan salah satu simpul dari pohon p
+ * Prekondisi: tree terdefinisi
  */
-void insertNode(Tree *p, ElType n);
+int Level(Tree p, ElType x);
 
 /*
- * Fungsi untuk menghapus tree lama di leaf dengan nilai n
- * Prekondisi: tree terdefinisi, n berada dalam range 0-999.
+ * Fungsi untuk mengembalikan true apabila elemen x merupakan salah satu info dari node pohon p
+ *              mengembalikan false apabila tidak ditemukan
+ * Prekondisi: tree terdefinisi
  */
-void deleteNode(Tree *p, ElType n);
+boolean Search(Tree p, ElType x);
+
+/*
+ * Fungsi untuk menampilkan indentasi sesuai dengan level tree
+ * Prekondisi: tree terdefinisi
+ */
+void printSpace(int h);
+
+/*
+ * Fungsi untuk menampilkan tree dengan indentasi sesuai dengan level tree
+ * Prekondisi: tree terdefinisi
+ */
+void printLevelTree(Tree p, int h, int lvl);
+
+/*
+ * Fungsi untuk menampilkan tree secara keseluruhan
+ * Prekondisi: tree terdefinisi
+ */
+void printTree(Tree p);
 
 #endif
