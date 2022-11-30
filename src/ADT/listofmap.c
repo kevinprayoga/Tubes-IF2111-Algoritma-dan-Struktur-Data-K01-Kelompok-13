@@ -104,9 +104,17 @@ void InsertMap(ListMap *L, keytype k, valuetype v, address num)
 
 void DeleteMap(ListMap *L, address num)
 {
-  for (int i = num - 1; i < L->total - 1; i++)
+  if (num < L->total)
   {
-    L->list[i] = L->list[i + 1];
+    for (int i = num - 1; i < L->total - 1; i++)
+    {
+      L->list[i] = L->list[i + 1];
+    }
+  }
+  int len = L->list[num - 1].Count;
+  for (int i = 0; i < len; i++)
+  {
+    L->list[num - 1].Count--;
   }
   L->total--;
 }
