@@ -1,6 +1,6 @@
 #include "gameRNG.h"
 
-void rng() {
+int rng() {
     printf(".------..------..------.\n");
     printf("|R.--. ||N.--. ||G.--. |\n");
     printf("| :(): || :(): || :/\\: |\n");
@@ -28,5 +28,7 @@ void rng() {
         ans = wordToInt(currentWord);
    }
    printf("Ya, Tebakan adalah %d\n", rng);
-   printf("Skor akurasi anda adalah %d/100.\n", 100/i);
+   printf("Skor: %d\n", 100/i);
+
+   return 100/i;
 }

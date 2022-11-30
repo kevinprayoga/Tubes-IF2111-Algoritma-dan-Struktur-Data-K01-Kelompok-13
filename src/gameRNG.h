@@ -8,8 +8,6 @@
 #include "./ADT/mesinkata.h"
 #include "function.h"
 
-void rng();
-
-int wordToInt(Word kata);
+int rng();
 
 #endif
