@@ -10,6 +10,7 @@
 #include "creategame.h"
 #include "minesweeper.h"
 #include "ADT/stack.h"
+#include "scoreboard.h"
 
 void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr);
 

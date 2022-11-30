@@ -23,12 +23,12 @@ void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr)
       system("cls");
       if (strcompare(val, "RNG"))
       {
-        rng();
+        InsertToScoreboard(l, arr, val, RNG());
         // mulai game RNG
       }
       else if (strcompare(val, "Diner DASH"))
       {
-        dinerdash();
+        InsertToScoreboard(l, arr, val, dinerdash());
         // mulai game diner dash
       }
       else if (strcompare(val, "HANGMAN"))
