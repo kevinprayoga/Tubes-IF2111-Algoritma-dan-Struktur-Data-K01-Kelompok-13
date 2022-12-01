@@ -5,17 +5,17 @@
 void CreateEmptySetChar(SetChar *S)
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
-/* Ciri Set kosong : count bernilai Nil */
+/* Ciri Set kosong : count bernilai Nilz */
 {
-    (*S).Count = Nil;
+    (*S).Count = Nilz;
 }
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptySetChar(SetChar S)
 /* Mengirim true jika Set S kosong*/
-/* Ciri Set kosong : count bernilai Nil */
+/* Ciri Set kosong : count bernilai Nilz */
 {
-    return (S.Count == Nil);
+    return (S.Count == Nilz);
 }
 
 boolean IsFullSetChar(SetChar S)
@@ -87,17 +87,17 @@ boolean IsMemberSetChar(SetChar S, infoChar Elmt){
 void CreateEmptySetStr(SetStr *S)
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
-/* Ciri Set kosong : count bernilai Nil */
+/* Ciri Set kosong : count bernilai Nilz */
 {
-    (*S).Count = Nil;
+    (*S).Count = Nilz;
 }
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptySetStr(SetStr S)
 /* Mengirim true jika Set S kosong*/
-/* Ciri Set kosong : count bernilai Nil */
+/* Ciri Set kosong : count bernilai Nilz */
 {
-    return (S.Count == Nil);
+    return (S.Count == Nilz);
 }
 
 boolean IsFullSetStr(SetStr S)
@@ -169,7 +169,7 @@ boolean IsMemberChar(char* Elmt, char cc){
     boolean found = false;
     int i = 0;
 
-    while (i < strlen(Elmt) && found == false){
+    while (i < strlength(Elmt) && found == false){
         if (Elmt[i] == cc){
             found = true;
         } else{
@@ -179,7 +179,7 @@ boolean IsMemberChar(char* Elmt, char cc){
     return found;
 }
 
-int strlen(char* Elmt){
+int strlength(char* Elmt){
     int i = 0;
     while (Elmt[i] != '\0'){
         i++;
@@ -191,13 +191,13 @@ boolean strcomp(char *Elmt1, char *Elmt2)
 {
   int i = 0;
   boolean found = false;
-  if (strlen(Elmt1) != strlen(Elmt2))
+  if (strlength(Elmt1) != strlength(Elmt2))
   {
     return found;
   }
   else
   {
-    while (!found && i < strlen(Elmt1))
+    while (!found && i < strlength(Elmt1))
     {
       if (Elmt1[i] != Elmt2[i])
       {

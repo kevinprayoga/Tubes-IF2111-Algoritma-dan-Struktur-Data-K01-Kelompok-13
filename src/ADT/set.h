@@ -7,7 +7,7 @@
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */
 
-#define Nil 0
+#define Nilz 0
 #define MaxEl 100
 
 typedef char* infoStr;
@@ -96,7 +96,7 @@ boolean IsMemberSetStr(SetStr S, infoStr Elmt);
 
 boolean IsMemberChar(char* Elmt, char cc);
 
-int strlen(char* Elmt);
+int strlength(char* Elmt);
 /* Mengembalikan panjang string s */
 
 boolean strcomp(char *Elmt1, char *Elmt2);
