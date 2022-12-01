@@ -44,7 +44,8 @@ int stringLength(char *str)
 
 char *wordToString(Word word)
 {
-  char *str = (char *)malloc(sizeof(char) * (word.Length));
+  // char *str = (char *)malloc(sizeof(char) * (word.Length));
+  char *str = (char *)malloc(sizeof(char) * (word.Length + 1));
   int i;
   for (i = 0; i < word.Length; i++)
   {
