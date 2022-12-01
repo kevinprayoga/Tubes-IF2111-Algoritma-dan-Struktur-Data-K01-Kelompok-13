@@ -6,6 +6,7 @@
 #include "../ADT/mesinkata.h"
 #include "../ADT/arraydin.h"
 #include "../ADT/mesinfile.h"
+#include "asciihangman.h"
 
 void loadkata(SetStr *S);
 
