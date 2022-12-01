@@ -1,27 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "startload.h"
-#include "function.h"
-#include "save.h"
-#include "ADT\queue.h"
-#include "ADT\mesinkata.h"
-#include "ADT\mesinkar.h"
-#include "ADT\arraydin.h"
-#include "ADT\mesinfile.h"
-#include "commandlain.h"
-#include "creategame.h"
-#include "deletegame.h"
-#include "help.h"
-#include "listgame.h"
-#include "queuegame.h"
-#include "quit.h"
-#include "save.h"
-#include "skipgame.h"
-#include "asciiart.h"
-#include "playgame.h"
-#include "dinerdash.h"
-#include "gameRNG.h"
-#include "minesweeper.h"
+// #include "startload.h"
+// #include "function.h"
+// #include "save.h"
+// #include "ADT\queue.h"
+// #include "ADT\mesinkata.h"
+// #include "ADT\mesinkar.h"
+// #include "ADT\arraydin.h"
+// #include "ADT\mesinfile.h"
+// #include "commandlain.h"
+// #include "creategame.h"
+// #include "deletegame.h"
+// #include "help.h"
+// #include "listgame.h"
+// #include "queuegame.h"
+// #include "quit.h"
+// #include "save.h"
+// #include "skipgame.h"
+// #include "asciiart.h"
+// #include "playgame.h"
+// #include "dinerdash.h"
+// #include "gameRNG.h"
+// #include "minesweeper.h"
+// #include "ADT\stack.h"
+// #include "history.h"
+// #include "ADT\listofmap.h"
+// #include "scoreboard.h"
+// #include "resethistory.h"
+// #include "resetscoreboard.h"
+// #include "ADT\stackTOH.h"
+// #include "towerofhanoi.h"
+#include "console.h"
 
 int main()
 {
@@ -34,6 +43,10 @@ int main()
   listgame = MakeArrayDin();
   Queue q;
   CreateQueue(&q);
+  Stack hist;
+  CreateEmptyStack(&hist);
+  ListMap listscoreboard;
+  CreateEmptyListMap(&listscoreboard);
   boolean initial = false, final = false;
   char *command;
   while (!initial)
@@ -45,6 +58,10 @@ int main()
       if (strcompare(command, "START"))
       {
         start(&listgame);
+        for (int i = 0; i < listgame.Neff; i++)
+        {
+          CreateEmptyMap(&listscoreboard);
+        }
         initial = true;
       }
       else
@@ -58,7 +75,7 @@ int main()
       char *string_second = secondstring(command);
       if (strcompare(string_first, "LOAD"))
       {
-        load(&listgame, string_second);
+        load(&listgame, &hist, &listscoreboard, string_second);
         if (!IsEmpty(listgame))
         {
           initial = true;
@@ -91,9 +108,13 @@ int main()
     printf("\n\t>> QUEUE GAME\n");
     printf("\n\t>> CREATE GAME\n");
     printf("\n\t>> DELETE GAME\n");
-    printf("\n\t>> SKIP GAME\n");
+    printf("\n\t>> SKIP GAME <n>\n");
     printf("\n\t>> PLAY GAME\n");
-    printf("\n\t>> SAVE\n");
+    printf("\n\t>> SCOREBOARD\n");
+    printf("\n\t>> RESET SCOREBOARD\n");
+    printf("\n\t>> HISTORY <n>\n");
+    printf("\n\t>> RESET HISTORY\n");
+    printf("\n\t>> SAVE <filename>\n");
     printf("\n\t>> HELP\n");
     printf("\n\t>> QUIT\n");
     printf("===================================================\n");
@@ -107,7 +128,7 @@ int main()
     {
       if (strcompare(command, "CREATE GAME"))
       {
-        createGame(&listgame);
+        createGame(&listgame, &listscoreboard);
       }
       else if (strcompare(command, "LIST GAME"))
       {
@@ -115,7 +136,7 @@ int main()
       }
       else if (strcompare(command, "DELETE GAME"))
       {
-        deleteGame(&listgame, q);
+        deleteGame(&listgame, &hist, &listscoreboard, q);
       }
       else if (strcompare(command, "QUEUE GAME"))
       {
@@ -123,7 +144,19 @@ int main()
       }
       else if (strcompare(command, "PLAY GAME"))
       {
-        playGame(&q);
+        playGame(&q, &hist, &listscoreboard, listgame);
+      }
+      else if (strcompare(command, "SCOREBOARD"))
+      {
+        scoreboard(listscoreboard, listgame);
+      }
+      else if (strcompare(command, "RESET SCOREBOARD"))
+      {
+        resetscoreboard(&listscoreboard, listgame);
+      }
+      else if (strcompare(command, "RESET HISTORY"))
+      {
+        resetHistory(&hist);
       }
       else if (strcompare(command, "HELP"))
       {
@@ -131,7 +164,7 @@ int main()
       }
       else if (strcompare(command, "QUIT"))
       {
-        Quit(listgame);
+        Quit(listgame, hist, listscoreboard);
         fgetchar();
         final = true;
       }
@@ -141,7 +174,18 @@ int main()
         char *string_second = secondstring(command);
         if (strcompare(string_first, "SAVE"))
         {
-          save(string_second, listgame);
+          save(string_second, listgame, hist, listscoreboard);
+        }
+        else if (strcompare(string_first, "HISTORY"))
+        {
+          if (isNum(string_second))
+          {
+            history(&hist, strToInt(string_second));
+          }
+          else
+          {
+            commandLain();
+          }
         }
         else
         {
@@ -157,7 +201,7 @@ int main()
         {
           if (isNum(string_third))
           {
-            SkipGame(&q, strToInt(string_third));
+            SkipGame(&q, hist, listscoreboard, listgame, strToInt(string_third));
           }
           else
           {
