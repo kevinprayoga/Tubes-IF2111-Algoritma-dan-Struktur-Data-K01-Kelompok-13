@@ -33,7 +33,7 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
 
     //menampilkan game yang tersedia apabila user ingin menambahkan game baru ke dalam antrian
     ListGame(&list_game);
-    printf("\n\nMasukkan nomor game yang ingin dimainkan: ");
+    printf("\nMasukkan nomor game yang ingin dimainkan: ");
     STARTWORD();
     int gameNum = 0;
     int j  = 0;
@@ -53,10 +53,10 @@ void QueueGame(Queue *Game ,ArrayDin list_game){
     }
     if (!found){
         if (gameNum > Length(list_game)){
-            printf("\nGame tidak tersedia.\n");
+            printf("Game tidak tersedia.\n");
         } else{
             enqueue(Game, list_game.A[gameNum-1]);
-            printf("\nGame berhasil dimasukkan ke dalam antrian.\n");
+            printf("Game berhasil dimasukkan ke dalam antrian.\n");
         }
     } else {
         commandLain();
