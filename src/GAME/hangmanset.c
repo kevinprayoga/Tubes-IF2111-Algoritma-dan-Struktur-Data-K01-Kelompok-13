@@ -1,6 +1,6 @@
 #include "hangmanset.h"
 #include "asciihangman.h"
-#include "function.h"
+#include "../console.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -123,7 +123,7 @@ void saveKata(){
     }
 }
 
-int menu(){
+int hangman(){
     int score = -1;
     boolean exit = false;
     opening1();
