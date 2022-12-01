@@ -11,7 +11,7 @@ char* intToAlas(int n);
 
 void printAlas(int n, int length);
 
-void show(Tower A, Tower B, Tower C, int n);
+void display(Tower A, Tower B, Tower C, int n);
 
 void printToMiddle(char* str, int length);
 
