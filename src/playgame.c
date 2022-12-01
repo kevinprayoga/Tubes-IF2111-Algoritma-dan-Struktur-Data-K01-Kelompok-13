@@ -34,6 +34,8 @@ void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr)
       else if (strcompare(val, "HANGMAN"))
       {
         // mulai game HANGMAN
+        /* Catatan untuk HANGMAN :
+        Kalo return scorenya -1, berarti user ga main hangman (either dia cuma nambahin kata di kamus atau langsung keluar dari game)*/
       }
       else if (strcompare(val, "TOWER OF HANOI"))
       {
