@@ -1,7 +1,7 @@
 /* File : listlinier.h */
 /* contoh ADT list berkait dengan representasi fisik pointer  */
-/* Representasi address dengan pointer */
-/* infotype adalah integer */
+/* Representasi addressLinked dengan pointer */
+/* infotypeLinked adalah integer */
 
 #ifndef listlinier_H
 #define listlinier_H
@@ -14,22 +14,22 @@
 #define true 1
 #define false 0
 
-#define Nil NULL
+#define Niln NULL
 
-typedef point infotype;
-typedef struct tElmtlist *address;
+typedef point infotypeLinked;
+typedef struct tElmtlist *addressLinked;
 typedef struct tElmtlist { 
-	infotype info;
-	address next;
+	infotypeLinked info;
+	addressLinked next;
 } ElmtList;
 typedef struct {
-	address First;
+	addressLinked First;
 } List;
 
 /* Definisi list : */
-/* List kosong : First(L) = Nil */
-/* Setiap elemen dengan address P dapat diacu Info(P), Next(P) */
-/* Elemen terakhir list : jika addressnya Last, maka Next(Last)=Nil */
+/* List kosong : First(L) = Niln */
+/* Setiap elemen dengan addressLinked P dapat diacu Info(P), Next(P) */
+/* Elemen terakhir list : jika addressLinkednya Last, maka Next(Last)=Niln */
 #define Info(P) (P)->info
 #define InfoX(P) ABSIS(Info(P))
 #define InfoY(P) ORDINAT(Info(P))
@@ -47,76 +47,76 @@ void CreateEmpty (List *L);
 /* F.S. Terbentuk list kosong */
 
 /****************** Manajemen Memori ******************/
-address Alokasi (infotype X);
-/* Mengirimkan address hasil alokasi sebuah elemen */
-/* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
-/* menghasilkan P, maka info(P)=X, Next(P)=Nil */
-/* Jika alokasi gagal, mengirimkan Nil */
-void Dealokasi (address *P);
+addressLinked Alokasi (infotypeLinked X);
+/* Mengirimkan addressLinked hasil alokasi sebuah elemen */
+/* Jika alokasi berhasil, maka addressLinked tidak Niln, dan misalnya */
+/* menghasilkan P, maka info(P)=X, Next(P)=Niln */
+/* Jika alokasi gagal, mengirimkan Niln */
+void Dealokasi (addressLinked *P);
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
-/* Melakukan dealokasi/pengembalian address P */
+/* Melakukan dealokasi/pengembalian addressLinked P */
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search (List L, infotype X);
+addressLinked Search (List L, infotypeLinked X);
 /* Mencari apakah ada elemen list dengan info(P)= X */
-/* Jika ada, mengirimkan address elemen tersebut. */
-/* Jika tidak ada, mengirimkan Nil */
+/* Jika ada, mengirimkan addressLinked elemen tersebut. */
+/* Jika tidak ada, mengirimkan Niln */
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
-void InsVFirst (List *L, infotype X);
+void InsVFirst (List *L, infotypeLinked X);
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
-void InsVLast (List *L, infotype X);
+void InsVLast (List *L, infotypeLinked X);
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen list di akhir: elemen terakhir yang baru */
 /* bernilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 
 /*** PENGHAPUSAN ELEMEN ***/
-void DelVFirst (List *L, infotype *X);
+void DelVFirst (List *L, infotypeLinked *X);
 /* I.S. List L tidak kosong  */
 /* F.S. Elemen pertama list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen pertama di-dealokasi */
-void DelVLast (List *L, infotype *X);
+void DelVLast (List *L, infotypeLinked *X);
 /* I.S. list tidak kosong */
 /* F.S. Elemen terakhir list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen terakhir di-dealokasi */
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
 /*** PENAMBAHAN ELEMEN BERDASARKAN ALAMAT ***/
-void InsertFirstList (List *L, address P);
+void InsertFirstList (List *L, addressLinked P);
 /* I.S. Sembarang, P sudah dialokasi  */
-/* F.S. Menambahkan elemen ber-address P sebagai elemen pertama */
-void InsertAfter (List *L, address P, address Prec);
+/* F.S. Menambahkan elemen ber-addressLinked P sebagai elemen pertama */
+void InsertAfter (List *L, addressLinked P, addressLinked Prec);
 /* I.S. Prec pastilah elemen list dan bukan elemen terakhir, */
 /*      P sudah dialokasi  */
 /* F.S. Insert P sebagai elemen sesudah elemen beralamat Prec */
-void InsertLastList (List *L, address P);
+void InsertLastList (List *L, addressLinked P);
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
 
 /*** PENGHAPUSAN SEBUAH ELEMEN ***/
-void DelFirst (List *L, address *P);
+void DelFirst (List *L, addressLinked *P);
 /* I.S. List tidak kosong */
 /* F.S. P adalah alamat elemen pertama list sebelum penghapusan */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* First element yg baru adalah suksesor elemen pertama yang lama */
-void DelP (List *L, infotype X);
+void DelP (List *L, infotypeLinked X);
 /* I.S. Sembarang */
-/* F.S. Jika ada elemen list beraddress P, dengan info(P)=X  */
+/* F.S. Jika ada elemen list beraddressLinked P, dengan info(P)=X  */
 /* Maka P dihapus dari list dan di-dealokasi */
 /* Jika tidak ada elemen list dengan info(P)=X, maka list tetap */
 /* List mungkin menjadi kosong karena penghapusan */
-void DelLast (List *L, address *P);
+void DelLast (List *L, addressLinked *P);
 /* I.S. List tidak kosong */
 /* F.S. P adalah alamat elemen terakhir list sebelum penghapusan  */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* Last element baru adalah predesesor elemen terakhir yg lama, */
 /* jika ada */
-void DelAfter (List *L, address *Pdel, address Prec);
+void DelAfter (List *L, addressLinked *Pdel, addressLinked Prec);
 /* I.S. List tidak kosong. Prec adalah anggota list  */
 /* F.S. Menghapus Next(Prec): */
 /*      Pdel adalah alamat elemen list yang dihapus  */
@@ -132,14 +132,14 @@ int NbElmt (List L);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 
 /*** Prekondisi untuk Max/Min/rata-rata : List tidak kosong ***/
-infotype Max (List L);
+infotypeLinked Max (List L);
 /* Mengirimkan nilai info(P) yang maksimum */
-address AdrMax (List L);
-/* Mengirimkan address P, dengan info(P) yang bernilai maksimum */
-infotype Min (List L);
+addressLinked AdrMax (List L);
+/* Mengirimkan addressLinked P, dengan info(P) yang bernilai maksimum */
+infotypeLinked Min (List L);
 /* Mengirimkan nilai info(P) yang minimum */
-address AdrMin (List L);
-/* Mengirimkan address P, dengan info(P) yang bernilai minimum */
+addressLinked AdrMin (List L);
+/* Mengirimkan addressLinked P, dengan info(P) yang bernilai minimum */
 float Average (List L);
 /* Mengirimkan nilai rata-rata info(P) */
 
