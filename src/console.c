@@ -247,6 +247,7 @@ void customGame(ListMap *L, ArrayDin arr, ElType gameName)
 
 void createGame(ArrayDin *list_game, ListMap *L)
 {
+  currentWord.Length = 0;
   printf("\nMasukkan nama game yang akan ditambahkan: ");
   STARTWORD();
   int j = 0;
@@ -272,7 +273,7 @@ void createGame(ArrayDin *list_game, ListMap *L)
   }
   else
   {
-    if (strcompare(cc2, "CREATE GAME"))
+    if (currentWord.Length == 0)
     {
       commandLain();
     }
@@ -291,12 +292,13 @@ void deleteGame(ArrayDin *arr, Stack *s, ListMap *l, Queue q)
    F.S. : Menghapus game dari array
    Proses : Menghapus game dari array */
 {
+  currentWord.Length = 0;
   int num;
   ElType val;
   ListGame(arr);
   printf("\nMasukkan nomor game yang akan dihapus: ");
   STARTWORD();
-  if (strcompare(wordToString(currentWord), "DELETE GAME"))
+  if (currentWord.Length == 0)
   {
     commandLain();
   }
@@ -393,6 +395,7 @@ void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr)
         int score = hangman();
         if (score != -1)
         {
+          printf("\nSkor: %d\n", score);
           InsertToScoreboard(l, arr, val, score);
         }
         // mulai game HANGMAN
@@ -404,6 +407,7 @@ void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr)
       }
       else if (strcompare(val, "SNAKE ON METEOR"))
       {
+        InsertToScoreboard(l, arr, val, snekOnMeteor());
         // mulai game SNAKE ON METEOR
       }
       else if (strcompare(val, "Minesweeper"))
@@ -430,6 +434,7 @@ void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr)
 // SCOREBOARD
 void InsertToScoreboard(ListMap *L, ArrayDin arr, ElType gameName, valuetype score)
 {
+  currentWord.Length = 0;
   int num = GetNum(arr, gameName);
   printf("Nama: ");
   char *name = readQ();
@@ -439,7 +444,7 @@ void InsertToScoreboard(ListMap *L, ArrayDin arr, ElType gameName, valuetype sco
     printf("\nNama: ");
     name = readQ();
   }
-  if (stringLength(name) > 13 || strcompare(name, "PLAY GAME"))
+  if (stringLength(name) > 13 || currentWord.Length == 0)
   {
     printf("\nNama terlalu panjang atau tidak valid, silahkan ketik ulang!\n");
     InsertToScoreboard(L, arr, gameName, score);
@@ -489,6 +494,7 @@ void scoreboard(ListMap L, ArrayDin arr)
 // RESET SCOREBOARD
 void resetscoreboard(ListMap *L, ArrayDin arr)
 {
+  currentWord.Length = 0;
   printf("\nDAFTAR SCOREBOARD:\n");
   printf("0. ALL\n");
   for (int i = 0; i < Length(arr); i++)
@@ -498,7 +504,7 @@ void resetscoreboard(ListMap *L, ArrayDin arr)
 
   printf("\nSCOREBOARD YANG INGIN DIHAPUS: ");
   char *strnum = readQ();
-  if (strcompare(strnum, "RESET SCOREBOARD"))
+  if (currentWord.Length == 0)
   {
     commandLain();
   }
@@ -608,7 +614,7 @@ void resetHistory(Stack *s)
     }
     else
     {
-      printf("Command tidak dikenali, silakan masukan command yang valid.\n");
+      commandLain();
       resetHistory(s);
     }
   }
@@ -716,7 +722,7 @@ void Quit(ArrayDin list, Stack s, ListMap l)
   }
   else
   {
-    printf("Command tidak dikenali, silakan masukan command yang valid.\n");
+    commandLain();
     Quit(list, s, l);
   }
 }
