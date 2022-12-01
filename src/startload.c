@@ -92,7 +92,7 @@ void load(ArrayDin *arr, Stack *s, ListMap *L, char *filename)
       }
       el++;
     }
-    printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
+    printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n");
   }
   else
   {
