@@ -22,6 +22,14 @@ void loadkata(SetStr *S){
     }
 }
 
+void printSet(SetChar S){
+    for (int i = 0; i < S.Count; i++)
+    {
+        printf("%c", S.Elements[i]);
+    }
+    printf("\n");
+}
+
 void hangmanset(int* score){
     srand(time(0));
     int guessctr = 0;
@@ -29,6 +37,7 @@ void hangmanset(int* score){
     char* tebakan;
     SetChar guess;
     SetStr kata;
+    *score = 0;
     CreateEmptySetStr(&kata);
     loadkata (&kata);
     while (!IsEmptySetStr(kata) && guessctr < 10){
@@ -40,7 +49,9 @@ void hangmanset(int* score){
             if (IsEmptySetChar(guess)){
                 printf("Tebakan sebelumnya: -\n");
             } else {
-                printf("Tebakan sebelumnya: %c\n", guess.Elements[guess.Count-1]);
+                printf("Tebakan sebelumnya: ");
+                printSet(guess);
+                printf("\n");
             }
             for (int i = 0; i < strlen(tebakan); i++){
                 if (IsMemberSetChar(guess, tebakan[i])){
@@ -81,7 +92,7 @@ void hangmanset(int* score){
     if (guessctr == 10){
         printf("Kamu gagal menebak kata. Kata tebakan adalah %s.\n", tebakan);
     }
-    printf("Game Over! Skor anda = %d\n", *score);
+    printf("\nGame Over!\n\nSkor anda = %d\n", *score);
 }
 
 void saveKata(){
@@ -90,28 +101,30 @@ void saveKata(){
     int i;
     CreateEmptySetStr(&listKata);
     loadkata (&listKata);
+    printf("\nKetik 'q' jika ingin membatalkan.\n");
     printf("Masukkan kata baru : ");
     STARTWORD();
-
     while(IsMemberSetStr(listKata, wordToString(currentWord)) == true){
         printf("\nKata tidak valid atau sudah tersedia!\n");
         printf("Masukkan kata baru : ");
         STARTWORD();
     }
-    InsertSetStr(&listKata, wordToString(currentWord));
-    file = fopen("../data/hangman.txt", "w");
-    fprintf(file, "%d\n", listKata.Count);
-    for (i = 0; i < listKata.Count-1; i++)
-    {
-        fprintf(file, "%s\n", listKata.Elements[i]);
+    if (!(currentWord.Length == 1 && currentWord.TabWord[0] == 'q')){
+        InsertSetStr(&listKata, wordToString(currentWord));
+        file = fopen("../data/hangman.txt", "w");
+        fprintf(file, "%d\n", listKata.Count);
+        for (i = 0; i < listKata.Count-1; i++)
+        {
+            fprintf(file, "%s\n", listKata.Elements[i]);
+        }
+        fprintf(file, "%s", listKata.Elements[i]);
+        printf("Kata %s berhasil dimasukkan.\n", wordToString(currentWord));
+        fclose(file);
     }
-    fprintf(file, "%s", listKata.Elements[i]);
-    printf("Kata %s berhasil dimasukkan.\n", wordToString(currentWord));
-    fclose(file);
 }
 
 int menu(){
-    int score = 0;
+    int score = -1;
     boolean exit = false;
     opening1();
     mainhangman();

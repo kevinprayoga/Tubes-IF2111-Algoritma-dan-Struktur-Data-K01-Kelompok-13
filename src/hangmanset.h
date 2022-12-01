@@ -5,6 +5,7 @@
 #include "ADT/mesinfile.h"
 
 void loadkata(SetStr *S);
+void printSet(SetChar S);
 void hangmanset(int* score);
 void saveKata();
 int menu();
