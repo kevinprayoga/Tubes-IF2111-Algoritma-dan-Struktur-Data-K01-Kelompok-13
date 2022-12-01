@@ -393,7 +393,6 @@ void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr)
         int score = hangman();
         if (score != -1)
         {
-          printf("Skor: %d\n", score);
           InsertToScoreboard(l, arr, val, score);
         }
         // mulai game HANGMAN
@@ -447,7 +446,6 @@ void InsertToScoreboard(ListMap *L, ArrayDin arr, ElType gameName, valuetype sco
   }
   else if (stringLength(name) <= 13 && stringLength(name) > 0)
   {
-    printf("%s %d %d\n", name, score, num);
     InsertMap(L, name, score, num);
     printf("\nNama anda berhasil dimasukkan ke scoreboard!\n");
   }
