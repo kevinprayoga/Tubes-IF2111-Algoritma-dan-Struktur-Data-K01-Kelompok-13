@@ -391,7 +391,6 @@ void displayField(List snake, point meteor, point food, point crater, point obst
 int snekOnMeteor()
 {
     // KAMUS
-    currentWord.Length = 0;
     List snake;
     point meteor, crater, obstacle1, obstacle2, food;
     boolean dead = false;
@@ -455,6 +454,7 @@ int snekOnMeteor()
         {
             printf("Input tidak valid!\nSilakan masukkan command yang lain.\n");
         }
+        currentWord.Length = 0;
     }
 
     displayField(snake, meteor, food, crater, obstacle1, obstacle2);
