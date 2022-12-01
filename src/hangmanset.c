@@ -124,7 +124,7 @@ int menu(){
         } else if (currentWord.TabWord[0]  == '2' && currentWord.Length == 1){
             saveKata();
         } else if (currentWord.TabWord[0]  == '3' && currentWord.Length == 1){
-            printf("Selamat tinggal...\n");
+            keluarhangman();
             exit = true;
         } else{
             printf("Masukkan tidak valid!\n");
