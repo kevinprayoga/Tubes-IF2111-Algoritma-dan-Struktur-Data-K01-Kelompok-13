@@ -71,7 +71,7 @@ int main()
     {
         printf("This letter is not in this string\n");
     }
-    char* katatest, katatest2;
+    infoStr katatest, katatest2;
     int lengthkata;
     katatest = "pillow";
     katatest2 = "pillowy";
@@ -85,4 +85,5 @@ int main()
     {
         printf("These words are the same!!\n");
     }
+    return 0;
 }
