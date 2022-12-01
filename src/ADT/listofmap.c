@@ -1,6 +1,6 @@
 #include "listofmap.h"
 #include <stdio.h>
-#include "../function.h"
+#include "../console.h"
 
 /* ********* Prototype ********* */
 
