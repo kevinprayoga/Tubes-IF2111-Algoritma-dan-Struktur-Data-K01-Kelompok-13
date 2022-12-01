@@ -10,7 +10,7 @@ void history(Stack *s, int command)
   }
   else
   {
-    printf("\nBerikut adalah daftar game yang telah dimainkan\n");
+    printf("\nBerikut adalah daftar game yang telah dimainkan:\n");
     printStack(s, command);
   }
 }
