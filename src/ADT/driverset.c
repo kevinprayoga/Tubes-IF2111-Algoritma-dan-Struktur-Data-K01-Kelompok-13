@@ -75,7 +75,7 @@ int main()
     int lengthkata;
     katatest = "pillow";
     katatest2 = "pillowy";
-    lengthkata = strlen(katatest);
+    lengthkata = strlength(katatest);
     printf("%d\n",lengthkata);
     if (strcomp(katatest,katatest2))
     {

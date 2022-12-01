@@ -1,5 +1,4 @@
 #include "hangmanset.h"
-#include "asciihangman.h"
 #include "../console.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,7 +52,7 @@ void hangmanset(int* score){
                 printSet(guess);
                 printf("\n");
             }
-            for (int i = 0; i < strlen(tebakan); i++){
+            for (int i = 0; i < strlength(tebakan); i++){
                 if (IsMemberSetChar(guess, tebakan[i])){
                     printf("%c ", tebakan[i]);
                 } else {
@@ -77,7 +76,7 @@ void hangmanset(int* score){
 
             printf("\n");
             currentWord.Length = 0;
-            for (int i = 0; i < strlen(tebakan); i++){
+            for (int i = 0; i < strlength(tebakan); i++){
                 if (! IsMemberSetChar(guess, tebakan[i])){
                     gotright = false;
                 }
@@ -138,10 +137,12 @@ int hangman(){
             saveKata();
         } else if (currentWord.TabWord[0]  == '3' && currentWord.Length == 1){
             keluarhangman();
+            score = 0;
             exit = true;
         } else{
             printf("Masukkan tidak valid!\n");
         }
     }
+    printf("Skor: %d\n", score);
     return score;
 }
