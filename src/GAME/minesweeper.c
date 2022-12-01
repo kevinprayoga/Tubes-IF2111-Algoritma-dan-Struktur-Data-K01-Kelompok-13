@@ -401,6 +401,7 @@ int playmine()
 	int init_row, init_col, init_seed;
 	int input_row, input_col;
 	char command;
+	int skor;
 	boolean game_over;
 	boolean eop;
 	boolean retry = true;
@@ -522,19 +523,19 @@ int playmine()
 
 		if (eop)
 		{
-			int skor = score(field);
+			skor = score(field);
 			open_all(field);
 			print_field(field);
 			printf("Anda menang!\n");
-			printf("Skor Anda: %d\n", skor);
+			printf("Skor: %d\n", skor);
 		}
 		else
 		{
-			int skor = score(field);
+			skor = score(field);
 			open_all_mines(field);
 			print_field(field);
 			printf("Anda kalah!\n");
-			printf("Skor Anda: %d\n", skor);
+			printf("Skor: %d\n", skor);
 		}
 
 		printf("Bermain lagi? (y / n): ");
@@ -546,5 +547,5 @@ int playmine()
 	printf("Selamat tinggal!\n");
 	free(field);
 
-	return 0;
+	return skor;
 }

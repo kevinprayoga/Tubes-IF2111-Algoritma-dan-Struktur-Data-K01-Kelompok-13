@@ -158,6 +158,5 @@ int hangman(){
             printf("Masukkan tidak valid!\n");
         }
     }
-    printf("Skor: %d\n", score);
     return score;
 }
