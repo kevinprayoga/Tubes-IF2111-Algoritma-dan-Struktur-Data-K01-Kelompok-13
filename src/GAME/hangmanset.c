@@ -86,6 +86,7 @@ void hangmanset(int* score){
             if (IsMemberChar(tebakan, convert(currentWord.TabWord[0]))){
                 InsertSetChar(&guess, convert(currentWord.TabWord[0]));
             } else {
+                InsertSetChar(&guess, convert(currentWord.TabWord[0]));
                 guessctr++;
             }
 
