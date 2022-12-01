@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-#include "function.h"
+#include "console.h"
 #include "boolean.h"
 #include "ADT/mesinkata.h"
 #include "ADT/point.h"
@@ -34,7 +34,7 @@ void generateHead(point *obstacle1, point *obstacle2, List *snake);
    I.S. Field memiliki 2 obstacle, 0 snake.
    F.S. Field memiliki 2 obstacle, 1 snake yang berukurang 3 unit. */
 
-void growSnake(List *snake, point *obstacle1, point *obstacle2, point *crater, point *meteor, boolean *dead, int *score);
+void growSnake(List *snake, point *obstacle1, point *obstacle2, point *crater, point *meteor, boolean *dead);
 /* Menumbuhkan ekor snake
    I.S. ekor belum tumbuh
    F.S. Jika bisa, ekor tumbuh. Jika tidak bisa, snake mati:( skor dihitung dari jumlah elemen awal */
@@ -61,7 +61,7 @@ char *inputCmd();
 boolean isCollideMeteor(List snake, point meteor);
 /* Jika head menabrak meteor atau meteor jatuh pada tubuh snek, fungsi akan return true */
 
-void collideMeteor(List snake, point *meteor, boolean *dead, int *score);
+void collideMeteor(List snake, point *meteor, boolean *dead);
 /* I.S. Snake dipastikan menabrak meteor, baik pada head maupun body.
    F.S. Tubuh snake berkurang 1, jika menabrak pada kepala snake akan mati.
         Skor berkurang 2 ((NbElmt(snake)-1) * 2) */
@@ -69,15 +69,18 @@ void collideMeteor(List snake, point *meteor, boolean *dead, int *score);
 boolean isCollideObstacle(List snake, point obstacle1, point obstacle2);
 /* Jika snake menabrak obstacle, fungsi akan return true */
 
-void collideObstacle(List snake, point *obstacle1, point *obstacle2, boolean *dead, int *score);
+void collideObstacle(List snake, point *obstacle1, point *obstacle2, boolean *dead);
 /* I.S. Snake dipastikan menabrak obstacle 
    F.S. Game over. Panjang tubuh snake berkurang 1 (yang nabrak akan hilang).
         Skor berkurang 2 ((NbElmt(snake)-1) * 2) */
 
+boolean cantMove(List snake, point *obstacle1, point *obstacle2, point *crater, point *meteor, boolean *dead);
+/* Mengembalikan nilai true jika head tidak bisa pergi ke manapun :( */
+
 void displayField(List snake, point meteor, point food, point crater, point obstacle1, point obstacle2);
 /* Menampilkan map */
 
-int snakeOnMeteor();
+int snekOnMeteor();
 /* Main gem snek on meteor!＞﹏＜ */
 
 #endif
