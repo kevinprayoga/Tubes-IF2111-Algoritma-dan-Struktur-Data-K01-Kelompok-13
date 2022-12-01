@@ -1,9 +1,9 @@
 #ifndef TOH_
 #define TOH_
 
-#include "ADT/stackTOH.h"
-#include "function.h"
-#include "ADT/mesinkata.h"
+#include "../ADT/stackTOH.h"
+#include "../console.h"
+#include "../ADT/mesinkata.h"
 
 char* intToHanoi(int n);
 

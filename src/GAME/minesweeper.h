@@ -1,7 +1,7 @@
 #ifndef _MINESWEEPER_h
 #define _MINESWEEPER_h
 
-#include "boolean.h"
+#include "../boolean.h"
 
 #define undef -1
 #define RESET "\033[0m"

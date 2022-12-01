@@ -3,8 +3,8 @@
 #include <time.h>
 #include <math.h>
 #include "minesweeper.h"
-#include "ADT/mesinkar.h"
-#include "function.h"
+#include "../ADT/mesinkar.h"
+#include "../console.h"
 
 minefield *create_field(int row, int col, int seed)
 {

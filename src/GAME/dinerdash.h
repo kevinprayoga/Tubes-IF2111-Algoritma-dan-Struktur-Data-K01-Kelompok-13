@@ -1,9 +1,9 @@
-#include "./ADT/queue_dinerdash.h"
+#include "../ADT/queue_dinerdash.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-#include "function.h"
+#include "../console.h"
 
 #ifndef DINER_DASH_H
 #define DINER_DASH_H

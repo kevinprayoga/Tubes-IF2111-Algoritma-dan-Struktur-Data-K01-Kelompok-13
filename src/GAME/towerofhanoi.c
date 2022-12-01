@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "towerofhanoi.h"
-#include "function.h"
 
 char* intToHanoi(int n){
     if (n == Nil){
