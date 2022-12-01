@@ -18,7 +18,7 @@ void resetHistory(Stack *s)
   }
   else if (strcompare(command, "TIDAK") || strcompare(command, "tidak"))
   {
-    printf("\nHistory tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan\n");
+    printf("\nHistory tidak jadi di-reset. Berikut adalah daftar Game yang telah dimainkan:\n");
     int num = countStack(*s);
     printStack(s, num);
   }
