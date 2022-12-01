@@ -1,4 +1,4 @@
-<h1 align="center"> Tubes Alstrukdat <h4 align="center">
+<h1 align="center"> TUBES ALSTRUKDAT <h4 align="center">
 K01_Kelompok 13 <h4> <h1>
 
 ## Deskripsi
@@ -27,13 +27,17 @@ K01_Kelompok 13 <h4> <h1>
 
 > Diner DASH
 
+> HANGMAN
+
+> TOWER OF HANOI
+
+> SNAKE ON METEOR
+
 > Minesweeper
 
+> Alstrokedungeon
+
 ## Directory
-
-📦README.MD 
-
-📦.vscode 
 
 📦bin
 
@@ -42,67 +46,40 @@ K01_Kelompok 13 <h4> <h1>
     
 📦data
 
-    ┗📜config.txt 
+    ┣📜config.txt 
+    ┣📜hangman.txt 
+    ┗📜savefile.txt 
     
 📦docs
 
-    ┣📜IF2111_Form Asistensi TB01_01_13.docx.pdf
-    ┗📜IF2111_TB1_01_13.docx.pdf  
+    ┣📜IF2111_TB1_01_13.docx.pdf  
+    ┗📜IF2111_TB2_01_13.docx.pdf  
     
 📦src
 
-    ┣📜asciiart.c
-    ┣📜asciiart.h
+    ┣📂ADT
+    ┃ ┣📜arraydin.c
+    ┃ ┣📜arraydin.h
+    ┃ ┣📜driverarraydin.c
+    ┃ ┣📜drivermesinfile.c
+    ┃ ┣📜drivermesinkarkata.c
+    ┃ ┣📜driverqueue_dinerdash.c
+    ┃ ┣📜driverqueue.c
+    ┃ ┣📜mesinfile.c
+    ┃ ┣📜mesinfile.h
+    ┃ ┣📜mesinkar.c
+    ┃ ┣📜mesinkar.h
+    ┃ ┣📜mesinkata.c
+    ┃ ┣📜mesinkata.h
+    ┃ ┣📜queue_dinerdash.c
+    ┃ ┣📜queue_dinerdash.h
+    ┃ ┣📜queue.c
+    ┃ ┗📜queue.h
     ┣📜boolean.h
-    ┣📜commandlain.c
-    ┣📜commandlain.h
-    ┣📜creategame.c
-    ┣📜creategame.h
-    ┣📜deletegame.c
-    ┣📜deletegame.h
-    ┣📜dinerdash.c
-    ┣📜dinerdash.h
-    ┣📜function.c
-    ┣📜function.h
-    ┣📜gameRNG.c
-    ┣📜gameRNG.h
-    ┣📜help.c
-    ┣📜help.h
-    ┣📜listgame.c
-    ┣📜listgame.h
-    ┣📜main.c
-    ┣📜minesweeper.c
-    ┣📜minesweeper.h
-    ┣📜playgame.c
-    ┣📜playgame.h
-    ┣📜queuegame.c
-    ┣📜queuegame.h
-    ┣📜quit.c
-    ┣📜quit.h
-    ┣📜save.c
-    ┣📜save.h
-    ┣📜skipgame.c
-    ┣📜skipgame.h
-    ┣📜startload.c
-    ┣📜startload.h
-    ┗📂ADT
-     ┃ ┣📜arraydin.c
-     ┃ ┣📜arraydin.h
-     ┃ ┣📜driverarraydin.c
-     ┃ ┣📜drivermesinfile.c
-     ┃ ┣📜drivermesinkarkata.c
-     ┃ ┣📜driverqueue_dinerdash.c
-     ┃ ┣📜driverqueue.c
-     ┃ ┣📜mesinfile.c
-     ┃ ┣📜mesinfile.h
-     ┃ ┣📜mesinkar.c
-     ┃ ┣📜mesinkar.h
-     ┃ ┣📜mesinkata.c
-     ┃ ┣📜mesinkata.h
-     ┃ ┣📜queue_dinerdash.c
-     ┃ ┣📜queue_dinerdash.h
-     ┃ ┣📜queue.c
-     ┗ ┗📜queue.h
+    ┣📜console.c
+    ┣📜console.h
+
+📦README.MD 
 
 ## How to Play
 
