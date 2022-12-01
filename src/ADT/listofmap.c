@@ -1,5 +1,6 @@
 #include "listofmap.h"
 #include <stdio.h>
+#include "../function.h"
 
 /* ********* Prototype ********* */
 
@@ -57,7 +58,7 @@ valuetype Value(ListMap L, keytype k, address num)
   boolean found = false;
   while ((i < L.list[num - 1].Count) && !(found))
   {
-    if (L.list[num - 1].Elements[i].Key == k)
+    if (strcompare(k, L.list[num - 1].Elements[i].Key))
     {
       found = true;
     }
