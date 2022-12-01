@@ -8,6 +8,10 @@
 #include "../ADT/mesinfile.h"
 #include "asciihangman.h"
 
+char convert(char c);
+
+boolean isChar(char c);
+
 void loadkata(SetStr *S);
 
 void printSet(SetChar S);

@@ -4,6 +4,22 @@
 #include <stdlib.h>
 #include <time.h>
 
+char convert(char c){
+    if (c >= 'a' && c <= 'z'){
+        return c - 32;
+    } else {
+        return c;
+    }
+}
+
+boolean isChar(char c){
+    if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 void loadkata(SetStr *S){
     STARTFILE("../data/hangman.txt");
     ADVWORDFILE();
@@ -62,15 +78,14 @@ void hangmanset(int* score){
             printf("\nKesempatan: %d\n", 10-guessctr);
             printf("Masukkan tebakan: ");
             STARTWORD();
-            while (currentWord.Length != 1 || IsMemberSetChar(guess, currentWord.TabWord[0])){
+            while (currentWord.Length != 1 || IsMemberSetChar(guess, convert(currentWord.TabWord[0])) || !isChar(currentWord.TabWord[0])){
                 printf("Karakter tidak valid!\n");
                 printf("\nMasukkan tebakan: ");
                 STARTWORD();
             }
-            if (IsMemberChar(tebakan, currentWord.TabWord[0])){
-                InsertSetChar(&guess, currentWord.TabWord[0]);
+            if (IsMemberChar(tebakan, convert(currentWord.TabWord[0]))){
+                InsertSetChar(&guess, convert(currentWord.TabWord[0]));
             } else {
-                InsertSetChar(&guess, currentWord.TabWord[0]);
                 guessctr++;
             }
 
