@@ -25,7 +25,7 @@ boolean IsFullTower(Tower S){
 /* Mengirim true jika tabel penampung nilai elemen Tower penuh */
 
 /* ************ Menambahkan sebuah elemen ke Tower ************ */
-void PushTower(Tower * S, infotype X){
+void PushTower(Tower * S, disk X){
     if (IsEmptyTower(*S)){
         Top(*S) = 0;
     } else {
@@ -38,7 +38,7 @@ void PushTower(Tower * S, infotype X){
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Tower ************ */
-void PopTower(Tower * S, infotype* X){
+void PopTower(Tower * S, disk* X){
     *X = InfoTop(*S);
     InfoTop(*S) = Nil;
     if (Top(*S) == 0){
