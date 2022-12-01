@@ -6,6 +6,8 @@
 #include "ADT/mesinkar.h"
 #include "ADT/dungeon_tree.h"
 
+#define undef -1
+
 Tree create_map(int level, int difficulty);
 
 void startArt(char* filename);
