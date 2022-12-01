@@ -3,7 +3,6 @@
 #include <time.h>
 #include <math.h>
 #include "alstrokedungeon.h"
-#include "ADT/mesinkar.h"
 #include "function.h"
 
 Tree create_map(int level, int difficulty){
@@ -17,48 +16,73 @@ Tree create_map(int level, int difficulty){
 
     Tree p;
     Address l, m, r;
-    for(i = 0; i <= level, i++){
-        l = newNode(0);
-        m = newNode(0);
-        r = newNode(0);
-        createTree(&p, 0, l, m, r);
+	ListOfNode arrLevel[level];
+	if(rand() % 100 < difficulty * 10){
+    	l = newNode(0);
 	}
-    assignInfo();
-	return map;
+    if(rand() % 100 < difficulty * 10){
+    	m = newNode(0);
+	}
+	if(rand() % 100 < difficulty * 10){
+       	r = newNode(0);
+	}
+    p = createTree(0, l, m, r, level, difficulty);
+
+	for(int i = 1; i <= level; i++){
+		makeListLevel(&(arrLevel[i-1]), &p, i);
+	}
+	addr loc;
+	for(int i = 0; i < level; i++){
+		loc = arrLevel[i];
+		while(loc != Nil){
+			Info(Elmt(loc)) = rand() % difficulty;
+			loc = Next(loc);
+		}
+	}
+	return p;
 }
 
-void print_map(Tree *p){
+void startArt(char* filename){
+    pita = fopen(filename, "r");
+    ADV();
+}
+
+void printArt(char* filename){
+	startArt(filename);
+	while(currentChar != ':'){
+		printf("%c", currentChar);
+		ADV();
+	}
+	fclose(filename, "r");
+}
+
+void print_dungeon(Tree *p){
 	/*
 	 * Menampilkan peta dungeon ke layar
-	 * input berupa tree
+	 * input berupa tree tidak kosong
 	 */
-	int i, j;
-	// bagian atas board
-	for (i = 0; i < field->col; i++){
-		if (i == 0){
-			printf("  y \t  %d ", i);
-		}
-		else if (i < 10){
-			printf(" %d ", i);
-		}
-		else{
-			printf("%d ", i);
-		}
-	}
-	printf("\nx\n\n");
+	switch(*p)
+		case isOneElmt(*p):
+			printArt("portal.txt");
+		case isNoneLeft(*p) && isNoneMid(*p):
+			printArt("R.txt");
+		case isNoneLeft(*p) && isNoneRight(*p):
+			printArt("M.txt");
+		case isNoneMid(*p) && isNoneRight(*p):
+			printArt("L.txt");
+		case isNoneLeft(*p):
+			printArt("MR.txt");
+		case isNoneMid(*p):
+			printArt("LR.txt");
+		case isNoneRight(*p):
+			printArt("LM.txt");
+		case isTerner(*p):
+			printArt("LMR.txt");
+}
 
-	for (i = 0; i < field->row; i++)
-	{
-		for (j = 0; j < field->col; j++)
-		{
-			// bagian kiri board
-			if (j == 0)
-			{
-				printf("%d\t ", i);
-			}
-			int idx = get_index(field, i, j);
-			print_cell(field->cells[idx]);
-		}
-		printf("\n");
-	}
+int playdungeon(){
+	int seed_lvl, seed_diff;
+	int input_comm;
+	printArt("title.txt");
+
 }
