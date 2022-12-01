@@ -152,7 +152,6 @@ int hangman(){
             saveKata();
         } else if (currentWord.TabWord[0]  == '3' && currentWord.Length == 1){
             keluarhangman();
-            score = 0;
             exit = true;
         } else{
             printf("Masukkan tidak valid!\n");
