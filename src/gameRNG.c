@@ -28,7 +28,7 @@ int rng() {
         ans = wordToInt(currentWord);
    }
    printf("Ya, Tebakan adalah %d\n", rng);
-   printf("Skor: %d\n", 100/i);
+   printf("\nSkor: %d\n", 100/i);
 
    return 100/i;
 }
