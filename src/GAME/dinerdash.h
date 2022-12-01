@@ -1,12 +1,12 @@
+#ifndef DINER_DASH_H
+#define DINER_DASH_H
+
 #include "../ADT/queue_dinerdash.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
 #include "../console.h"
-
-#ifndef DINER_DASH_H
-#define DINER_DASH_H
 
 void show(QueueFood q1, QueueCook q2, int saldo);
 
