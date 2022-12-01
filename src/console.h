@@ -14,16 +14,17 @@
 #include "ADT\stack.h"
 #include "ADT\stackTOH.h"
 #include "ADT\listofmap.h"
-// #include "ADT\"
-// #include "ADT\"
-// #include "ADT\"
-// #include "ADT\"
-// #include "ADT\"
+// #include "ADT\listlinier.h"
+// #include "ADT\point.h"
+// #include "ADT\dungeon_tree.h"
+// #include "ADT\mesinkar_dungeon.h"
+#include "ADT\set.h"
 #include "GAME\gameRNG.h"
 #include "GAME\dinerdash.h"
 #include "GAME\minesweeper.h"
 #include "GAME\towerofhanoi.h"
-// #include "GAME\"
+#include "GAME\hangmanset.h"
+#include "GAME\asciihangman.h"
 // #include "GAME\"
 // #include "GAME\"
 #include "boolean.h"
@@ -48,8 +49,7 @@ void ListGame(ArrayDin *list_game);
 /*
 Menampilkan daftar game yang disediakan oleh sistem
 Prekondisi: list_game tidak mungkin kosong karena 5 game pada konfigurasi
-            pertama tidak dapat dihapus.
-*/
+            pertama tidak dapat dihapus. */
 
 // QUEUE GAME
 void QueueGame(Queue *Game, ArrayDin list_game);
@@ -69,8 +69,7 @@ void deleteGame(ArrayDin *arr, Stack *s, ListMap *l, Queue q);
 void SkipGame(Queue *Game, Stack s, ListMap l, ArrayDin arr, int command3);
 /*
 I.S: Queue game yang sudah memiliki urutan sesuai.
-F.S: Queue yang sudah diganti urutannya dan siap untuk dilakukan playgame.
-*/
+F.S: Queue yang sudah diganti urutannya dan siap untuk dilakukan playgame. */
 
 // PLAY GAME
 void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr);

@@ -390,6 +390,7 @@ void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr)
       }
       else if (strcompare(val, "HANGMAN"))
       {
+        InsertToScoreboard(l, arr, val, hangman());
         // mulai game HANGMAN
       }
       else if (strcompare(val, "TOWER OF HANOI"))
@@ -426,6 +427,7 @@ void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr)
 void InsertToScoreboard(ListMap *L, ArrayDin arr, ElType gameName, valuetype score)
 {
   int num = GetNum(arr, gameName);
+  printf("%d\n", score);
   printf("Nama: ");
   char *name = readQ();
   while (IsMemberMap(*L, name, num))
