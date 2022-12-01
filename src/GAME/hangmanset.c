@@ -107,7 +107,7 @@ void hangmanset(int* score){
     if (guessctr == 10){
         printf("Kamu gagal menebak kata. Kata tebakan adalah %s.\n", tebakan);
     }
-    printf("\nGame Over!\n\nSkor anda = %d\n", *score);
+    printf("\nGame Over!\n");
 }
 
 void saveKata(){

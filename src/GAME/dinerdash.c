@@ -455,6 +455,6 @@ int dinerdash()
         
     }
     printf("\nGAME OVER\n");
-    printf("Skor: %d\n", saldo);
+    printf("\nSkor: %d\n", saldo);
     return saldo;
 }
