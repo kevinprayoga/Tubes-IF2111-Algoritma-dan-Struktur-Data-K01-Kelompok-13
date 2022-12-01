@@ -84,7 +84,7 @@ void InsertMap(ListMap *L, keytype k, valuetype v, address num)
   if (!IsMemberMap(*L, k, num))
   {
     int i = 0;
-    while (v <= L->list[num - 1].Elements[i].Value)
+    while (v <= L->list[num - 1].Elements[i].Value && i < L->list[num - 1].Count)
     {
       i++;
     }
