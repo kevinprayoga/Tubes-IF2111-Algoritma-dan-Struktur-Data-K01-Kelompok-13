@@ -7,6 +7,7 @@
 #include "ADT\arraydin.h"
 #include "function.h"
 #include "scoreboard.h"
+#include "commandlain.h"
 
 #ifndef CREATE_GAME_
 #define CREATE_GAME_
