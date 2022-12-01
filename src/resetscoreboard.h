@@ -4,7 +4,7 @@
 #include "ADT\listofmap.h"
 #include "ADT\arraydin.h"
 #include "function.h"
-#include "listgame.h"
+#include "commandlain.h"
 
 void resetscoreboard(ListMap *L, ArrayDin arr);
 
