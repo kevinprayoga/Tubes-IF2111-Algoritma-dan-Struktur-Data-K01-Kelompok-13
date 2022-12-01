@@ -49,7 +49,7 @@ void printAlas(int n, int length){
     }
 }
 
-void show(Tower A, Tower B, Tower C, int n){
+void display(Tower A, Tower B, Tower C, int n){
     printf("\n");
     int i = n - 1;
     int temp;
@@ -144,7 +144,7 @@ int toh(){
         disk--;
     }
     while (!(IsEmptyTower(A) && IsEmptyTower(B))){
-        show(A, B, C, n);
+        display(A, B, C, n);
         printf("\nTIANG ASAL : ");
         STARTWORD();
         if (strcompare(wordToString(currentWord), "QUIT")){
@@ -203,7 +203,7 @@ int toh(){
         currentWord.Length = 0;
         currentWord.TabWord[0] = '\0';
         }
-    show(A,B,C,n);
+    display(A,B,C,n);
     printf("\nKamu berhasil!\n");
     printf("\nSkor didapatkan = %.2f\n", scoring(n, move));
     return scoring(n, move);
