@@ -7,6 +7,7 @@
 #include "function.h"
 #include "history.h"
 #include "ADT\listofmap.h"
+#include "commandlain.h"
 
 void deleteGame(ArrayDin *arr, Stack *s, ListMap *l, Queue q);
 /* I.S. : Sembarang
