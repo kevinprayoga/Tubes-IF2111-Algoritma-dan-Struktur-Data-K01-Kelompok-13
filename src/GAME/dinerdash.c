@@ -3,7 +3,7 @@
 void show(QueueFood q1, QueueCook q2, int saldo)
 {
     int i;
-    printf("\nSALDO: %ld\n", saldo);
+    printf("\nSALDO: %d\n", saldo);
     printf("\nDaftar Pesanan\n");
     printf("Makanan | Durasi memasak | Ketahanan | Harga\n");
     printf("----------------------------------------------\n");
