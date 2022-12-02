@@ -48,20 +48,19 @@ Address newNode(ElType x){
    F.S. tree dikembalikan ke sistem 
    Melakukan dealokasi/pengembalian tree p */
 void destroyTree(Tree p){
-  delNode(&p);
-  free(p);
+  if(p != Nil){
+    destroyTree(Left(p));
+    destroyTree(Mid(p));
+    destroyTree(Right(p));
+    delNode(p);
+  }
 }
 
 /* I.S. p terdefinisi 
    F.S. p dikembalikan ke sistem 
    Melakukan dealokasi/pengembalian address p */
-void delNode(Address *p){
-  if(*p != Nil){
-    delNode(Left(*p));
-    delNode(Mid(*p));
-    delNode(Right(*p));
-    free(*p);
-  }
+void delNode(Address p){
+    free(p);
 }
 
 /* Mengirimkan true jika p adalah pohon yang kosong */
@@ -265,4 +264,16 @@ void makeListLevel(ListOfNode *L, Tree p, int n){
 			*L = concat(makeListLevel(L, Left(p), n-1), makeListLevel(L, Mid(p), n-1), makeListLevel(L, Right(p), n-1));
 		}
 	}
+}
+
+void delList(ListOfNode L){
+    addr p;
+    while(!isEmptyList(L)){
+        p = First(L);
+        if(First(L) == Last(L)){
+            Last(L) = Nil;
+        }
+        First(L) = Next(p);
+        dealloc(p);
+    }
 }

@@ -3,9 +3,12 @@
 #include <time.h>
 #include <math.h>
 #include "alstrokedungeon.h"
-#include "dungeongame.h"
-#include "function.h"
-#include "boolean.h"
+#include "../ADT/dungeon_tree.h"
+#include "dungeon_files/dungeongame.h"
+#include "../console.h"
+#include "../boolean.h"
+
+struct ListOfNode lists[8];
 
 Tree create_map(int level, int difficulty){
 	/*
@@ -18,7 +21,6 @@ Tree create_map(int level, int difficulty){
 
     Tree p;
     Address l, m, r;
-	ListOfNode arrLevel[level];
 	if(rand() % 100 < difficulty * 10){
     	l = newNode(0);
 	}
@@ -31,31 +33,22 @@ Tree create_map(int level, int difficulty){
     p = createTree(0, l, m, r, level, difficulty);
 
 	for(int i = 1; i <= level; i++){
-		makeListLevel(&(arrLevel[i-1]), &p, i);
+		makeListLevel(&(lists[i-1]), &p, i);
 	}
 	addr loc;
 	for(int i = 0; i < level; i++){
-		loc = arrLevel[i];
+		loc = lists[i];
 		while(loc != Nil){
 			Info(Elmt(loc)) = rand() % difficulty;
 			loc = Next(loc);
 		}
 	}
-	return p;
-}
-
-void startArt(char* filename){
-    pita = fopen(filename, "r");
-    ADV();
-}
-
-void printArt(char* filename){
-	startArt(filename);
-	while(currentChar != 'n'){
-		printf("%c", currentChar);
-		ADV();
+	loc = lists[level-1];
+	while(loc != Nil){
+		Info(Elmt(loc)) = 7;
+		loc = Next(loc);
 	}
-	fclose(filename, "r");
+	return p;
 }
 
 void print_dungeon(Tree *p){
@@ -65,42 +58,42 @@ void print_dungeon(Tree *p){
 	 */
 	switch(*p)
 		case isOneElmt(*p):
-			printArt("portal.txt");
-			printf("Kamu melihat sebuah portal bersinar terang di ujung jalan... Apakah kamu ingin memasuki portal ini?");
+			printArt("ascii_dungeon/vportal.txt");
+			printf("\nKamu melihat sebuah portal bersinar terang di ujung jalan... Apakah kamu ingin memasuki portal ini?\n");
 			break;
 		case isNoneLeft(*p) && isNoneMid(*p):
-			printArt("R.txt");
-			printf("Ruangan ini... hanya memiliki pintu ke kanan.");
+			printArt("ascii_dungeon/R.txt");
+			printf("\nKoridor ini... hanya memiliki pintu ke kanan.\n");
 			break;
 		case isNoneLeft(*p) && isNoneRight(*p):
-			printArt("M.txt");
-			printf("Ruangan yang kamu masuki hanya memiliki pintu ke depan.");
+			printArt("ascii_dungeon/M.txt");
+			printf("\nKoridor yang kamu masuki hanya memiliki pintu ke depan.\n");
 			break;
 		case isNoneMid(*p) && isNoneRight(*p):
-			printArt("L.txt");
-			printf("Ruangan ini... ternyata hanya memiliki pintu ke kiri.");
+			printArt("ascii_dungeon/L.txt");
+			printf("\nKoridor ini... ternyata hanya memiliki pintu ke kiri.\n");
 			break;
 		case isNoneLeft(*p):
-			printArt("MR.txt");
-			printf("Ruangan ini memiliki 2 pintu, satu ke tengah dan satu ke kanan...");
+			printArt("ascii_dungeon/MR.txt");
+			printf("\nKoridor ini memiliki 2 pintu, satu ke tengah dan satu ke kanan...\n");
 			break;
 		case isNoneMid(*p):
-			printArt("LR.txt");
-			printf("Setelah melihat sekeliling, kamu melihat 2 pintu... satu ke kiri dan satu ke kanan.");
+			printArt("ascii_dungeon/LR.txt");
+			printf("\nSetelah melihat sekeliling, kamu melihat 2 pintu... satu ke kiri dan satu ke kanan.\n");
 			break;
 		case isNoneRight(*p):
-			printArt("LM.txt");
-			printf("Ruangan yang kamu masuki ternyata memiliki 2 pintu, satu ke kiri dan satu ke depan.");
+			printArt("ascii_dungeon/LM.txt");
+			printf("\nKoridor yang kamu masuki ternyata memiliki 2 pintu, satu ke kiri dan satu ke depan.\n");
 			break;
 		case isTerner(*p):
-			printArt("LMR.txt");
-			printf("Ruangan ini memiliki 3 pintu; ke kiri, ke tengah, dan ke kanan...");
+			printArt("ascii_dungeon/LMR.txt");
+			printf("\nKoridor ini memiliki 3 pintu; ke kiri, ke tengah, dan ke kanan...\n");
 			break;
 }
 
 void intro(boolean skip){
 	if(!skip){
-		printArt("vandun.txt");
+		printArt("ascii_dungeon/vandun.txt");
 		printf("\n\nKamu adalah seorang petualang yang sedang singgah di Kota Vandun.");
 		sleep(1000);
 		printf("\nSebagai seorang petualang, kamu sering berkelana mencari harta dan juga bekerja serabutan.");
@@ -143,23 +136,35 @@ void intro(boolean skip){
 		sleep(1000);
 		printf("\nLagipula, mereka semua terlihat seperti wanita yang memiliki kekuatan untuk membantumu di dungeon.\n");
 		sleep(1000);
-		system("cls");
+		clear();
 		printf("\nPertanyaannya adalah... siapakah yang akan kamu pilih?");
 		sleep(2000);
-		system("cls");
+		clear();
 	}
+}
+
+void outro(){
+	printf("\nKalian berhasil mengalahkan penunggu jahat dari dungeon ini. Seluruh harta yang tersimpan disini menjadi milik kalian.");
+	sleep(1000);
+	printf("\nKalian keluar dari dungeon, dan disambut oleh tepuk tangan meriah dari orang-orang di guild.");
+	sleep(1000);
+	printf("\n\"Setelah ini... Kamu mau kemana?\" tanya partnermu. Kamu yakin bahwa petualangan kalian bersama baru saja dimulai...");
+	sleep(1000);
+	printf("\n\nTAMAT\n");
+	printf("\nCredit goes to: Saya (18221115) dan Kelompok 13 Alstrukdat!\n Hope you enjoyed the game!\n");
 }
 
 int playdungeon(){
 	int seed_lvl = undef, seed_diff = undef;
+	int score = 0;
 	char d_comm;
 	char chosen;
 	boolean finish = false;
 	boolean skip = false;
 	boolean error = true;
 
-	system("cls");
-	printArt("title.txt");
+	clear();
+	printArt("ascii_dungeon/title.txt");
 	printf("\nSelamat datang di game dungeon ini. Petualangan menarik menanti, namun kematian selalu mengikutimu...");
 	printf("\nDungeon ini memiliki banyak harta karun untuk ditemukan, namun pilihlah jalur petualanganmu dengan bijak.");
 	printf("\nKamu tidak bisa kembali ke ruangan yang telah kamu jelajahi, dan setiap ruangan memiliki rahasia tersendiri...");
@@ -198,9 +203,9 @@ int playdungeon(){
 	}
 
 	Tree p = create_map(seed_lvl, seed_diff);
-	Tree loc = p;
+	Address loc = p;
 
-	system("cls");
+	clear();
 	error = true;
 	while(error){
 		printf("Apakah Anda mau menonton intro? (y/n)\n");
@@ -223,9 +228,9 @@ int playdungeon(){
 
 	error = true;
 	while(error){ //memilih pendamping disini
-		system("cls");
+		clear();
 		printf("\nPilih salah satu!\n");
-		printf("\nA: Wanita berambut putih.\nB: Wanita berambut hijau.\nC: Wanita berambut hitam.");
+		printf("\nA: Wanita berambut putih.\nB: Wanita berambut hijau.\nC: Wanita berambut hitam.\n");
 		STARTWORD();
 		if(currentWord.TabWord[0] == 'A' || currentWord.TabWord[0] == 'a' || currentWord.TabWord[0] == 'B' || currentWord.TabWord[0] == 'b' || currentWord.TabWord[0] == 'C' || currentWord.TabWord[0] == 'c'){
 			chosen = currentWord.Tabword[0];
@@ -249,17 +254,25 @@ int playdungeon(){
     makeChara(&vamp, 9);
     makeChara(&boss, 10);
 
+	Chara enemy;
+
 	if(chosen == 'a' || chosen == "A"){
         makeChara(&partner, 1);
-		printf("\nHmph. Lama sekali kamu memilih. Ayo, kita siap-siap.");
+		printArt("ascii_dungeon/char_eugen.txt");
+		sleep(1000);
+		printf("\n\nHmph. Lama sekali kamu memilih. Ayo, kita siap-siap.");
     }
     else if(chosen == 'b' || chosen == "B"){
         makeChara(&partner, 2);
-		printf("\nWoooo! Ayo kita jelajahi dungeon itu, semua hartanya milikku ya!");
+		printArt("ascii_dungeon/char_littorio.txt");
+		sleep(1000);
+		printf("\n\nWoooo! Ayo kita jelajahi dungeon itu, semua hartanya milikku ya!");
     }
     else if(chosen == 'c' || chosen == "C"){
         makeChara(&partner, 3);
-		printf("\nHehe. Aku tahu kamu pasti pilih aku. Ayo kita bersiap.");
+		printArt("ascii_dungeon/char_taihou.txt");
+		sleep(1000);
+		printf("\n\nHehe. Aku tahu kamu pasti pilih aku. Mari persiapkan petualangan kita.");
     }
 
 	printf("\n");
@@ -267,8 +280,8 @@ int playdungeon(){
 	printf("\nPress ENTER key to back...");
 	fgetchar();
 
-	system("cls");
-	printArt("gate.txt");
+	clear();
+	printArt("ascii_dungeon/gate.txt");
 	printf("\n\nKalian berdua tiba di depan gerbang dungeon. Gerbang besar berwarna putih ini bersinar redup di bawah sinar rembulan.");
 	sleep(1000);
 	printf("\nTerlihat ornamen-ornamen yang terlihat indah pada gerbang, dan kalian dapat merasakan gerbang itu magis.");
@@ -281,7 +294,7 @@ int playdungeon(){
 	fgetchar();
 
 	while(!finish){
-		system("cls");
+		clear();
 		switch(loc)
 			case loc == p:
 				printf("\n\nKalian memasuki dungeon ini. Ruangan pertama yang kalian lihat merupakan ruangan yang tidak terurus.");
@@ -302,6 +315,7 @@ int playdungeon(){
 				printf("\nSetelah mengamati, kalian menyadari bahwa ada %d kerangka manusia yang hidup!", seed_diff);
 				sleep(1000);
 				printArt("skeleton.txt");
+				copyChara(&enemy, skel);
 				break;
 			case Info(loc) == 2:
 				printf("\n\nRuangan kali ini terasa aneh. Kalian merasa seperti ada yang bernafas...");
@@ -309,6 +323,7 @@ int playdungeon(){
 				printf("\nKalian melihat ke sekitar dengan obor di tangan, dan ternyata ada %d goblin!", seed_diff);
 				sleep(1000);
 				printArt("goblin.txt");
+				copyChara(&enemy, gob);
 				break;
 			case Info(loc) == 3:
 				printf("\n\nRuangan ini seperti kuburan. Melihat banyak batu nisan, temanmu bersembunyi dibelakangmu.");
@@ -316,6 +331,7 @@ int playdungeon(){
 				printf("\nTidak lama kemudian, tangan-tangan orang mati muncul dari tanah! Ada %d zombie yang bangkit!", seed_diff);
 				sleep(1000);
 				printArt("zombie.txt");
+				copyChara(&enemy, zomb);
 				break;
 			case Info(loc) == 4:
 				printf("\n\nRuangan ini... sepertinya normal. Ruangan ini layaknya ruangan kantin yang sudah usang.");
@@ -323,6 +339,7 @@ int playdungeon(){
 				printf("\nBaru saja kalian ingin beristirahat, tiba-tiba ada suara dari atas! %d laba-laba besar turun menyerbu!", seed_diff);
 				sleep(1000);
 				printArt("spider.txt");
+				copyChara(&enemy, spid);
 				break;
 			case Info(loc) == 5:
 				printf("\n\nKalian tahu bahwa... ruangan ini bukanlah ruangan biasa. Dekorasinya masih terjaga. Keadaan ruangan ini agak usang namun rapi.");
@@ -332,6 +349,7 @@ int playdungeon(){
 				printf("\n\"Kalian sangat berani masuk kemari... Tapi, waktunya untuk kalian mati!\"\nSeorang penyihir mengarahkan tangannya ke arah kalian!");
 				sleep(1000);
 				printArt("witch.txt");
+				copyChara(&enemy, wit);
 				break;
 			case Info(loc) == 6:
 				printf("\n\nRuangan ini sangat gelap. Bahkan cahaya obor kalian tidak bisa menerangi seluruh ruangan.");
@@ -341,6 +359,7 @@ int playdungeon(){
 				printf("\n\"Kamu... Terlihat enak!\"\nSeorang vampir terbang cepat ke arah kalian!");
 				sleep(1000);
 				printArt("vampire.txt");
+				copyChara(&enemy, vamp);
 				break;
 			case Info(loc) == 7:
 				printf("\n\nMelangkah keluar dari portal itu, kalian merasakan sesuatu yang sangat jahat.");
@@ -360,10 +379,165 @@ int playdungeon(){
 				printf("\nWaktu terasa lambat... Kurasa sudah saatnya kalian mengalahkan dia. Semoga beruntung!");
 				sleep(1000);
 				printArt("void.txt");
+				copyChara(&enemy, boss);
 				break;
-		if(Info(loc) > 0){
-			
-		}
 
+		if(Info(loc) > 0){
+			int turn = 1;
+			while(enemy.HPBase > 0){
+				if(player.HPBase > 0 && partner.HPBase > 0){
+					printf("Turn %d, your turn", turn);
+					error = true;
+					while(error){
+						printf("\nApa yang ingin kamu lakukan?\n");
+						printf("\nM: Skip turn, mana regen.\nA: Attack menggunakan basic atk.\nS: Memakai skill.\n");
+						STARTWORD();
+						if(currentWord.TabWord[0] == 'M' || currentWord.TabWord[0] == 'm'){
+							d_comm = currentWord.Tabword[0];
+							error = false;
+						}
+						else if(currentWord.TabWord[0] == 'A' || currentWord.TabWord[0] == 'a'){
+							d_comm = currentWord.Tabword[0];
+							error = false;
+						}
+						else if(currentWord.TabWord[0] == 'S' || currentWord.TabWord[0] == 's'){
+							d_comm = currentWord.Tabword[0];
+							error = false;
+						}
+						if(error){
+							printf("Input Anda salah, coba lagi.\n");
+							currentWord.TabWord[0] = undef;
+							printf("\nPress ENTER key to back...");
+							fgetchar();
+						}
+					}
+					switch(d_comm)
+						case 'M':
+						case 'm':
+							recharge(&player);
+							recharge(&partner);
+							break;
+						case 'A':
+						case 'a':
+							atk(player, &enemy);
+							atk(partner, &enemy);
+							break;
+						case 'S':
+						case 's':
+							printf("\nSkill apa yang ingin kamu pakai?\n");
+							printf("\n1: Player Active\n2:Player Ultimate\n3: Partner Active\n 4: Partner Ultimate");
+							error = true;
+							while(error){
+								STARTWORD();
+								if(stringLength(wordToString(currentWord)) == 1){
+									switch(currentWord.TabWord[0])
+										case '1':
+											useSkill(&player, &enemy, 1);
+											error = false;
+											break;
+										case '2':
+											useSkill(&player, &enemy, 2);
+											error = false;
+											break;
+										case '3':
+											useSkill(&partner, &enemy, 1);
+											error = false;
+											break;
+										case '4':
+											useSkill(&partner, &enemy, 2);
+											error = false;
+											break;
+								}
+								if(error){
+									printf("Input Anda salah, coba lagi.\n");
+									currentWord.TabWord[0] = undef;
+									printf("\nPress ENTER key to back...");
+									fgetchar();
+								}
+							}
+							break;
+					turn++;
+				}
+				else{
+					break;
+				}
+			}
+			clear();
+			if(player.HPBase > 0 && partner.HPBase > 0 && enemy.HPBase <= 0){
+				printf("\n\nKamu berhasil mengalahkan %s!\n", enemy.name);
+				switch(enemy.name)
+					case "Witch":
+						score += 100;
+						break;
+					case "Vampire":
+						score += 150;
+						break;
+					case "Void Princess":
+						score += 400;
+						break;
+					default:
+						score += 50;
+						break;
+				printf("\nPress ENTER key to back...");
+				fgetchar();
+
+				finish = (enemy.name == "Void Princess");
+			}
+		}
+		else if(loc == p){
+			//nothing happened
+		}
+		else if(Info(loc) == 0){
+			printf("\nKamu melihat sebuah peti harta karun! Kamu mendapat 50 gold.\n");
+			score += 50;
+			printf("\nPress ENTER key to back...");
+			fgetchar();
+		}
+		if(!finish){
+			print_dungeon(&loc);
+			error = true;
+			while(error){
+				printf("\nTentukan pilihanmu.\nL: ke kiri\nM: maju\nR: ke kanan\n");
+				STARTWORD();
+				if(stringLength(wordToString(currentWord)) == 1){
+					if((currentWord.TabWord[0] == 'L' || currentWord.TabWord[0] == 'l') && Left(loc) != Nil){
+						loc = Left(loc);
+						error = false;
+					}
+					else if((currentWord.TabWord[0] == 'M' || currentWord.TabWord[0] == 'm') && Mid(loc) != Nil){
+						loc = Mid(loc);
+						error = false;
+					}
+					else if((currentWord.TabWord[0] == 'R' || currentWord.TabWord[0] == 'r') && Right(loc) != Nil){
+						loc = Right(loc);
+						error = false;
+					}
+				}
+				if(error){
+					printf("Input Anda salah, coba lagi.\n");
+					currentWord.TabWord[0] = undef;
+					printf("\nPress ENTER key to back...");
+					fgetchar();
+				}
+			}
+		}
+		if(player.HPBase <= 0 || partner.HPBase <= 0){
+			clear();
+			printf("\nKamu kalah. Salah satu dari kalian terbunuh dan nasib yang lainnya mendekati ajal.\n");
+			printf("\nSkormu adalah %d.", score);
+		}
 	}
+	outro();
+	printf("\nSkor akhirmu: %d.\n", score);
+	printf("\nPress ENTER key to back...");
+	fgetchar();
+
+	clear();
+	destroyTree(p);
+	for(int i = 1; i <= seed_lvl; i++){
+		delList(lists[i-1]);
+	}
+	printf("Selamat tinggal!\n");
+
+	return score;
 }
