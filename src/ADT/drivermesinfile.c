@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "mesinfile.h"
-#include "../function.h"
+#include "../console.h"
 
 int main()
 {
