@@ -1,12 +1,8 @@
 #ifndef DUNGEON_GAMEPLAY
 #define DUNGEON_GAMEPLAY
 
-#include <time.h>
-#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "mesinkar.h"
-#include "mesinkata.h"
 
 typedef struct{
     char* type;
@@ -49,6 +45,8 @@ typedef struct{
 void makeChara(Chara *play, int id);
 
 void printChara(Chara play);
+
+void copyChara(Chara *p, Chara play);
 
 void useSkill(Chara* play, Chara* enemy, int skillID);
 

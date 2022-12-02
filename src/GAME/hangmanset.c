@@ -79,9 +79,11 @@ void hangmanset(int* score){
             }
             for (int i = 0; i < strlength(tebakan); i++){
                 if (IsMemberSetChar(guess, tebakan[i])){
-                    printf("%c ", tebakan[i]);
+                    printf("%c ", tebakan[i]);                    
                 } else {
-                    printf("_ ");
+                    if (tebakan[i] != '\r'){
+                        printf("_ ");
+                    }
                 }
             }
             printf("\nKesempatan: %d\n", 10-guessctr);
@@ -101,22 +103,36 @@ void hangmanset(int* score){
 
             printf("\n");
             currentWord.Length = 0;
+            InsertSetChar(&guess, '\r');
             for (int i = 0; i < strlength(tebakan); i++){
                 if (! IsMemberSetChar(guess, tebakan[i])){
                     gotright = false;
                 }
             }
+            DeleteSetChar(&guess, '\r');
         }
         if (guessctr < 10){
-            printf("Berhasil menebak %s! Kamu mendapat %d poin!\n\n", tebakan, strlength(tebakan));
+            printf("Berhasil menebak ");
+            print(tebakan);
+            printf("! Kamu mendapat %d poin!\n\n", strlength(tebakan));
             *score += strlength(tebakan);
             gotright = false;
         }
     }
     if (guessctr == 10){
-        printf("Kamu gagal menebak kata. Kata tebakan adalah %s.\n", tebakan);
+        printf("Kamu gagal menebak kata. Kata tebakan adalah ");
+        print(tebakan);
+        printf("\n");
     }
     printf("\nGame Over!\n");
+}
+
+void print(char* s){
+    for (int i = 0; i < strlength(s); i++){
+        if (s[i] != '\r'){
+            printf("%c", s[i]);
+        }
+    }
 }
 
 void saveKata(){

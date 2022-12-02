@@ -1,7 +1,7 @@
 #ifndef __DUNGEON_TREE__
 #define __DUNGEON_TREE__
 
-#include "boolean.h"
+#include "../boolean.h"
 
 #define Nil NULL
 
@@ -174,5 +174,11 @@ ListOfNode concat(ListOfNode L1, ListOfNode L2, ListOfNode L3);
  * Prekondisi: tree terdefinisi
  */
 void makeListLevel(ListOfNode *L, Tree p, int n);
+
+/*
+ * Prosedur untuk menhapus list
+ * Prekondisi: List terdefinisi
+ */
+void delList(ListOfNode L);
 
 #endif

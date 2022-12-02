@@ -10,6 +10,8 @@
 
 char convertchar(char c);
 
+void print(char* s);
+
 char* convertstr(char* s);
 
 boolean isChar(char c);
