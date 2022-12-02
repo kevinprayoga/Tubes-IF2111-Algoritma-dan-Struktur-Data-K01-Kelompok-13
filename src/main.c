@@ -66,6 +66,7 @@ int main()
       printf("\nPress ENTER key to back...");
       getchar();
     }
+    currentWord.Length = 0;
   }
   printf("\nPress ENTER key to continue...");
   getchar();
@@ -188,6 +189,7 @@ int main()
       {
         commandLain();
       }
+      currentWord.Length = 0;
     }
     if (!final)
     {
