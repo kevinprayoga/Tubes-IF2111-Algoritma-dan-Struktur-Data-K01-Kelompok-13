@@ -160,8 +160,7 @@ void ListGame(ArrayDin *list_game)
 /*
 Menampilkan daftar game yang disediakan oleh sistem
 Prekondisi: list_game tidak mungkin kosong karena 5 game pada konfigurasi
-            pertama tidak dapat dihapus.
-*/
+            pertama tidak dapat dihapus. */
 {
   int i;
   // KAMUS
@@ -324,8 +323,7 @@ void deleteGame(ArrayDin *arr, Stack *s, ListMap *l, Queue q)
 void SkipGame(Queue *Game, Stack s, ListMap l, ArrayDin arr, int command3)
 /*
 I.S: Queue game yang sudah memiliki urutan sesuai.
-F.S: Queue yang sudah diganti urutannya dan siap untuk dilakukan playgame.
-*/
+F.S: Queue yang sudah diganti urutannya dan siap untuk dilakukan playgame. */
 {
   ElType var;
   int len = length(*Game);
@@ -378,8 +376,8 @@ void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr)
     {
       printf("Loading %s ...\n", val);
       printf("\nPress ENTER key to play %s...", val);
-      fgetchar();
-      system("cls");
+      getchar();
+      clear();
       if (strcompare(val, "RNG"))
       {
         InsertToScoreboard(l, arr, val, rng());
@@ -424,8 +422,8 @@ void playGame(Queue *q, Stack *s, ListMap *l, ArrayDin arr)
     {
       printf("Loading %s ...\n", val);
       printf("\nPress ENTER key to play %s...", val);
-      fgetchar();
-      system("cls");
+      getchar();
+      clear();
       customGame(l, arr, val);
     }
   }
@@ -465,7 +463,7 @@ void scoreboard(ListMap L, ArrayDin arr)
     {
       printf("**** SCOREBOARD GAME %s ****\n", arr.A[i]);
       printf("| NAMA\t\t|SKOR\t\t|\n");
-      printf("------- SCOREBOARD KOSONG -------\n\n");
+      printf("------- SCOREBOARD KOSONG -------\n\n\n");
     }
     else
     {
@@ -486,7 +484,7 @@ void scoreboard(ListMap L, ArrayDin arr)
         }
         printf("| %d\t\t|\n", L.list[i].Elements[j].Value);
       }
-      printf("\n");
+      printf("\n\n");
     }
   }
 }

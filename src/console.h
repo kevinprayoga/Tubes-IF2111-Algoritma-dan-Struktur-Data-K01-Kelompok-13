@@ -140,6 +140,4 @@ int strToInt(char *str);
 
 boolean isNum(char *str);
 
-void loading();
-
 #endif
