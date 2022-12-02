@@ -99,8 +99,8 @@ void hangmanset(int* score){
             }
         }
         if (guessctr < 10){
-            printf("Berhasil menebak %s! Kamu mendapat 4 poin!\n\n", tebakan);
-            *score += 4;
+            printf("Berhasil menebak %s! Kamu mendapat %d poin!\n\n", tebakan, strlength(tebakan));
+            *score += strlength(tebakan);
             gotright = false;
         }
     }
