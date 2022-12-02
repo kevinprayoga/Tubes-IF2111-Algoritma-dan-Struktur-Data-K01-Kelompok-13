@@ -60,9 +60,7 @@ void start(ArrayDin *arr)
   STARTFILE(path);
   CopyWordFile();
   char *strnum = wordToString(currentWord);
-  printf("str: %s\n", strnum);
   int num = strToInt(strnum);
-  printf("num = %d\n", num);
   if (num > 0)
   {
     ADVFILE();
@@ -933,7 +931,6 @@ int strToInt(char *str)
 {
   int i = 0;
   int ans = 0;
-  printf("%d\n", stringLength(str));
   while (i < stringLength(str))
   {
     ans = ans * 10 + (str[i] - '0');
