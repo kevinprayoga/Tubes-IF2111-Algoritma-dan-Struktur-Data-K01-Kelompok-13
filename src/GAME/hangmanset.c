@@ -79,9 +79,11 @@ void hangmanset(int* score){
             }
             for (int i = 0; i < strlength(tebakan); i++){
                 if (IsMemberSetChar(guess, tebakan[i])){
-                    printf("%c ", tebakan[i]);
+                    printf("%c ", tebakan[i]);                    
                 } else {
-                    printf("_ ");
+                    if (tebakan[i] != '\r'){
+                        printf("_ ");
+                    }
                 }
             }
             printf("\nKesempatan: %d\n", 10-guessctr);
@@ -101,11 +103,13 @@ void hangmanset(int* score){
 
             printf("\n");
             currentWord.Length = 0;
+            InsertSetChar(&guess, '\r');
             for (int i = 0; i < strlength(tebakan); i++){
                 if (! IsMemberSetChar(guess, tebakan[i])){
                     gotright = false;
                 }
             }
+            DeleteSetChar(&guess, '\r');
         }
         if (guessctr < 10){
             printf("Berhasil menebak %s! Kamu mendapat %d poin!\n\n", tebakan, strlength(tebakan));
