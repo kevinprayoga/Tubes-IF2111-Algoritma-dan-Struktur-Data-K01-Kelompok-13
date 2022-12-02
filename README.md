@@ -104,7 +104,7 @@ K01_Kelompok 13 <h4> <h1>
     ┣📜console.h
     ┗📜main.c
 
-📦README.MD
+📦README.md
 
 ## How to Compile Driver ADT
 
