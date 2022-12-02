@@ -60,7 +60,9 @@ void start(ArrayDin *arr)
   STARTFILE(path);
   CopyWordFile();
   char *strnum = wordToString(currentWord);
+  printf("str: %s\n", strnum);
   int num = strToInt(strnum);
+  printf("num = %d\n", num);
   if (num > 0)
   {
     ADVFILE();
@@ -81,7 +83,7 @@ void load(ArrayDin *arr, Stack *s, ListMap *L, char *filename)
    Proses : Menampilkan pesan load berhasil dan memasukkan data dari file ke array */
 {
   char path[100] = "../data/";
-  while (*filename != '\0')
+  while (*filename != '\0' && *filename != '\r')
   {
     path[stringLength(path)] = *filename;
     *filename++;
@@ -627,7 +629,7 @@ void save(char *filename, ArrayDin listGame, Stack s, ListMap L)
 {
   FILE *file;
   char path[100] = "../data/";
-  while (*filename != '\0')
+  while (*filename != '\0' && *filename != '\r')
   {
     path[stringLength(path)] = *filename;
     *filename++;
@@ -767,7 +769,7 @@ boolean strcompare(char *str1, char *str2)
 int stringLength(char *str)
 {
   int i = 0;
-  while (str[i] != '\0')
+  while (str[i] != '\r' && str[i] != '\0')
   {
     i++;
   }
@@ -809,7 +811,7 @@ char *firststring(char *command)
   int i = 0;
   char *firststr;
   firststr = (char *)malloc(50 * sizeof(char));
-  while (command[i] != BLANK && command[i] != '\0')
+  while (command[i] != BLANK && command[i] != '\0' && command[i] != '\r')
   {
     *(firststr + i) = command[i];
     i++;
@@ -824,7 +826,7 @@ char *secondstring(char *command)
   int j = 0;
   char *secstr;
   secstr = (char *)malloc(50 * sizeof(char));
-  while (command[i] != BLANK && command[i] != '\0')
+  while (command[i] != BLANK && command[i] != '\0' && command[i] != '\r')
   {
     i++;
   }
@@ -833,7 +835,7 @@ char *secondstring(char *command)
     i++;
   }
 
-  while (command[i] != BLANK && command[i] != '\0')
+  while (command[i] != BLANK && command[i] != '\0' && command[i] != '\r')
   {
     secstr[j] = command[i];
     i++;
@@ -849,7 +851,7 @@ char *thirdstring(char *command)
   int j = 0;
   char *thirdstr;
   thirdstr = (char *)malloc(50 * sizeof(char));
-  while (command[i] != BLANK && command[i] != '\0')
+  while (command[i] != BLANK && command[i] != '\0' && command[i] != '\r')
   {
     i++;
   }
@@ -857,7 +859,7 @@ char *thirdstring(char *command)
   {
     i++;
   }
-  while (command[i] != BLANK && command[i] != '\0')
+  while (command[i] != BLANK && command[i] != '\0' && command[i] != '\r')
   {
     i++;
   }
@@ -865,7 +867,7 @@ char *thirdstring(char *command)
   {
     i++;
   }
-  while (command[i] != '\0')
+  while (command[i] != '\0' && command[i] != '\r')
   {
     thirdstr[j] = command[i];
     i++;
@@ -878,7 +880,7 @@ char *thirdstring(char *command)
 int space_char(char *str)
 {
   int count = 0;
-  while (*str != '\0')
+  while (*str != '\0' && *str != '\r')
   {
     if (*str == ' ')
     {
@@ -894,7 +896,7 @@ char *strconcat(char *dest, char *src)
   char *ret;
   ret = (char *)malloc((stringLength(dest) + stringLength(src) + 1) * sizeof(char));
   int i = 0;
-  while (dest[i] != '\0')
+  while (dest[i] != '\0' && dest[i] != '\r')
   {
     ret[i] = dest[i];
     i++;
@@ -902,7 +904,7 @@ char *strconcat(char *dest, char *src)
   int j = 0;
   ret[i] = ' ';
   i++;
-  while (src[j] != '\0')
+  while (src[j] != '\0' && src[j] != '\r')
   {
     ret[i] = src[j];
     i++;
@@ -931,6 +933,7 @@ int strToInt(char *str)
 {
   int i = 0;
   int ans = 0;
+  printf("%d\n", stringLength(str));
   while (i < stringLength(str))
   {
     ans = ans * 10 + (str[i] - '0');
