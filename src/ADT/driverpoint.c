@@ -1,4 +1,5 @@
 #include "point.h"
+#include <stdio.h>
 
 int main () 
 {
