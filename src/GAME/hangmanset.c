@@ -120,7 +120,7 @@ void saveKata(){
     printf("Masukkan kata baru : ");
     STARTWORD();
     while(IsMemberSetStr(listKata, wordToString(currentWord)) == true){
-        printf("\nKata tidak valid atau sudah tersedia!\n");
+        printf("\nKata sudah tersedia!\n");
         printf("Masukkan kata baru : ");
         STARTWORD();
     }
