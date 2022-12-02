@@ -48,6 +48,8 @@ typedef struct{
 
 void makeChara(Chara *play, int id);
 
+void printChara(Chara play);
+
 void useSkill(Chara* play, Chara* enemy, int skillID);
 
 void recharge(Chara* play);

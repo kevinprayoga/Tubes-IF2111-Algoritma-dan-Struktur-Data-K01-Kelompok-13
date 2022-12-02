@@ -218,11 +218,12 @@ int playdungeon(){
 			fgetchar();
 		}
 	}
-	system("cls");
+
 	intro(skip);
 
 	error = true;
 	while(error){ //memilih pendamping disini
+		system("cls");
 		printf("\nPilih salah satu!\n");
 		printf("\nA: Wanita berambut putih.\nB: Wanita berambut hijau.\nC: Wanita berambut hitam.");
 		STARTWORD();
@@ -250,13 +251,21 @@ int playdungeon(){
 
 	if(chosen == 'a' || chosen == "A"){
         makeChara(&partner, 1);
+		printf("\nHmph. Lama sekali kamu memilih. Ayo, kita siap-siap.");
     }
     else if(chosen == 'b' || chosen == "B"){
         makeChara(&partner, 2);
+		printf("\nWoooo! Ayo kita jelajahi dungeon itu, semua hartanya milikku ya!");
     }
     else if(chosen == 'c' || chosen == "C"){
         makeChara(&partner, 3);
+		printf("\nHehe. Aku tahu kamu pasti pilih aku. Ayo kita bersiap.");
     }
+
+	printf("\n");
+	printChara(partner);
+	printf("\nPress ENTER key to back...");
+	fgetchar();
 
 	system("cls");
 	printArt("gate.txt");
@@ -266,7 +275,7 @@ int playdungeon(){
 	sleep(1000);
 	printf("\nNamun, di balik gerbang ini... terdapat aura jahat yang gelap, Seolah-olah disegel oleh gerbang ini sejak dahulu kala.");
 	sleep(1000);
-	printf("\n\"Kamu sudah siap?\" tanya teman disampingmu. Kamu mengangguk dan kalian membuka gerbang itu dengan mantra yang diberikan.");
+	printf("\n\"Kamu sudah siap?\" tanya teman disampingmu. Kamu mengangguk dan kalian membuka gerbang itu dengan mantra dari petugas guild.");
 	sleep(1000);
 	printf("\nPress ENTER key to start...");
 	fgetchar();

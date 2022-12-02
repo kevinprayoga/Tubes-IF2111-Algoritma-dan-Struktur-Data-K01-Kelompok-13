@@ -587,6 +587,21 @@ void makeChara(Chara *play, int id){
             break;
 }
 
+void printChara(Chara play){
+    printf("\nCharacter Info\n");
+    printf("\nNama: %s.", play->name);
+    printf("\nBase Atk: %d.", play->atkBase);
+    printf("\nBase HP: %d.", play->HPBase);
+    printf("\nMana: %d.", play->mana);
+    printf("\n");
+    printf("\nPassive: %s.", play->Skill.arr[0].name);
+    printf("\n%s", play->Skill.arr[0].desc);
+    printf("\nActive: %s.", play->Skill.arr[1].name);
+    printf("\n%s", play->Skill.arr[1].desc);
+    printf("\nUltimate: %s.", play->Skill.arr[2].name);
+    printf("\n%s", play->Skill.arr[2].desc);
+}
+
 void useSkill(Chara* play, Chara* enemy, int skillID){
     if(skillID >= 0 && skillID < 3){
         if(play->Skill.arr[skillID].skillAtk.mana > play->mana || play->Skill.arr[skillID].skillDef.mana > play->mana){

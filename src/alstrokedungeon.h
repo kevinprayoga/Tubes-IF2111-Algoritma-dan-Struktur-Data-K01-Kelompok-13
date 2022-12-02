@@ -16,6 +16,8 @@ void printArt(char* filename);
 
 void print_dungeon(Tree *p);
 
+void intro(boolean skip);
+
 int playdungeon();
 
 #endif
