@@ -134,8 +134,8 @@ int toh(){
         STARTWORD();
     }
     printf("\nTekan ENTER untuk memulai permainan!\n");
-    fgetchar();
-    system("cls");
+    getchar();
+    clear();
     n = wordToInt(currentWord);
     int disk = n;
     for (int i = 0; i < n; i++){

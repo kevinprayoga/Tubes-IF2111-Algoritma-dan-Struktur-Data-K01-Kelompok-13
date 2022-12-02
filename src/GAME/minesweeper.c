@@ -409,7 +409,7 @@ int playmine()
 	boolean cell_err = false;
 	minefield *field;
 
-	system("cls");
+	clear();
 	printf("=== Minesweeper in BNMO ===\n");
 	while (retry)
 	{
@@ -456,11 +456,11 @@ int playmine()
 				error = false;
 				currentWord.TabWord[0] = undef;
 				printf("\nPress ENTER key to back...");
-				fgetchar();
+				getchar();
 			}
 		}
 		field = create_field(init_row, init_col, init_seed);
-		system("cls");
+		clear();
 
 		while (!eop && !game_over)
 		{
@@ -502,7 +502,7 @@ int playmine()
 				cell_err = false;
 				currentWord.TabWord[0] = undef;
 				printf("\nPress ENTER key to back...");
-				fgetchar();
+				getchar();
 			}
 			else if (cell_err)
 			{
@@ -511,14 +511,14 @@ int playmine()
 				cell_err = false;
 				currentWord.TabWord[0] = undef;
 				printf("\nPress ENTER key to back...");
-				fgetchar();
+				getchar();
 			}
 			else
 			{
 				game_over = interact(field, input_row, input_col, command);
 				eop = verdict(field);
 			}
-			system("cls");
+			clear();
 		}
 
 		if (eop)
@@ -543,7 +543,7 @@ int playmine()
 		retry = strcompare(wordToString(currentWord), "y") || strcompare(wordToString(currentWord), "Y");
 	}
 
-	system("cls");
+	clear();
 	printf("Selamat tinggal!\n");
 	free(field);
 

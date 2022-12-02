@@ -4,6 +4,7 @@
 #include "../ADT/stackTOH.h"
 #include "../console.h"
 #include "../ADT/mesinkata.h"
+#include "../boolean.h"
 
 char* intToHanoi(int n);
 
