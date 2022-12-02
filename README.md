@@ -61,28 +61,105 @@ K01_Kelompok 13 <h4> <h1>
     ┃ ┣📜arraydin.c
     ┃ ┣📜arraydin.h
     ┃ ┣📜driverarraydin.c
+    ┃ ┣📜driverlistlinier.c
+    ┃ ┣📜driverlistofmap.c
     ┃ ┣📜drivermesinfile.c
     ┃ ┣📜drivermesinkarkata.c
+    ┃ ┣📜driverpoint.c
     ┃ ┣📜driverqueue_dinerdash.c
     ┃ ┣📜driverqueue.c
+    ┃ ┣📜driverset.c
+    ┃ ┣📜driverstack.c
+    ┃ ┣📜driverstackTOH.c
+    ┃ ┣📜dungeon_tree.c
+    ┃ ┣📜dungeon_tree.h
+    ┃ ┣📜listlinier.c
+    ┃ ┣📜listlinier.h
+    ┃ ┣📜listofmap.c
+    ┃ ┣📜listofmap.h
     ┃ ┣📜mesinfile.c
     ┃ ┣📜mesinfile.h
+    ┃ ┣📜mesinkar_dungeon.c
+    ┃ ┣📜mesinkar_dungeon.h
     ┃ ┣📜mesinkar.c
     ┃ ┣📜mesinkar.h
     ┃ ┣📜mesinkata.c
     ┃ ┣📜mesinkata.h
+    ┃ ┣📜point.c
+    ┃ ┣📜point.h
     ┃ ┣📜queue_dinerdash.c
     ┃ ┣📜queue_dinerdash.h
     ┃ ┣📜queue.c
-    ┃ ┗📜queue.h
+    ┃ ┣📜queue.h
+    ┃ ┣📜set.c
+    ┃ ┣📜set.h
+    ┃ ┣📜stack.c
+    ┃ ┣📜stack.h
+    ┃ ┣📜stackTOH.c
+    ┃ ┗📜stackTOH.h
+    ┣📜boolean.c
     ┣📜boolean.h
     ┣📜console.c
     ┣📜console.h
+    ┗📜main.c
 
-📦README.MD 
+📦README.MD
 
-## How to Play
+## How to Compile Driver ADT
+
+Notes: Ubah CD ke folder bin
+
+1. Driver arraydin
+
+    gcc -o driverarraydin ../src/ADT/driverarraydin.c ../src/ADT/arraydin.c
+
+2. Driver list linier
+
+    gcc -o driverlistlinier ../src/ADT/driverlistlinier.c ../src/ADT/listlinier.c ../src/ADT/point.c ../src/boolean.c
+
+3. driver list of map
+
+    gcc -o driverlistofmap ../src/ADT/driverlistofmap.c ../src/ADT/arraydin.c ../src/ADT/mesinkar.c ../src/ADT/mesinkata.c ../src/ADT/mesinfile.c ../src/ADT/queue.c ../src/ADT/queue_dinerdash.c ../src/ADT/stack.c ../src/ADT/stackTOH.c ../src/ADT/listofmap.c ../src/ADT/set.c ../src/ADT/listlinier.c ../src/ADT/point.c ../src/console.c ../src/GAME/gameRNG.c ../src/GAME/dinerdash.c ../src/GAME/minesweeper.c ../src/GAME/towerofhanoi.c ../src/GAME/hangmanset.c ../src/GAME/asciihangman.c ../src/GAME/snake.c ../src/boolean.c
+
+4. driver mesin file
+
+    gcc -o drivermesinfile ../src/ADT/drivermesinfile.c ../src/ADT/arraydin.c ../src/ADT/mesinkar.c ../src/ADT/mesinkata.c ../src/ADT/mesinfile.c ../src/ADT/queue.c ../src/ADT/queue_dinerdash.c ../src/ADT/stack.c ../src/ADT/stackTOH.c ../src/ADT/listofmap.c ../src/ADT/set.c ../src/ADT/listlinier.c ../src/ADT/point.c ../src/console.c ../src/GAME/gameRNG.c ../src/GAME/dinerdash.c ../src/GAME/minesweeper.c ../src/GAME/towerofhanoi.c ../src/GAME/hangmanset.c ../src/GAME/asciihangman.c ../src/GAME/snake.c ../src/boolean.c
+
+5. driver mesin kar kata
+
+    gcc -o drivermesinkarkata ../src/ADT/drivermesinkarkata.c ../src/ADT/mesinkar.c ../src/ADT/mesinkata.c ../src/boolean.c
+
+6. driver point
+
+    gcc -o point ../src/ADT/driverpoint.c ../src/ADT/point.c ../src/boolean.c
+
+7. driver queue_dinerdash
+
+    gcc -o driverqueuediner ../src/ADT/queue_dinerdash.c ../src/ADT/driverqueue_dinerdash.c ../src/ADT/mesinkar.c ../src/ADT/mesinkata.c ../src/boolean.c
+
+8. driver queue
+
+    gcc -o driverqueue ../src/ADT/driverqueue.c ../src/ADT/queue.c
+
+9. driver set
+
+    gcc -o driverset ../src/ADT/driverset.c ../src/ADT/set.c ../src/boolean.c
+
+10. driver stack
+
+    gcc -o driverstack ../src/ADT/driverstack.c ../src/ADT/stack.c ../src/boolean.c
+
+11. driver stackTOH
+
+    gcc -o driverstackTOH ../src/ADT/driverstackTOH.c ../src/ADT/stackTOH.c ../src/boolean.c
+
+## How to Play in Windows
 
 1. Go to folder bin
-2. Double Click program file
+2. Open cmd with directory is bin
+3. compile this:
+
+    gcc -o program ../src/main.c ../src/ADT/arraydin.c ../src/ADT/mesinkar.c ../src/ADT/mesinkata.c ../src/ADT/mesinfile.c ../src/ADT/queue.c ../src/ADT/queue_dinerdash.c ../src/ADT/stack.c ../src/ADT/stackTOH.c ../src/ADT/listofmap.c ../src/ADT/set.c ../src/ADT/listlinier.c ../src/ADT/point.c ../src/console.c ../src/GAME/gameRNG.c ../src/GAME/dinerdash.c ../src/GAME/minesweeper.c ../src/GAME/towerofhanoi.c ../src/GAME/hangmanset.c ../src/GAME/asciihangman.c ../src/GAME/snake.c ../src/boolean.c
+
+2. Double Click program.exe
 3. Enjoy your game :)))
