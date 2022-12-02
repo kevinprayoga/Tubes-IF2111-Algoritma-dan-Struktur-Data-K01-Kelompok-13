@@ -26,32 +26,12 @@ boolean isOrigin (point p) {
 boolean isPointEq (point p, point q) {
 /* Mengirimkan nilai benar jika p dan q adalah titik yang sama */
     /* ALGORITMA */
-    return p.x == q.x && p.y == q.y;
+    return ((ABSIS(p) == ABSIS(q)) && (ORDINAT(p) == ORDINAT(q)));
 }
 
-/**** Prosedur - Interaksi dengan I/O device, BACA/TULIS ****/
-void readPoint (point *p) {
-/* Membentuk p dari x dan y yang dibaca dari keyboard */
-    /* KAMUS */
-    int x, y;
-    /* ALGORITMA */
-    scanf("%d %d", &x, &y);
-    CreatePoint(p, x, y);
-}
-
+/**** Prosedur - Interaksi dengan I/O device ****/
 void displayPoint (point p) {
 /* Nilai p ditulis ke layar dg format "(X,Y)" */
     /* ALGORITMA */
     printf("(%d,%d)", ABSIS(p), ORDINAT(p));
-}
-
-/**** Fungsi/Operasi lain terhadap point ****/
-point movePoint (point p, int dx, int dy) {
-/* Menggeser point p sebesar dx arah sumbu x dan dy arah sumbu y */
-    /* KAMUS */
-    point pt;
-    /* ALGORITMA */
-    ABSIS(pt) = ABSIS(p) + dx;
-    ORDINAT(pt) = ORDINAT(p) + dy;
-    return (pt);
 }

@@ -26,13 +26,8 @@ boolean isOrigin (point p);
 boolean isPointEq (point p, point q);
 /* Mengirimkan nilai benar jika p dan q adalah titik yang sama */
 
-/**** Prosedur - Interaksi dengan I/O device, BACA/TULIS ****/
-void readPoint (point *p);
-/* Membentuk p dari x dan y yang dibaca dari keyboard */
+/**** Prosedur - Interaksi dengan I/O device ****/
 void displayPoint (point p);
 /* Nilai p ditulis ke layar dg format "(X,Y)" */
-/**** Fungsi/Operasi lain terhadap point ****/
-point movePoint (point p, int dx, int dy);
-/* Menggeser point p sebesar dx arah sumbu x dan dy arah sumbu y */
 
 #endif
