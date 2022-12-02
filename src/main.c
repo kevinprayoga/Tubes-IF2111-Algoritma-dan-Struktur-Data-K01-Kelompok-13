@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "console.h"
+#include "boolean.h"
 
 int main()
 {
@@ -8,7 +9,7 @@ int main()
   printf("Selamat datang di BNMO!\n");
   printf("Silahkan pilih perintah yang ingin anda lakukan!\n");
   printf("\n\t>> START\n");
-  printf("\n\t>> LOAD\n");
+  printf("\n\t>> LOAD <filename>\n");
   ArrayDin listgame;
   listgame = MakeArrayDin();
   Queue q;
@@ -63,12 +64,12 @@ int main()
     if (!initial)
     {
       printf("\nPress ENTER key to back...");
-      fgetchar();
+      getchar();
     }
   }
   printf("\nPress ENTER key to continue...");
-  fgetchar();
-  system("cls");
+  getchar();
+  clear();
 
   while (initial && !final)
   {
@@ -135,7 +136,7 @@ int main()
       else if (strcompare(command, "QUIT"))
       {
         Quit(listgame, hist, listscoreboard);
-        fgetchar();
+        getchar();
         final = true;
       }
       else if (space_char(command) == 1)
@@ -191,8 +192,8 @@ int main()
     if (!final)
     {
       printf("\nPress ENTER key to back...");
-      fgetchar();
-      system("cls");
+      getchar();
+      clear();
     }
   }
   exit(0);
