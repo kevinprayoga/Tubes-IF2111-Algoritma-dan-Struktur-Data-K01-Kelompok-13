@@ -23,6 +23,6 @@ boolean isWordNumber(Word K);
 
 int toh();
 
-float scoring(int n, int move);
+int scoring(int n, int move);
 
 #endif

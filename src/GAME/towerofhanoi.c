@@ -204,11 +204,11 @@ int toh(){
         }
     display(A,B,C,n);
     printf("\nKamu berhasil!\n");
-    printf("\nSkor didapatkan = %.2f\n", scoring(n, move));
+    printf("\nSkor didapatkan = %d\n", scoring(n, move));
     return scoring(n, move);
 }
 
-float scoring(int n, int move){
+int scoring(int n, int move){
     int i = 1;
     float disk = (float) n/5;
     for (int j = 1; j < n; j++) {
