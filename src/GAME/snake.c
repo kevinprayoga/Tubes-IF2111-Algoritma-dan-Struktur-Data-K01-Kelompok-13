@@ -1,6 +1,6 @@
 #include "snake.h"
 
-void generateMeteor(point *meteor, point *obstacle1, point *obstacle2, point *food, point *crater, List snake, boolean *dead)
+void generateMeteor(point *meteor, point *obstacle1, point *obstacle2, point *food, List snake, boolean *dead)
 {
     // KAMUS
     addressLinked p = First(snake);
@@ -9,11 +9,10 @@ void generateMeteor(point *meteor, point *obstacle1, point *obstacle2, point *fo
     // ALGORITMA
     srand(time(NULL));
     CreatePoint(meteor, rand() % 5, rand() % 5);
-    do
-    {
+    do {
         srand(rand());
         CreatePoint(meteor, rand() % 5, rand() % 5);
-    } while (isPointEq(*meteor, *obstacle1) || isPointEq(*meteor, *obstacle2) || isPointEq(*meteor, *food) || isPointEq(*meteor, *crater));
+    } while (isPointEq(*meteor, *obstacle1) || isPointEq(*meteor, *obstacle2) || isPointEq(*meteor, *food));
     CreatePoint(&head, InfoX(First(snake)), InfoY(First(snake)));
     if (isPointEq(*meteor, head))
     {
@@ -21,17 +20,16 @@ void generateMeteor(point *meteor, point *obstacle1, point *obstacle2, point *fo
     }
 }
 
-void generateFood(point meteor, point obstacle1, point obstacle2, point *food, point crater, List snake)
+void generateFood(point meteor, point obstacle1, point obstacle2, point *food, List snake)
 {
     // KAMUS
 
     // ALGORITMA
     srand(time(NULL));
-    do
-    {
+    do {
         srand(rand());
         CreatePoint(food, rand() % 5, rand() % 5);
-    } while (isPointEq(*food, obstacle1) || isPointEq(*food, obstacle2) || isPointEq(*food, meteor) || isPointEq(*food, crater) || (Search(snake, *food) != NULL));
+    } while (isPointEq(*food, obstacle1) || isPointEq(*food, obstacle2) || isPointEq(*food, meteor) || (Search(snake, *food) != Niln));
 }
 
 point generateObstacle(point obstacle)
@@ -42,9 +40,7 @@ point generateObstacle(point obstacle)
 
     // ALGORITMA
     srand(time(NULL));
-    CreatePoint(&obs2, rand() % 5, rand() % 5);
-    do
-    {
+    do {
         srand(rand());
         CreatePoint(&obs2, rand() % 5, rand() % 5);
     } while (isPointEq(obs2, obstacle));
@@ -59,23 +55,15 @@ void generateHead(point *obstacle1, point *obstacle2, List *snake)
     point head;
 
     // ALGORITMA
-    srand(time(0));
-    while (!drop)
-    {
+    srand(time(NULL));
+    do {
+        srand(rand());
         CreatePoint(&head, rand() % 5, rand() % 5);
-        if (!isPointEq(head, *obstacle1) && !isPointEq(head, *obstacle2))
-        {
-            drop = true;
-        }
-        else
-        {
-            CreatePoint(&head, rand() % 5, rand() % 5);
-        }
-    }
+    } while (isPointEq(head, *obstacle1) || isPointEq(head, *obstacle2));
     InsVFirst(snake, head);
 }
 
-void growSnake(List *snake, point *obstacle1, point *obstacle2, point *crater, point *meteor, boolean *dead)
+void growSnake(List *snake, point *obstacle1, point *obstacle2, point *meteor, boolean *dead)
 {
     // KAMUS
     point grow;
@@ -90,20 +78,20 @@ void growSnake(List *snake, point *obstacle1, point *obstacle2, point *crater, p
     }
 
     CreatePoint(&grow, InfoX(adrTail) - 1, InfoY(adrTail)); // bikin di sebelah kiri dari tail
-    teleport(&grow);
-    if (isPointEq(grow, *obstacle1) || isPointEq(grow, *obstacle2) || isPointEq(grow, *crater) || isPointEq(grow, *meteor) || (Search(*snake, grow) != Niln))
+    teleport(&grow); // supaya bisa nembus field
+    if (isPointEq(grow, *obstacle1) || isPointEq(grow, *obstacle2) || isPointEq(grow, *meteor) || (Search(*snake, grow) != Niln))
     {
         CreatePoint(&grow, InfoX(adrTail), InfoY(adrTail) - 1); // atas
         teleport(&grow);
-        if (isPointEq(grow, *obstacle1) || isPointEq(grow, *obstacle2) || isPointEq(grow, *crater) || isPointEq(grow, *meteor) || (Search(*snake, grow) != Niln))
+        if (isPointEq(grow, *obstacle1) || isPointEq(grow, *obstacle2) || isPointEq(grow, *meteor) || (Search(*snake, grow) != Niln))
         {
             CreatePoint(&grow, InfoX(adrTail), InfoY(adrTail) + 1); // bawah
             teleport(&grow);
-            if (isPointEq(grow, *obstacle1) || isPointEq(grow, *obstacle2) || isPointEq(grow, *crater) || isPointEq(grow, *meteor) || (Search(*snake, grow) != Niln))
+            if (isPointEq(grow, *obstacle1) || isPointEq(grow, *obstacle2) || isPointEq(grow, *meteor) || (Search(*snake, grow) != Niln))
             {
                 CreatePoint(&grow, InfoX(adrTail) + 1, InfoY(adrTail)); // kanan
                 teleport(&grow);
-                if (isPointEq(grow, *obstacle1) || isPointEq(grow, *obstacle2) || isPointEq(grow, *crater) || isPointEq(grow, *meteor) || (Search(*snake, grow) != Niln))
+                if (isPointEq(grow, *obstacle1) || isPointEq(grow, *obstacle2) || isPointEq(grow, *meteor) || (Search(*snake, grow) != Niln))
                 {
                     *dead = true;
                     add = false;
@@ -118,13 +106,12 @@ void growSnake(List *snake, point *obstacle1, point *obstacle2, point *crater, p
     }
 }
 
-boolean isValidInput(char *cmd, List snake, point *crater)
+boolean isValidInput(char *cmd, List snake, point *meteor)
 {
     // KAMUS
     point loc;
 
     // ALGORITMA
-    // printf("%s\n", cmd);
 
     if (strcompare("w", cmd) || strcompare("W", cmd))
     {
@@ -133,8 +120,8 @@ boolean isValidInput(char *cmd, List snake, point *crater)
         teleport(&loc);
         // displayPoint(loc);
         addressLinked search = Search(snake, loc);
-        // jika w menyebabkan head menabrak crater atau dirinya sendiri, program harus minta input ulang
-        if (isPointEq(loc, *crater))
+        // jika w menyebabkan head menabrak meteor atau dirinya sendiri, program harus minta input ulang
+        if (isPointEq(loc, *meteor))
         {
             printf("Meteor masih panas, Anda belum dapat kembali ke titik tersebut.\n");
             return false;
@@ -156,8 +143,8 @@ boolean isValidInput(char *cmd, List snake, point *crater)
         teleport(&loc);
         // displayPoint(loc);
         addressLinked search = Search(snake, loc);
-        // jika a menyebabkan head menabrak crater atau dirinya sendiri, program harus minta input ulang
-        if (isPointEq(loc, *crater))
+        // jika a menyebabkan head menabrak meteor atau dirinya sendiri, program harus minta input ulang
+        if (isPointEq(loc, *meteor))
         {
             printf("Meteor masih panas, Anda belum dapat kembali ke titik tersebut.\n");
             return false;
@@ -177,8 +164,8 @@ boolean isValidInput(char *cmd, List snake, point *crater)
         CreatePoint(&loc, InfoX(First(snake)), InfoY(First(snake)) + 1);
         teleport(&loc);
         addressLinked search = Search(snake, loc);
-        // jika s menyebabkan head menabrak crater atau dirinya sendiri, program harus minta input ulang
-        if (isPointEq(loc, *crater))
+        // jika s menyebabkan head menabrak meteor atau dirinya sendiri, program harus minta input ulang
+        if (isPointEq(loc, *meteor))
         {
             printf("Meteor masih panas, Anda belum dapat kembali ke titik tersebut.\n");
             return false;
@@ -198,8 +185,8 @@ boolean isValidInput(char *cmd, List snake, point *crater)
         CreatePoint(&loc, InfoX(First(snake)) + 1, InfoY(First(snake)));
         teleport(&loc);
         addressLinked search = Search(snake, loc);
-        // jika d menyebabkan head menabrak crater atau dirinya sendiri, program harus minta input ulang
-        if (isPointEq(loc, *crater))
+        // jika d menyebabkan head menabrak meteor atau dirinya sendiri, program harus minta input ulang
+        if (isPointEq(loc, *meteor))
         {
             printf("Meteor masih panas, Anda belum dapat kembali ke titik tersebut.\n");
             return false;
@@ -290,7 +277,7 @@ void collideObstacle(List snake, point *obstacle1, point *obstacle2, boolean *de
     *dead = true;
 }
 
-boolean cantMove(List snake, point *obstacle1, point *obstacle2, point *crater, point *meteor, boolean *dead)
+boolean cantMove(List snake, point *obstacle1, point *obstacle2, point *meteor, boolean *dead)
 {
     // KAMUS
     int count = 0;
@@ -300,35 +287,35 @@ boolean cantMove(List snake, point *obstacle1, point *obstacle2, point *crater, 
     // cek atas
     CreatePoint(&move, InfoX(First(snake)), InfoY(First(snake)) - 1);
     teleport(&move);
-    if (isPointEq(move, *obstacle1) || isPointEq(move, *obstacle2) || isPointEq(move, *crater) || isPointEq(move, *meteor) || Search(snake, move) != Niln)
+    if (isPointEq(move, *obstacle1) || isPointEq(move, *obstacle2) || isPointEq(move, *meteor) || Search(snake, move) != Niln)
     {
         count++;
     }
     // cek bawah
     CreatePoint(&move, InfoX(First(snake)), InfoY(First(snake)) + 1);
     teleport(&move);
-    if (isPointEq(move, *obstacle1) || isPointEq(move, *obstacle2) || isPointEq(move, *crater) || isPointEq(move, *meteor) || Search(snake, move) != Niln)
+    if (isPointEq(move, *obstacle1) || isPointEq(move, *obstacle2) || isPointEq(move, *meteor) || Search(snake, move) != Niln)
     {
         count++;
     }
     // cek kiri
     CreatePoint(&move, InfoX(First(snake)) - 1, InfoY(First(snake)));
     teleport(&move);
-    if (isPointEq(move, *obstacle1) || isPointEq(move, *obstacle2) || isPointEq(move, *crater) || isPointEq(move, *meteor) || Search(snake, move) != Niln)
+    if (isPointEq(move, *obstacle1) || isPointEq(move, *obstacle2) || isPointEq(move, *meteor) || Search(snake, move) != Niln)
     {
         count++;
     }
     // cek kanan
     CreatePoint(&move, InfoX(First(snake)) + 1, InfoY(First(snake)));
     teleport(&move);
-    if (isPointEq(move, *obstacle1) || isPointEq(move, *obstacle2) || isPointEq(move, *crater) || isPointEq(move, *meteor) || Search(snake, move) != Niln)
+    if (isPointEq(move, *obstacle1) || isPointEq(move, *obstacle2) || isPointEq(move, *meteor) || Search(snake, move) != Niln)
     {
         count++;
     }
     return (count == 4); // jika count = 4, berarti tidak ada tempat untuk bergerak
 }
 
-void displayField(List snake, point meteor, point food, point crater, point obstacle1, point obstacle2)
+void displayField(List snake, point meteor, point food, point obstacle1, point obstacle2)
 {
     // KAMUS
     point loc;
@@ -392,7 +379,7 @@ int snekOnMeteor()
 {
     // KAMUS
     List snake;
-    point meteor, crater, obstacle1, obstacle2, food;
+    point meteor, obstacle1, obstacle2, food;
     boolean dead = false;
     int score;
     char *moveCmd;
@@ -403,37 +390,36 @@ int snekOnMeteor()
     printf("Mengenerate peta, snek, obstacle, dan makanan...\n");
     printf("Berhasil di-generate!\n");
     CreatePointNil(&meteor);
-    CreatePointNil(&crater);
     srand(time(0));
     CreatePoint(&obstacle1, rand() % 5, rand() % 5);
     obstacle2 = generateObstacle(obstacle1);
     CreateEmpty(&snake);
     generateHead(&obstacle1, &obstacle2, &snake);
-    growSnake(&snake, &obstacle1, &obstacle2, &crater, &meteor, &dead);
-    growSnake(&snake, &obstacle1, &obstacle2, &crater, &meteor, &dead);
+    growSnake(&snake, &obstacle1, &obstacle2, &meteor, &dead);
+    growSnake(&snake, &obstacle1, &obstacle2, &meteor, &dead);
     CreatePointNil(&food);
-    generateFood(meteor, obstacle1, obstacle2, &food, crater, snake);
+    generateFood(meteor, obstacle1, obstacle2, &food, snake);
     // main sampai game over
     while (!dead)
     {
-        if (cantMove(snake, &obstacle1, &obstacle2, &crater, &meteor, &dead))
+        if (cantMove(snake, &obstacle1, &obstacle2, &meteor, &dead))
         {
             printf("Snek tidak dapat bergerak!:(\n");
             break;
         }
-        displayField(snake, meteor, food, crater, obstacle1, obstacle2);
+        displayField(snake, meteor, food, obstacle1, obstacle2);
         // input command
         moveCmd = inputCmd();
         if (isValidInput(moveCmd, snake, &meteor))
         {
             printf("Berhasil bergerak!\n");
             moveSnake(moveCmd, &snake);
-            generateMeteor(&meteor, &obstacle1, &food, &obstacle2, &crater, snake, &dead);
+            generateMeteor(&meteor, &obstacle1, &food, &obstacle2, snake, &dead);
             if (isPointEq(Info(First(snake)), food))
             {
                 printf("Snek makan\n");
-                growSnake(&snake, &obstacle1, &obstacle2, &crater, &meteor, &dead);
-                generateFood(meteor, obstacle1, obstacle2, &food, crater, snake);
+                growSnake(&snake, &obstacle1, &obstacle2, &meteor, &dead);
+                generateFood(meteor, obstacle1, obstacle2, &food, snake);
             }
             if (isCollideMeteor(snake, meteor))
             {
@@ -446,8 +432,8 @@ int snekOnMeteor()
             if (isPointEq(Info(First(snake)), food))
             {
                 printf("Snek makan\n");
-                growSnake(&snake, &obstacle1, &obstacle2, &crater, &meteor, &dead);
-                generateFood(meteor, obstacle1, obstacle2, &food, crater, snake);
+                growSnake(&snake, &obstacle1, &obstacle2, &meteor, &dead);
+                generateFood(meteor, obstacle1, obstacle2, &food, snake);
             }
         }
         else
@@ -457,7 +443,7 @@ int snekOnMeteor()
         currentWord.Length = 0;
     }
 
-    displayField(snake, meteor, food, crater, obstacle1, obstacle2);
+    displayField(snake, meteor, food, obstacle1, obstacle2);
     score = NbElmt(snake) * 2;
     if (isPointEq(meteor, Info(First(snake))))
     {

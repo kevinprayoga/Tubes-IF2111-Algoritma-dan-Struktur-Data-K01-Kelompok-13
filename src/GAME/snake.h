@@ -11,15 +11,15 @@
 #include "../ADT/point.h"
 #include "../ADT/listlinier.h"
 
-void generateMeteor(point *meteor, point *obstacle1, point *obstacle2, point *food, point *crater, List snake, boolean *dead);
+void generateMeteor(point *meteor, point *obstacle1, point *obstacle2, point *food, List snake, boolean *dead);
 /* Membuat meteor secara acak di suatu titik pada field. Meteor tidak mungkin ada di titik yang sama dengan
-   obstacle maupun crater. Jika meteor jatuh pada tubuh snake, panjang snake berkurang 1. Jika meteor jatuh
+   obstacle maupun meteor. Jika meteor jatuh pada tubuh snake, panjang snake berkurang 1. Jika meteor jatuh
    pada kepala snake, permainan berakhir.
 */
 
-void generateFood(point meteor, point obstacle1, point obstacle2, point *food, point crater, List snake);
+void generateFood(point meteor, point obstacle1, point obstacle2, point *food, List snake);
 /* Membuat food secara acak di suatu titik pada field. Food tidak mungkin ada di
-   titik yang sama dengan tubuh snake, meteor, obstacle, maupun crater.
+   titik yang sama dengan tubuh snake, meteor, obstacle.
    I.S. belum ada food pada field
    F.S. ada 1 food pada suatu titik di field
 */
@@ -34,14 +34,14 @@ void generateHead(point *obstacle1, point *obstacle2, List *snake);
    I.S. Field memiliki 2 obstacle, 0 snake.
    F.S. Field memiliki 2 obstacle, 1 snake yang berukurang 3 unit. */
 
-void growSnake(List *snake, point *obstacle1, point *obstacle2, point *crater, point *meteor, boolean *dead);
+void growSnake(List *snake, point *obstacle1, point *obstacle2, point *meteor, boolean *dead);
 /* Menumbuhkan ekor snake
    I.S. ekor belum tumbuh
    F.S. Jika bisa, ekor tumbuh. Jika tidak bisa, snake mati:( skor dihitung dari jumlah elemen awal */
 
-boolean isValidInput(char *cmd, List snake, point *crater);
+boolean isValidInput(char *cmd, List snake, point *meteor);
 /* Mengecek apakah input valid.
-   Input dikatakan valid jika input merupakan "wasdWASD" dan tidak menabrak crater atau tubuhnya sendiri
+   Input dikatakan valid jika input merupakan "wasdWASD" dan tidak menabrak meteor atau tubuhnya sendiri
    Jika input tidak valid, minta input ulang.*/
 
 void moveSnake(char *cmd, List *snake);
@@ -49,7 +49,7 @@ void moveSnake(char *cmd, List *snake);
    Snake bergerak dengan cara menghapus titik tail (titik terakhir
    pada tubuhnya) lalu menambahkan titik baru dengan arah sesuai input user
    sebagai head.
-   I.S. input pasti valid (pasti wasd/WASD, pasti tidak menabrak crater/tubuhnya sendiri)
+   I.S. input pasti valid (pasti wasd/WASD, pasti tidak menabrak meteor panas/tubuhnya sendiri)
    F.S. snake pindah */
 
 void teleport(point *pt);
@@ -74,10 +74,10 @@ void collideObstacle(List snake, point *obstacle1, point *obstacle2, boolean *de
    F.S. Game over. Panjang tubuh snake berkurang 1 (yang nabrak akan hilang).
         Skor berkurang 2 ((NbElmt(snake)-1) * 2) */
 
-boolean cantMove(List snake, point *obstacle1, point *obstacle2, point *crater, point *meteor, boolean *dead);
+boolean cantMove(List snake, point *obstacle1, point *obstacle2, point *meteor, boolean *dead);
 /* Mengembalikan nilai true jika head tidak bisa pergi ke manapun :( */
 
-void displayField(List snake, point meteor, point food, point crater, point obstacle1, point obstacle2);
+void displayField(List snake, point meteor, point food, point obstacle1, point obstacle2);
 /* Menampilkan map */
 
 int snekOnMeteor();
