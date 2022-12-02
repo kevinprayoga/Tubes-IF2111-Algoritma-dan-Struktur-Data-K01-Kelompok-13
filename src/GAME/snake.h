@@ -11,6 +11,10 @@
 #include "../ADT/point.h"
 #include "../ADT/listlinier.h"
 
+void asciisnake();
+/* Menampilkan halaman awal permainan snake
+*/
+
 void generateMeteor(point *meteor, point *obstacle1, point *obstacle2, point *food, List snake, boolean *dead);
 /* Membuat meteor secara acak di suatu titik pada field. Meteor tidak mungkin ada di titik yang sama dengan
    obstacle maupun meteor. Jika meteor jatuh pada tubuh snake, panjang snake berkurang 1. Jika meteor jatuh
