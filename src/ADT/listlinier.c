@@ -277,7 +277,7 @@ void PrintInfo (List L)
         printf("[");
         while(p != Niln)
         {
-            printf("%d", Info(p));
+            displayPoint(Info(p));
             if (Next(p) != Niln)
             {
                 printf(",");
