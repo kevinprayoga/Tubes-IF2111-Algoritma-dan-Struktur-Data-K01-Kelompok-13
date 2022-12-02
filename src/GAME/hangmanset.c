@@ -4,12 +4,21 @@
 #include <stdlib.h>
 #include <time.h>
 
-char convert(char c){
+char convertchar(char c){
     if (c >= 'a' && c <= 'z'){
         return c - 32;
     } else {
         return c;
     }
+}
+
+char* convertstr(char* s){
+    int i = 0;
+    while (s[i] != '\0' && s[i] != '\r'){
+        s[i] = convertchar(s[i]);
+        i++;
+    }
+    return s;
 }
 
 boolean isChar(char c){
@@ -78,15 +87,15 @@ void hangmanset(int* score){
             printf("\nKesempatan: %d\n", 10-guessctr);
             printf("Masukkan tebakan: ");
             STARTWORD();
-            while (currentWord.Length != 1 || IsMemberSetChar(guess, convert(currentWord.TabWord[0])) || !isChar(currentWord.TabWord[0])){
+            while (currentWord.Length != 1 || IsMemberSetChar(guess, convertchar(currentWord.TabWord[0])) || !isChar(currentWord.TabWord[0])){
                 printf("Karakter tidak valid!\n");
                 printf("\nMasukkan tebakan: ");
                 STARTWORD();
             }
-            if (IsMemberChar(tebakan, convert(currentWord.TabWord[0]))){
-                InsertSetChar(&guess, convert(currentWord.TabWord[0]));
+            if (IsMemberChar(tebakan, convertchar(currentWord.TabWord[0]))){
+                InsertSetChar(&guess, convertchar(currentWord.TabWord[0]));
             } else {
-                InsertSetChar(&guess, convert(currentWord.TabWord[0]));
+                InsertSetChar(&guess, convertchar(currentWord.TabWord[0]));
                 guessctr++;
             }
 
@@ -119,13 +128,13 @@ void saveKata(){
     printf("\nKetik 'q' jika ingin membatalkan.\n");
     printf("Masukkan kata baru : ");
     STARTWORD();
-    while(IsMemberSetStr(listKata, wordToString(currentWord)) == true){
+    while(IsMemberSetStr(listKata, convertstr(wordToString(currentWord))) == true){
         printf("\nKata sudah tersedia!\n");
         printf("Masukkan kata baru : ");
         STARTWORD();
     }
     if (!(currentWord.Length == 1 && currentWord.TabWord[0] == 'q')){
-        InsertSetStr(&listKata, wordToString(currentWord));
+        InsertSetStr(&listKata, convertstr(wordToString(currentWord)));
         file = fopen("../data/hangman.txt", "w");
         fprintf(file, "%d\n", listKata.Count);
         for (i = 0; i < listKata.Count-1; i++)

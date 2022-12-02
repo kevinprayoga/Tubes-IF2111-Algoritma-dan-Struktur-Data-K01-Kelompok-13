@@ -8,7 +8,9 @@
 #include "../ADT/mesinfile.h"
 #include "asciihangman.h"
 
-char convert(char c);
+char convertchar(char c);
+
+char* convertstr(char* s);
 
 boolean isChar(char c);
 
