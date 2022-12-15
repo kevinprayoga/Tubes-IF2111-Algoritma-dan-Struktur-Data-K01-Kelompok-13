@@ -88,7 +88,7 @@ void load(ArrayDin *arr, Stack *s, ListMap *L, char *filename)
   }
 
   STARTFILE(path);
-  ADVWORDFILE();
+  CopyWordFile();
   char *strnum = wordToString(currentWord);
   int num = strToInt(strnum);
   if (num > 0)
