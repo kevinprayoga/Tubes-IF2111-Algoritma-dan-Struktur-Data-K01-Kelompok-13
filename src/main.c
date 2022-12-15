@@ -46,10 +46,22 @@ int main()
       char *string_second = secondstring(command);
       if (strcompare(string_first, "LOAD"))
       {
-        load(&listgame, &hist, &listscoreboard, string_second);
-        if (!IsEmpty(listgame))
+        if (strcompare(string_second, "config.txt"))
         {
+          start(&listgame);
+          for (int i = 0; i < listgame.Neff; i++)
+          {
+            CreateEmptyMap(&listscoreboard);
+          }
           initial = true;
+        }
+        else
+        {
+          load(&listgame, &hist, &listscoreboard, string_second);
+          if (!IsEmpty(listgame))
+          {
+            initial = true;
+          }
         }
       }
       else
